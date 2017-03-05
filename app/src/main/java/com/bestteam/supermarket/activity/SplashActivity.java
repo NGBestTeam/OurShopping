@@ -23,12 +23,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.Toast;
 
 import com.bestteam.supermarket.R;
 import com.bestteam.supermarket.utils.CommonUrl;
 import com.bestteam.supermarket.utils.ConstantValue;
 import com.bestteam.supermarket.utils.SpUtil;
+import com.bestteam.supermarket.utils.ToastUtil;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -292,7 +292,7 @@ public class SplashActivity extends AppCompatActivity {
                 if (grantResults[0] == PackageManager.PERMISSION_GRANTED) {
                     checkCurrentPermission();
                 } else {
-                    Toast.makeText(getApplicationContext(), "拒绝权限后部分功能无法使用哦!", Toast.LENGTH_SHORT).show();
+                    ToastUtil.show(getApplicationContext(), "拒绝权限后部分功能无法使用哦!");
                 }
                 break;
         }
