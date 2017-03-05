@@ -46,6 +46,10 @@ import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
 
+/**
+ * 广告进入界面
+ */
+
 public class SplashActivity extends AppCompatActivity {
 
     /**
