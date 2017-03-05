@@ -1,6 +1,7 @@
 package com.bestteam.supermarket.activity;
 
 import android.Manifest;
+import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageInfo;
@@ -144,6 +145,11 @@ public class SplashActivity extends AppCompatActivity {
      * 获取写入SD卡的权限申请码
      */
     private static final int WRITE_EXTERNAL_STORAGE_CODE = 100;
+
+    /**
+     * 更新APP时的进度条
+     */
+    private ProgressDialog mProgressDialog;
 
     /**
      * 用来处理更新以及进入时间各种时间的handler
@@ -394,6 +400,12 @@ public class SplashActivity extends AppCompatActivity {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 downloadAPK();
+                mProgressDialog = new ProgressDialog(SplashActivity.this);
+                mProgressDialog.setIcon(R.mipmap.update_dialog);
+                mProgressDialog.setTitle("提示");
+                mProgressDialog.setMessage("正在下载新的版本");
+                mProgressDialog.setCancelable(false);
+                mProgressDialog.show();
             }
         });
 
@@ -490,6 +502,7 @@ public class SplashActivity extends AppCompatActivity {
 
     /**
      * 获取当前时间与进入界面时间的时间差
+     *
      * @return 返回时间差
      */
     private long getTime() {
@@ -501,6 +514,10 @@ public class SplashActivity extends AppCompatActivity {
      * 进入APP主界面的方法
      */
     private void enterHome() {
+        if (mProgressDialog != null && mProgressDialog.isShowing()) {
+            mProgressDialog.dismiss();
+        }
+
         Intent intent = new Intent(this, HomeActivity.class);
         startActivity(intent);
 
