@@ -17,6 +17,5 @@ public class HomeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
 
-        ToastUtil.show(this, "我进来了，哈上的封杀的回复");
     }
 }
