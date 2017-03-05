@@ -2,9 +2,13 @@ package com.bestteam.supermarket.utils;
 
 /**
  * Created by LJWE on 2017/3/4.
+ * 所有API接口
  */
 
 public class CommonUrl {
+
+    // 检查新版本的Url：
+    public static final String UPDATE_APP_URL = "http://10.10.156.21/fzdmcupdate.json";
 
     //1.	进入广告位(服务器返回数据)
     String returnAdvert = "http://app-client.ffzxnet.com/app-client-web/advert/startupPage.do?params={%22imgSize%22:%221080X1920%22,%22sysType%22:1}";
