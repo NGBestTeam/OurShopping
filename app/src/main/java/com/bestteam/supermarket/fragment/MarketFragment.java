@@ -106,8 +106,6 @@ public class MarketFragment extends Fragment{
                                 return 1;
                         }
                     });
-
-
                 }
 
 
@@ -151,11 +149,7 @@ public class MarketFragment extends Fragment{
             }
         });
 
-
-
     }
-
-
 
     /**
      * 为RecyclerView设置分割线

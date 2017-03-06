@@ -25,6 +25,8 @@ public class MarketRecylerAdapter extends RecyclerView.Adapter<RecyclerView.View
     private Context context;
     private List<HypermarketUpBean.Adverts> data;
     private List<HypermarketDownBean.Items> downData;
+    private boolean tag=true;
+
 
     public MarketRecylerAdapter(Context context, List<HypermarketUpBean.Adverts> data,List<HypermarketDownBean.Items> downData) {
         this.context = context;
@@ -78,6 +80,18 @@ public class MarketRecylerAdapter extends RecyclerView.Adapter<RecyclerView.View
                 viewHolder1.tvLeft.setText(downBean.getActivityTitle());
                 viewHolder1.tvRight.setText(downBean.getStatusDesc().substring(18,23));
 
+              if (tag){
+                      viewHolder1.tvTitle.setText("精品特卖 每日更新");
+                }else {
+                  viewHolder1.tvTitle.setText("");
+              }
+                tag=false;
+
+                if (position==3+downData.size()){
+                    viewHolder1.tvBottom.setText("已经到底了");
+                }else {
+                    viewHolder1.tvBottom.setText("");
+                }
                 break;
 
         }
@@ -99,6 +113,7 @@ public class MarketRecylerAdapter extends RecyclerView.Adapter<RecyclerView.View
     public int getItemViewType(int position) {
         if (position<4){
             return 0;
+
         }
         return 1;
 
@@ -121,13 +136,16 @@ public class MarketRecylerAdapter extends RecyclerView.Adapter<RecyclerView.View
      */
     public class ViewHolder1 extends RecyclerView.ViewHolder{
         ImageView iv;
-        TextView tvLeft,tvRight;
+        TextView tvLeft,tvRight,tvTitle,tvBottom;
 
         public ViewHolder1(View itemView) {
             super(itemView);
             iv= (ImageView) itemView.findViewById(R.id.iv_market02_item);
             tvLeft= (TextView) itemView.findViewById(R.id.tv_market02_left);
             tvRight= (TextView) itemView.findViewById(R.id.tv_market02_right);
+            tvTitle= (TextView) itemView.findViewById(R.id.tv_market02_title);
+            tvBottom= (TextView) itemView.findViewById(R.id.tv_bottom);
+
         }
     }
 

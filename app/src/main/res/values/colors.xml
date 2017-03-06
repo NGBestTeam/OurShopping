@@ -6,5 +6,6 @@
     <color name="colorOrange">#FC5832</color>
     <color name="colorWhite">#FFF</color>
     <color name="colorGray">#C0C0C0</color>
-    <color name="colorBlack">#000</color>
+    <color name="colorBlack">#000</color>classify_rb_color
+    <color name="classify_rb_color">#FC5832</color>
 </resources>

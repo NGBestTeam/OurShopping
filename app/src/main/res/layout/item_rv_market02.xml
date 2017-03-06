@@ -4,7 +4,14 @@
     android:layout_height="wrap_content"
     android:background="@color/colorWhite"
     >
+    <TextView
+        android:id="@+id/tv_market02_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        />
     <ImageView
+        android:layout_below="@id/tv_market02_title"
         android:layout_marginTop="20dp"
         android:id="@+id/iv_market02_item"
         android:layout_width="match_parent"
@@ -27,6 +34,15 @@
         android:layout_height="wrap_content"
         android:text="仅剩20小时"
         android:textColor="@color/colorOrange"/>
+    <TextView
+        android:layout_marginTop="10dp"
+        android:layout_below="@id/tv_market02_left"
+        android:gravity="center"
+        android:id="@+id/tv_bottom"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="已经到底了"
+        />
 
 
 </RelativeLayout>
