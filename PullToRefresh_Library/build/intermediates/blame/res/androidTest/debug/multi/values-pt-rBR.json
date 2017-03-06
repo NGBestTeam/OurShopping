@@ -60,6 +60,8 @@
                 }
             }
         ]
+<<<<<<< HEAD
+=======
     },
     {
         "outputFile": "D:\\Users\\myself\\Downloads\\OurShopping\\PullToRefresh_Library\\build\\intermediates\\incremental\\mergeDebugAndroidTestResources\\merged.dir\\values-pt-rBR\\values-pt-rBR.xml",
@@ -246,5 +248,6 @@
                 }
             }
         ]
+>>>>>>> origin/master
     }
 ]

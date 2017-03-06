@@ -1,5 +1,17 @@
 [
     {
+<<<<<<< HEAD
+        "merged": "/Users/myself/Downloads/OurShopping/PullToRefresh_Library/build/intermediates/res/merged/androidTest/debug/drawable-hdpi-v4/default_ptr_flip.png",
+        "source": "/Users/myself/Downloads/OurShopping/PullToRefresh_Library/build/intermediates/bundles/debug/res/drawable-hdpi-v4/default_ptr_flip.png"
+    },
+    {
+        "merged": "/Users/myself/Downloads/OurShopping/PullToRefresh_Library/build/intermediates/res/merged/androidTest/debug/drawable-hdpi-v4/indicator_arrow.png",
+        "source": "/Users/myself/Downloads/OurShopping/PullToRefresh_Library/build/intermediates/bundles/debug/res/drawable-hdpi-v4/indicator_arrow.png"
+    },
+    {
+        "merged": "/Users/myself/Downloads/OurShopping/PullToRefresh_Library/build/intermediates/res/merged/androidTest/debug/drawable-hdpi-v4/default_ptr_rotate.png",
+        "source": "/Users/myself/Downloads/OurShopping/PullToRefresh_Library/build/intermediates/bundles/debug/res/drawable-hdpi-v4/default_ptr_rotate.png"
+=======
         "merged": "D:\\Users\\myself\\Downloads\\OurShopping\\D:\\Develop\\supermarket\\PullToRefresh_Library\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-hdpi-v4\\default_ptr_flip.png",
         "source": "D:\\Users\\myself\\Downloads\\OurShopping\\D:\\Develop\\supermarket\\PullToRefresh_Library\\build\\intermediates\\bundles\\debug\\res\\drawable-hdpi-v4\\default_ptr_flip.png"
     },
@@ -46,5 +58,6 @@
     {
         "merged": "D:\\SuperMarket\\OurShopping\\PullToRefresh_Library\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-hdpi-v4\\indicator_arrow.png",
         "source": "D:\\SuperMarket\\OurShopping\\PullToRefresh_Library\\build\\intermediates\\bundles\\debug\\res\\drawable-hdpi-v4\\indicator_arrow.png"
+>>>>>>> origin/master
     }
 ]

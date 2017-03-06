@@ -1,5 +1,8 @@
 [
     {
+<<<<<<< HEAD
+        "outputFile": "/Users/myself/Downloads/OurShopping/PullToRefresh_Library/build/intermediates/incremental/mergeDebugAndroidTestResources/merged.dir/values-fi/values-fi.xml",
+=======
         "outputFile": "D:\\Users\\myself\\Downloads\\OurShopping\\D:\\SuperMarket\\OurShopping\\PullToRefresh_Library\\build\\intermediates\\incremental\\mergeDebugAndroidTestResources\\merged.dir\\values-fi\\values-fi.xml",
         "map": [
             {
@@ -120,6 +123,7 @@
     },
     {
         "outputFile": "D:\\SuperMarket\\OurShopping\\PullToRefresh_Library\\build\\intermediates\\incremental\\mergeDebugAndroidTestResources\\merged.dir\\values-fi\\values-fi.xml",
+>>>>>>> origin/master
         "map": [
             {
                 "to": {
@@ -236,6 +240,8 @@
                 }
             }
         ]
+<<<<<<< HEAD
+=======
     },
     {
         "outputFile": "D:\\Users\\myself\\Downloads\\OurShopping\\PullToRefresh_Library\\build\\intermediates\\incremental\\mergeDebugAndroidTestResources\\merged.dir\\values-fi\\values-fi.xml",
@@ -474,5 +480,6 @@
                 }
             }
         ]
+>>>>>>> origin/master
     }
 ]

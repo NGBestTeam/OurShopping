@@ -1,5 +1,8 @@
 [
     {
+<<<<<<< HEAD
+        "outputFile": "/Users/myself/Downloads/OurShopping/PullToRefresh_Library/build/intermediates/incremental/mergeDebugAndroidTestResources/merged.dir/values-he/values-he.xml",
+=======
         "outputFile": "D:\\Users\\myself\\Downloads\\OurShopping\\D:\\Develop\\supermarket\\PullToRefresh_Library\\build\\intermediates\\incremental\\mergeDebugAndroidTestResources\\merged.dir\\values-he\\values-he.xml",
         "map": [
             {
@@ -125,6 +128,7 @@
     },
     {
         "outputFile": "D:\\Users\\myself\\Downloads\\OurShopping\\PullToRefresh_Library\\build\\intermediates\\incremental\\mergeDebugAndroidTestResources\\merged.dir\\values-he\\values-he.xml",
+>>>>>>> origin/master
         "map": [
             {
                 "to": {

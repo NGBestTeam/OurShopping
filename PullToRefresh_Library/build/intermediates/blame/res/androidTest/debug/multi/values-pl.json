@@ -1,5 +1,8 @@
 [
     {
+<<<<<<< HEAD
+        "outputFile": "/Users/myself/Downloads/OurShopping/PullToRefresh_Library/build/intermediates/incremental/mergeDebugAndroidTestResources/merged.dir/values-pl/values-pl.xml",
+=======
         "outputFile": "D:\\Users\\myself\\Downloads\\OurShopping\\PullToRefresh_Library\\build\\intermediates\\incremental\\mergeDebugAndroidTestResources\\merged.dir\\values-pl\\values-pl.xml",
         "map": [
             {
@@ -63,6 +66,7 @@
     },
     {
         "outputFile": "D:\\Users\\myself\\Downloads\\OurShopping\\D:\\SuperMarket\\OurShopping\\PullToRefresh_Library\\build\\intermediates\\incremental\\mergeDebugAndroidTestResources\\merged.dir\\values-pl\\values-pl.xml",
+>>>>>>> origin/master
         "map": [
             {
                 "to": {
@@ -122,6 +126,8 @@
                 }
             }
         ]
+<<<<<<< HEAD
+=======
     },
     {
         "outputFile": "D:\\SuperMarket\\OurShopping\\PullToRefresh_Library\\build\\intermediates\\incremental\\mergeDebugAndroidTestResources\\merged.dir\\values-pl\\values-pl.xml",
@@ -246,5 +252,6 @@
                 }
             }
         ]
+>>>>>>> origin/master
     }
 ]
