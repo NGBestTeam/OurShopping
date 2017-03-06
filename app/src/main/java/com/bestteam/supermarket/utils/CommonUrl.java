@@ -11,8 +11,8 @@ public class CommonUrl {
     public static final String UPDATE_APP_URL = "http://10.10.156.21/fzdmcupdate.json";
 
     //1.	进入广告位(服务器返回数据)
-    String returnAdvert = "http://app-client.ffzxnet.com/app-client-web/advert/startupPage.do?params={%22imgSize%22:%221080X1920%22,%22sysType%22:1}";
-    String returnAdvert02 = "http://app-client.ffzxnet.com/app-client-web/advert/getBaseTab.do";
+    public static final String returnAdvert = "http://app-client.ffzxnet.com/app-client-web/advert/startupPage.do?params={%22imgSize%22:%221080X1920%22,%22sysType%22:1}";
+    public static final String returnAdvert02 = "http://app-client.ffzxnet.com/app-client-web/advert/getBaseTab.do";
 
     //2,首页:
     //轮播: 包括头部轮播+分类+居家小能手

@@ -12,7 +12,7 @@
     <GridView
         android:layout_margin="10dp"
         android:layout_width="match_parent"
-        android:layout_height="240dp"
+        android:layout_height="140dp"
         android:id="@+id/gv_item01"
         android:numColumns="5"
         android:columnWidth="10dp"

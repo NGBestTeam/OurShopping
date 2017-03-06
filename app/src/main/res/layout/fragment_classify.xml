@@ -3,19 +3,23 @@
               android:layout_width="match_parent"
               android:layout_height="match_parent">
 
+    <include
+        android:id="@+id/main_tool_bar"
+        layout="@layout/title_bar"/>
+
     <ListView
         android:id="@+id/lv_classify"
-        android:layout_weight="3"
         android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="3"
         android:divider="#DCDCDC"
-        android:dividerHeight="1dp"
-        android:layout_height="match_parent"/>
+        android:dividerHeight="1dp"/>
 
     <FrameLayout
         android:id="@+id/fl_classify_size"
-        android:layout_weight="7"
         android:layout_width="0dp"
-        android:padding="5dp"
-        android:layout_height="match_parent"/>
+        android:layout_height="match_parent"
+        android:layout_weight="7"
+        android:padding="5dp"/>
 
 </LinearLayout>
