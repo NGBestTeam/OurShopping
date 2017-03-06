@@ -74,6 +74,8 @@ public class HomeFragment extends Fragment {
                     LinearLayoutManager lManager = new LinearLayoutManager(getActivity(),LinearLayoutManager.VERTICAL,false);
                     mRv.setLayoutManager(lManager);
                     //第二个条目的数据
+
+
                 }
             }
         });
