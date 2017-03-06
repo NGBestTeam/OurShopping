@@ -50,7 +50,7 @@ public class CommonUrl {
     //限时抢购+食品+纸巾
     public static final String  url11 = "http://app-client.ffzxnet.com/app-client-web/advert/getAdvertsNew.do?params={%22number%22:%22DMC%22}";
 
-
+    public static final String url12 = "http://app-client.ffzxnet.com/app-client-web/activity/findDMCActivity.do?params={%22page%22:1,%22pageSize%22:20}";
 
     public static String replaceImgUrl(String imgUrl){
         return imgUrl.replace("size","origin");
