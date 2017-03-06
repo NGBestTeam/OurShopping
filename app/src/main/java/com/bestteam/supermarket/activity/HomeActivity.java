@@ -1,10 +1,11 @@
 package com.bestteam.supermarket.activity;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v4.app.FragmentManager;
+import android.support.v7.app.AppCompatActivity;
 
 import com.bestteam.supermarket.R;
-import com.bestteam.supermarket.utils.ToastUtil;
+import com.bestteam.supermarket.fragment.HomeFragment;
 
 /**
  * 主界面
@@ -12,11 +13,15 @@ import com.bestteam.supermarket.utils.ToastUtil;
 
 public class HomeActivity extends AppCompatActivity {
 
+    private FragmentManager fManager;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
+        fManager = getSupportFragmentManager();
+        fManager.beginTransaction().replace(R.id.fl_home,new HomeFragment()).commit();
 
-        ToastUtil.show(this, "我进来了，哈上的封杀的回复");
     }
 }
