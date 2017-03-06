@@ -20,7 +20,7 @@ public class HypermarketDownBean {
 
     public static HypermarketDownBean  getParseHypermarketDownBean(String str){
 
-        return new Gson().fromJson(str,HypermarketDownBean.class);
+        return  new Gson().fromJson(str,HypermarketDownBean.class);
     }
 
     public class Items
