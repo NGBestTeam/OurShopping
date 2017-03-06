@@ -11,6 +11,7 @@ import android.view.ViewGroup;
 
 import com.bestteam.supermarket.R;
 import com.bestteam.supermarket.adapter.recycleview.HomeRecyclerAdapter;
+import com.bestteam.supermarket.parse.HomePurchaseBean;
 import com.bestteam.supermarket.parse.HomeUpBean;
 import com.bestteam.supermarket.utils.CommonUrl;
 import com.bestteam.supermarket.utils.OkHttpManager;
@@ -32,6 +33,7 @@ public class HomeFragment extends Fragment {
     //RecycleView数据源
     private List<HomeUpBean.Adverts> headData;
     private List<String> headImgs;
+    private List<HomePurchaseBean.HomePurchase> dataItem02;
 
     @Nullable
     @Override
@@ -42,17 +44,51 @@ public class HomeFragment extends Fragment {
         mRv = (RecyclerView) view.findViewById(R.id.rv_home);
 
         initData();
-        LoadData();
+        initAdapter();
+        LoadData01();
+        loadData02();
 
         return view;
+    }
+
+    private void initAdapter() {
+        mAdapter = new HomeRecyclerAdapter(getActivity(),headImgs,headData,dataItem02);
+        mRv.setAdapter(mAdapter);
+        LinearLayoutManager lManager = new LinearLayoutManager(getActivity(),LinearLayoutManager.VERTICAL,false);
+        mRv.setLayoutManager(lManager);
+
+    }
+
+
+    private void loadData02() {
+        OkHttpManager.getAsync(CommonUrl.url2, new OkHttpManager.DataCallBack() {
+            @Override
+            public void requestFailure(Request request, IOException e) {
+
+            }
+
+            @Override
+            public void requestSuccess(String result) throws Exception {
+                //第二个条目的数据
+                if (result!=null){
+                    List<HomePurchaseBean.HomePurchase> bean02 = HomePurchaseBean.getParseHomePurchaseBean(result)
+                            .getResultData().getItems();
+                    dataItem02.addAll(bean02);
+                    initAdapter();
+                }
+
+
+            }
+        });
     }
 
     private void initData() {
         headData = new ArrayList<>();
         headImgs = new ArrayList<>();
+        dataItem02 = new ArrayList<>();
     }
 
-    private void LoadData() {
+    private void LoadData01() {
 
         OkHttpManager.getAsync(CommonUrl.url1, new OkHttpManager.DataCallBack() {
             @Override
@@ -69,13 +105,12 @@ public class HomeFragment extends Fragment {
                         headImgs.add(bean.get(0).getAdverts().get(i).getImgPath());
                     }
                     headData.addAll(bean.get(1).getAdverts());
-                    mAdapter = new HomeRecyclerAdapter(getActivity(),headImgs,headData);
-                    mRv.setAdapter(mAdapter);
-                    LinearLayoutManager lManager = new LinearLayoutManager(getActivity(),LinearLayoutManager.VERTICAL,false);
-                    mRv.setLayoutManager(lManager);
+                    initAdapter();
                     //第二个条目的数据
                 }
             }
         });
     }
+
+
 }

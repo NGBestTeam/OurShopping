@@ -3,16 +3,19 @@ package com.bestteam.supermarket.adapter.recycleview;
 import android.content.Context;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.GridView;
 import android.widget.ImageView;
-import android.widget.TextView;
 
 import com.bestteam.supermarket.R;
+import com.bestteam.supermarket.adapter.base.BaseRecyclerAdapter;
+import com.bestteam.supermarket.adapter.base.RecyclerViewHolder;
 import com.bestteam.supermarket.adapter.gridview.GvAdapter;
+import com.bestteam.supermarket.parse.HomePurchaseBean;
 import com.bestteam.supermarket.parse.HomeUpBean;
 import com.bestteam.supermarket.utils.CommonUrl;
 import com.bumptech.glide.Glide;
@@ -28,14 +31,15 @@ public class HomeRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
     private Context context;
     private List<String> headImgs; //首页无限轮播图片数据源
     private List<HomeUpBean.Adverts> headData;
+    private List<HomePurchaseBean.HomePurchase> dataItem02;
 
 
 
-    public HomeRecyclerAdapter(Context context,List<String> headImgs, List<HomeUpBean.Adverts> headData) {
+    public HomeRecyclerAdapter(Context context,List<String> headImgs, List<HomeUpBean.Adverts> headData, List<HomePurchaseBean.HomePurchase> dataItem02) {
         this.context = context;
         this.headImgs = headImgs;
         this.headData = headData;
-
+        this.dataItem02 = dataItem02;
     }
 
     @Override
@@ -48,8 +52,8 @@ public class HomeRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
                 viewHolder=new ViewHolder0(view);
                 break;
             case 1:
-//                view=LayoutInflater.from(parent.getContext()).inflate(R.layout.itm_02,parent,false);
-//                viewHolder=new ViewHolder1(view);
+                view=LayoutInflater.from(parent.getContext()).inflate(R.layout.item_rv_item02,parent,false);
+                viewHolder=new ViewHolder1(view);
 
                 break;
             case 2:
@@ -73,8 +77,26 @@ public class HomeRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
                 break;
             case 1:
                 ViewHolder1 viewHolder1= (ViewHolder1) holder;
-                viewHolder1.iv.setImageResource(R.mipmap.ic_launcher);;
-                viewHolder1.tv.setText("类型二");
+                viewHolder1.rv.setAdapter(new BaseRecyclerAdapter<HomePurchaseBean.HomePurchase>(context,dataItem02){
+                    @Override
+                    public int getItemLayoutId(int viewType) {
+                        return R.layout.item_rv_rv_item02;
+                    }
+
+                    @Override
+                    public void bindData(RecyclerViewHolder holder, int position, HomePurchaseBean.HomePurchase item) {
+                        holder.setText(R.id.tv_rv_item02,item.getDiscountPrice());
+                        holder.setText(R.id.tv02_rv_item02,item.getPrice());
+                        String url= CommonUrl.replaceImgUrl(item.getActivityImgPath());
+                        Glide.with(context)//  可以接收 Activity  Context Fragment对象
+                                .load(url)
+                                .placeholder(R.mipmap.ic_launcher)//加载时显示的资源
+                                .error(R.mipmap.ic_launcher)//加载失败时显示的资源
+                                .into(holder.getImageView(R.id.iv_rv_item02));
+                    }
+                });
+                LinearLayoutManager manager = new LinearLayoutManager(context,LinearLayoutManager.HORIZONTAL,false);
+                viewHolder1.rv.setLayoutManager(manager);
                 break;
 //            case 2:
 //                ViewHolder2 viewHolder2= (ViewHolder2) holder;
@@ -93,7 +115,7 @@ public class HomeRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
 
     @Override
     public int getItemCount() {
-        return 1;
+        return 2;
     }
 
     @Override
@@ -119,10 +141,10 @@ public class HomeRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
     }
     public  class ViewHolder1 extends RecyclerView.ViewHolder
     {
-        TextView tv;
-        ImageView iv;
+        RecyclerView rv;
         public ViewHolder1(View itemView) {
             super(itemView);
+            rv = (RecyclerView) itemView.findViewById(R.id.rv_item02);
         }
     }
     public  class ViewHolder2 extends RecyclerView.ViewHolder
