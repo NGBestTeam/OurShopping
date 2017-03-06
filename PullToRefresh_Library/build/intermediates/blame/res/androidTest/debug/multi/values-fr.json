@@ -1,6 +1,6 @@
 [
     {
-        "outputFile": "D:\\Develop\\OurShopping\\PullToRefresh_Library\\build\\intermediates\\incremental\\mergeDebugAndroidTestResources\\merged.dir\\values-fr\\values-fr.xml",
+        "outputFile": "D:\\Users\\myself\\Downloads\\OurShopping\\D:\\Develop\\supermarket\\PullToRefresh_Library\\build\\intermediates\\incremental\\mergeDebugAndroidTestResources\\merged.dir\\values-fr\\values-fr.xml",
         "map": [
             {
                 "to": {
@@ -11,7 +11,7 @@
                     "endOffset": 128
                 },
                 "from": {
-                    "file": "D:\\Develop\\OurShopping\\PullToRefresh_Library\\build\\intermediates\\bundles\\debug\\res\\values-fr\\values-fr.xml",
+                    "file": "D:\\Users\\myself\\Downloads\\OurShopping\\D:\\Develop\\supermarket\\PullToRefresh_Library\\build\\intermediates\\bundles\\debug\\res\\values-fr\\values-fr.xml",
                     "position": {
                         "startLine": 2,
                         "startColumn": 4,
@@ -30,7 +30,7 @@
                     "endOffset": 201
                 },
                 "from": {
-                    "file": "D:\\Develop\\OurShopping\\PullToRefresh_Library\\build\\intermediates\\bundles\\debug\\res\\values-fr\\values-fr.xml",
+                    "file": "D:\\Users\\myself\\Downloads\\OurShopping\\D:\\Develop\\supermarket\\PullToRefresh_Library\\build\\intermediates\\bundles\\debug\\res\\values-fr\\values-fr.xml",
                     "position": {
                         "startLine": 3,
                         "startColumn": 4,
@@ -49,7 +49,7 @@
                     "endOffset": 285
                 },
                 "from": {
-                    "file": "D:\\Develop\\OurShopping\\PullToRefresh_Library\\build\\intermediates\\bundles\\debug\\res\\values-fr\\values-fr.xml",
+                    "file": "D:\\Users\\myself\\Downloads\\OurShopping\\D:\\Develop\\supermarket\\PullToRefresh_Library\\build\\intermediates\\bundles\\debug\\res\\values-fr\\values-fr.xml",
                     "position": {
                         "startLine": 4,
                         "startColumn": 4,
@@ -60,5 +60,194 @@
                 }
             }
         ]
+<<<<<<< HEAD
+=======
+    },
+    {
+        "outputFile": "D:\\Users\\myself\\Downloads\\OurShopping\\D:\\SuperMarket\\OurShopping\\PullToRefresh_Library\\build\\intermediates\\incremental\\mergeDebugAndroidTestResources\\merged.dir\\values-fr\\values-fr.xml",
+        "map": [
+            {
+                "to": {
+                    "startLine": 2,
+                    "startColumn": 4,
+                    "startOffset": 55,
+                    "endColumn": 77,
+                    "endOffset": 128
+                },
+                "from": {
+                    "file": "D:\\Users\\myself\\Downloads\\OurShopping\\D:\\SuperMarket\\OurShopping\\PullToRefresh_Library\\build\\intermediates\\bundles\\debug\\res\\values-fr\\values-fr.xml",
+                    "position": {
+                        "startLine": 2,
+                        "startColumn": 4,
+                        "startOffset": 55,
+                        "endColumn": 77,
+                        "endOffset": 128
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 3,
+                    "startColumn": 4,
+                    "startOffset": 133,
+                    "endColumn": 72,
+                    "endOffset": 201
+                },
+                "from": {
+                    "file": "D:\\Users\\myself\\Downloads\\OurShopping\\D:\\SuperMarket\\OurShopping\\PullToRefresh_Library\\build\\intermediates\\bundles\\debug\\res\\values-fr\\values-fr.xml",
+                    "position": {
+                        "startLine": 3,
+                        "startColumn": 4,
+                        "startOffset": 133,
+                        "endColumn": 72,
+                        "endOffset": 201
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 4,
+                    "startColumn": 4,
+                    "startOffset": 206,
+                    "endColumn": 83,
+                    "endOffset": 285
+                },
+                "from": {
+                    "file": "D:\\Users\\myself\\Downloads\\OurShopping\\D:\\SuperMarket\\OurShopping\\PullToRefresh_Library\\build\\intermediates\\bundles\\debug\\res\\values-fr\\values-fr.xml",
+                    "position": {
+                        "startLine": 4,
+                        "startColumn": 4,
+                        "startOffset": 206,
+                        "endColumn": 83,
+                        "endOffset": 285
+                    }
+                }
+            }
+        ]
+    },
+    {
+        "outputFile": "D:\\Users\\myself\\Downloads\\OurShopping\\PullToRefresh_Library\\build\\intermediates\\incremental\\mergeDebugAndroidTestResources\\merged.dir\\values-fr\\values-fr.xml",
+        "map": [
+            {
+                "to": {
+                    "startLine": 2,
+                    "startColumn": 4,
+                    "startOffset": 55,
+                    "endColumn": 77,
+                    "endOffset": 128
+                },
+                "from": {
+                    "file": "D:\\Users\\myself\\Downloads\\OurShopping\\PullToRefresh_Library\\build\\intermediates\\bundles\\debug\\res\\values-fr\\values-fr.xml",
+                    "position": {
+                        "startLine": 2,
+                        "startColumn": 4,
+                        "startOffset": 55,
+                        "endColumn": 77,
+                        "endOffset": 128
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 3,
+                    "startColumn": 4,
+                    "startOffset": 133,
+                    "endColumn": 72,
+                    "endOffset": 201
+                },
+                "from": {
+                    "file": "D:\\Users\\myself\\Downloads\\OurShopping\\PullToRefresh_Library\\build\\intermediates\\bundles\\debug\\res\\values-fr\\values-fr.xml",
+                    "position": {
+                        "startLine": 3,
+                        "startColumn": 4,
+                        "startOffset": 133,
+                        "endColumn": 72,
+                        "endOffset": 201
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 4,
+                    "startColumn": 4,
+                    "startOffset": 206,
+                    "endColumn": 83,
+                    "endOffset": 285
+                },
+                "from": {
+                    "file": "D:\\Users\\myself\\Downloads\\OurShopping\\PullToRefresh_Library\\build\\intermediates\\bundles\\debug\\res\\values-fr\\values-fr.xml",
+                    "position": {
+                        "startLine": 4,
+                        "startColumn": 4,
+                        "startOffset": 206,
+                        "endColumn": 83,
+                        "endOffset": 285
+                    }
+                }
+            }
+        ]
+    },
+    {
+        "outputFile": "D:\\SuperMarket\\OurShopping\\PullToRefresh_Library\\build\\intermediates\\incremental\\mergeDebugAndroidTestResources\\merged.dir\\values-fr\\values-fr.xml",
+        "map": [
+            {
+                "to": {
+                    "startLine": 2,
+                    "startColumn": 4,
+                    "startOffset": 55,
+                    "endColumn": 77,
+                    "endOffset": 128
+                },
+                "from": {
+                    "file": "D:\\SuperMarket\\OurShopping\\PullToRefresh_Library\\build\\intermediates\\bundles\\debug\\res\\values-fr\\values-fr.xml",
+                    "position": {
+                        "startLine": 2,
+                        "startColumn": 4,
+                        "startOffset": 55,
+                        "endColumn": 77,
+                        "endOffset": 128
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 3,
+                    "startColumn": 4,
+                    "startOffset": 133,
+                    "endColumn": 72,
+                    "endOffset": 201
+                },
+                "from": {
+                    "file": "D:\\SuperMarket\\OurShopping\\PullToRefresh_Library\\build\\intermediates\\bundles\\debug\\res\\values-fr\\values-fr.xml",
+                    "position": {
+                        "startLine": 3,
+                        "startColumn": 4,
+                        "startOffset": 133,
+                        "endColumn": 72,
+                        "endOffset": 201
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 4,
+                    "startColumn": 4,
+                    "startOffset": 206,
+                    "endColumn": 83,
+                    "endOffset": 285
+                },
+                "from": {
+                    "file": "D:\\SuperMarket\\OurShopping\\PullToRefresh_Library\\build\\intermediates\\bundles\\debug\\res\\values-fr\\values-fr.xml",
+                    "position": {
+                        "startLine": 4,
+                        "startColumn": 4,
+                        "startOffset": 206,
+                        "endColumn": 83,
+                        "endOffset": 285
+                    }
+                }
+            }
+        ]
+>>>>>>> origin/master
     }
 ]

@@ -1,10 +1,43 @@
 [
     {
-        "merged": "D:\\Develop\\OurShopping\\PullToRefresh_Library\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\pull_to_refresh_header_vertical.xml",
-        "source": "D:\\Develop\\OurShopping\\PullToRefresh_Library\\build\\intermediates\\bundles\\debug\\res\\layout\\pull_to_refresh_header_vertical.xml"
+<<<<<<< HEAD
+        "merged": "/Users/myself/Downloads/OurShopping/PullToRefresh_Library/build/intermediates/res/merged/androidTest/debug/layout/pull_to_refresh_header_horizontal.xml",
+        "source": "/Users/myself/Downloads/OurShopping/PullToRefresh_Library/build/intermediates/bundles/debug/res/layout/pull_to_refresh_header_horizontal.xml"
     },
     {
-        "merged": "D:\\Develop\\OurShopping\\PullToRefresh_Library\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\pull_to_refresh_header_horizontal.xml",
-        "source": "D:\\Develop\\OurShopping\\PullToRefresh_Library\\build\\intermediates\\bundles\\debug\\res\\layout\\pull_to_refresh_header_horizontal.xml"
+        "merged": "/Users/myself/Downloads/OurShopping/PullToRefresh_Library/build/intermediates/res/merged/androidTest/debug/layout/pull_to_refresh_header_vertical.xml",
+        "source": "/Users/myself/Downloads/OurShopping/PullToRefresh_Library/build/intermediates/bundles/debug/res/layout/pull_to_refresh_header_vertical.xml"
+=======
+        "merged": "D:\\SuperMarket\\OurShopping\\PullToRefresh_Library\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\pull_to_refresh_header_horizontal.xml",
+        "source": "D:\\SuperMarket\\OurShopping\\PullToRefresh_Library\\build\\intermediates\\bundles\\debug\\res\\layout\\pull_to_refresh_header_horizontal.xml"
+    },
+    {
+        "merged": "D:\\SuperMarket\\OurShopping\\PullToRefresh_Library\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\pull_to_refresh_header_vertical.xml",
+        "source": "D:\\SuperMarket\\OurShopping\\PullToRefresh_Library\\build\\intermediates\\bundles\\debug\\res\\layout\\pull_to_refresh_header_vertical.xml"
+    },
+    {
+        "merged": "D:\\Users\\myself\\Downloads\\OurShopping\\D:\\Develop\\supermarket\\PullToRefresh_Library\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\pull_to_refresh_header_vertical.xml",
+        "source": "D:\\Users\\myself\\Downloads\\OurShopping\\D:\\Develop\\supermarket\\PullToRefresh_Library\\build\\intermediates\\bundles\\debug\\res\\layout\\pull_to_refresh_header_vertical.xml"
+    },
+    {
+        "merged": "D:\\Users\\myself\\Downloads\\OurShopping\\D:\\SuperMarket\\OurShopping\\PullToRefresh_Library\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\pull_to_refresh_header_horizontal.xml",
+        "source": "D:\\Users\\myself\\Downloads\\OurShopping\\D:\\SuperMarket\\OurShopping\\PullToRefresh_Library\\build\\intermediates\\bundles\\debug\\res\\layout\\pull_to_refresh_header_horizontal.xml"
+    },
+    {
+        "merged": "D:\\Users\\myself\\Downloads\\OurShopping\\D:\\SuperMarket\\OurShopping\\PullToRefresh_Library\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\pull_to_refresh_header_vertical.xml",
+        "source": "D:\\Users\\myself\\Downloads\\OurShopping\\D:\\SuperMarket\\OurShopping\\PullToRefresh_Library\\build\\intermediates\\bundles\\debug\\res\\layout\\pull_to_refresh_header_vertical.xml"
+    },
+    {
+        "merged": "D:\\Users\\myself\\Downloads\\OurShopping\\PullToRefresh_Library\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\pull_to_refresh_header_horizontal.xml",
+        "source": "D:\\Users\\myself\\Downloads\\OurShopping\\PullToRefresh_Library\\build\\intermediates\\bundles\\debug\\res\\layout\\pull_to_refresh_header_horizontal.xml"
+    },
+    {
+        "merged": "D:\\Users\\myself\\Downloads\\OurShopping\\D:\\Develop\\supermarket\\PullToRefresh_Library\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\pull_to_refresh_header_horizontal.xml",
+        "source": "D:\\Users\\myself\\Downloads\\OurShopping\\D:\\Develop\\supermarket\\PullToRefresh_Library\\build\\intermediates\\bundles\\debug\\res\\layout\\pull_to_refresh_header_horizontal.xml"
+    },
+    {
+        "merged": "D:\\Users\\myself\\Downloads\\OurShopping\\PullToRefresh_Library\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\pull_to_refresh_header_vertical.xml",
+        "source": "D:\\Users\\myself\\Downloads\\OurShopping\\PullToRefresh_Library\\build\\intermediates\\bundles\\debug\\res\\layout\\pull_to_refresh_header_vertical.xml"
+>>>>>>> origin/master
     }
 ]
