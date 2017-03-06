@@ -18,7 +18,7 @@ import java.util.List;
 
 public class HypermarketDownBean {
 
-    public static HypermarketDownBean  getParseHypermarketDownBean(String str){
+    public static HypermarketDownBean getParseHypermarketDownBean(String str){
 
         return  new Gson().fromJson(str,HypermarketDownBean.class);
     }
