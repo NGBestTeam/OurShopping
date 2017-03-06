@@ -1,10 +1,6 @@
 [
     {
-<<<<<<< Updated upstream
         "outputFile": "D:\\Develop\\OurShopping\\PullToRefresh_Library\\build\\intermediates\\incremental\\mergeDebugAndroidTestResources\\merged.dir\\values-ru\\values-ru.xml",
-=======
-        "outputFile": "G:\\android_studio_study\\NewTeam\\OurShopping\\PullToRefresh_Library\\build\\intermediates\\incremental\\mergeDebugAndroidTestResources\\merged.dir\\values-ru\\values-ru.xml",
->>>>>>> Stashed changes
         "map": [
             {
                 "to": {
@@ -15,11 +11,7 @@
                     "endOffset": 130
                 },
                 "from": {
-<<<<<<< Updated upstream
                     "file": "D:\\Develop\\OurShopping\\PullToRefresh_Library\\build\\intermediates\\bundles\\debug\\res\\values-ru\\values-ru.xml",
-=======
-                    "file": "G:\\android_studio_study\\NewTeam\\OurShopping\\PullToRefresh_Library\\build\\intermediates\\bundles\\debug\\res\\values-ru\\values-ru.xml",
->>>>>>> Stashed changes
                     "position": {
                         "startLine": 2,
                         "startColumn": 4,
@@ -38,11 +30,7 @@
                     "endOffset": 201
                 },
                 "from": {
-<<<<<<< Updated upstream
                     "file": "D:\\Develop\\OurShopping\\PullToRefresh_Library\\build\\intermediates\\bundles\\debug\\res\\values-ru\\values-ru.xml",
-=======
-                    "file": "G:\\android_studio_study\\NewTeam\\OurShopping\\PullToRefresh_Library\\build\\intermediates\\bundles\\debug\\res\\values-ru\\values-ru.xml",
->>>>>>> Stashed changes
                     "position": {
                         "startLine": 3,
                         "startColumn": 4,
@@ -61,11 +49,7 @@
                     "endOffset": 285
                 },
                 "from": {
-<<<<<<< Updated upstream
                     "file": "D:\\Develop\\OurShopping\\PullToRefresh_Library\\build\\intermediates\\bundles\\debug\\res\\values-ru\\values-ru.xml",
-=======
-                    "file": "G:\\android_studio_study\\NewTeam\\OurShopping\\PullToRefresh_Library\\build\\intermediates\\bundles\\debug\\res\\values-ru\\values-ru.xml",
->>>>>>> Stashed changes
                     "position": {
                         "startLine": 4,
                         "startColumn": 4,

@@ -46,11 +46,11 @@ public class CommonUrl {
     //右边内容
     public static final String  url10 = "http://app-client.ffzxnet.com/app-client-web/category/commendCategory.do?params={%22id%22:%22bd8d74d19dde49dc9c0965784c6a5c18%22}";
 
-    //4,大麦场
-    //限时抢购+食品+纸巾
+    //4,大麦场  共两个接口  分为 up（上   限时抢购+食品+纸巾） down（下  精品特卖+每日更新）
+    //限时抢购+食品+纸巾   解析类： HypermarketUpBean
     public static final String  url11 = "http://app-client.ffzxnet.com/app-client-web/advert/getAdvertsNew.do?params={%22number%22:%22DMC%22}";
-
-    public static final String url12 = "http://app-client.ffzxnet.com/app-client-web/activity/findDMCActivity.do?params={%22page%22:1,%22pageSize%22:20}";
+    //down（下  精品特卖+每日更新） 解析类： HypermarketDownBean
+    public static final String url12 = "http://app-client.ffzxnet.com/app-client-web/activity/findDMCActivity.do?params={\"page\":1,\"pageSize\":20}";
 
     public static String replaceImgUrl(String imgUrl){
         return imgUrl.replace("size","origin");
