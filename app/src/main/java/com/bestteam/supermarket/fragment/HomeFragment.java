@@ -154,7 +154,7 @@ public class HomeFragment extends Fragment {
                     Log.e("1111", "requestSuccess: "+datas.size() );
                     Log.e("1111", "requestSuccess: "+datas.get(7).getImgPath() );
                     initAdapter();
-                    ;                }
+                                    }
             }
         });
     }

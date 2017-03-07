@@ -12,6 +12,7 @@ import android.widget.GridView;
 import android.widget.ImageView;
 
 import com.bestteam.supermarket.R;
+import com.bestteam.supermarket.adapter.base.FullyLinearLayoutManager;
 import com.bestteam.supermarket.adapter.base.SyLinearLayoutManager;
 import com.bestteam.supermarket.adapter.gridview.GvAdapter;
 import com.bestteam.supermarket.parse.HomePurchaseBean;
@@ -102,42 +103,42 @@ public class HomeRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
 //                    }
 //                });
                 viewHolder1.rv.setAdapter(new RecycleAdapter02(context,dataItem02));
-                SyLinearLayoutManager manager = new SyLinearLayoutManager(context,LinearLayoutManager.HORIZONTAL,false);
+                FullyLinearLayoutManager manager = new FullyLinearLayoutManager(context,LinearLayoutManager.HORIZONTAL,false);
                 viewHolder1.rv.setLayoutManager(manager);
                 break;
 
             case 2:
                 ViewHolder2 viewHolder2= (ViewHolder2) holder;
-                if (position==7){
-                    ViewGroup.LayoutParams paramas = viewHolder2.iv.getLayoutParams();
-                    paramas.height = 140;
-                    viewHolder2.iv.setLayoutParams(paramas);
-                    viewHolder2.iv.setImageResource(R.mipmap.home_title);
-                }else if (position==14){
-                    ViewGroup.LayoutParams paramas = viewHolder2.iv.getLayoutParams();
-                    paramas.height = 140;
-                    viewHolder2.iv.setLayoutParams(paramas);
-                    viewHolder2.iv.setImageResource(R.mipmap.market);
-                }else {
-                    String url = null;
+                if (datas.size()>0) {
+                    if (position == 7) {
+                        ViewGroup.LayoutParams paramas = viewHolder2.iv.getLayoutParams();
+                        paramas.height = 140;
+                        viewHolder2.iv.setLayoutParams(paramas);
+                        viewHolder2.iv.setImageResource(R.mipmap.home_title);
+                    } else if (position == 14) {
+                        ViewGroup.LayoutParams paramas = viewHolder2.iv.getLayoutParams();
+                        paramas.height = 140;
+                        viewHolder2.iv.setLayoutParams(paramas);
+                        viewHolder2.iv.setImageResource(R.mipmap.market);
+                    } else {
+                        String url = null;
 
-                    if (position>=8){
+                        if (position >= 8) {
 
-                        url = CommonUrl.replaceImgUrl(datas.get(position - 3).getImgPath());
+                            url = CommonUrl.replaceImgUrl(datas.get(position - 3).getImgPath());
 
+                        }
+                        if (position >= 15) {
+                            url = CommonUrl.replaceImgUrl(datas.get(position - 4).getImgPath());
+                        }
+                        if (position < 8) {
+                            url = CommonUrl.replaceImgUrl(datas.get(position - 2).getImgPath());
+                        }
+
+                        Glide.with(context)//  可以接收 Activity  Context Fragment对象
+                                .load(url)
+                                .into(viewHolder2.iv);
                     }
-                    if (position>=15){
-                        url = CommonUrl.replaceImgUrl(datas.get(position-4).getImgPath());
-                    }
-                    if (position<8){
-                        url = CommonUrl.replaceImgUrl(datas.get(position-2).getImgPath());
-                    }
-
-                    Glide.with(context)//  可以接收 Activity  Context Fragment对象
-                            .load(url)
-                            .placeholder(R.mipmap.ic_launcher)//加载时显示的资源
-                            .error(R.mipmap.ic_launcher)//加载失败时显示的资源
-                            .into(viewHolder2.iv);
                 }
                 break;
             case 3:

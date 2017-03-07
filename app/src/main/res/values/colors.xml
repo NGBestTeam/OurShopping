@@ -7,7 +7,7 @@
     <color name="colorWhite">#FFF</color>
     <color name="colorGray">#C0C0C0</color>
     <color name="colorBlack">#000</color>classify_rb_color
-    <color name="classify_rb_color">#FC5832</color>
+    <color name="classify_rb_color">#FFFFFF</color>
 
     <color name="login_orign">#FE6A12</color>
     <color name="login_red">#FF3030</color>
