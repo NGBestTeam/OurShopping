@@ -35,6 +35,7 @@ public class HypermarketDownBean {
 
         private String statusDesc;
 
+
         public void setActivityId(String activityId){
             this.activityId = activityId;
         }
@@ -109,22 +110,27 @@ public class HypermarketDownBean {
 
         private int resultStatus;
 
-        public void setResultData(ResultData resultData){
+        public void setResultData(ResultData resultData) {
             this.resultData = resultData;
         }
-        public ResultData getResultData(){
+
+        public ResultData getResultData() {
             return this.resultData;
         }
-        public void setResultMsg(String resultMsg){
+
+        public void setResultMsg(String resultMsg) {
             this.resultMsg = resultMsg;
         }
-        public String getResultMsg(){
+
+        public String getResultMsg() {
             return this.resultMsg;
         }
-        public void setResultStatus(int resultStatus){
+
+        public void setResultStatus(int resultStatus) {
             this.resultStatus = resultStatus;
         }
-        public int getResultStatus(){
+
+        public int getResultStatus() {
             return this.resultStatus;
         }
 

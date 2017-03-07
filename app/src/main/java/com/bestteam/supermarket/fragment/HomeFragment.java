@@ -107,6 +107,8 @@ public class HomeFragment extends Fragment {
                     headData.addAll(bean.get(1).getAdverts());
                     initAdapter();
                     //第二个条目的数据
+
+
                 }
             }
         });

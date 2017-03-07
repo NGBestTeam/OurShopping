@@ -4,9 +4,8 @@
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
     <color name="colorOrange">#FC5832</color>
-    <color name="classify_rb_color">#FFFFFF</color>
-
-
-    <color name="login_orign">#FF6B13</color>
-    <color name="login_red">#FF3030</color>
+    <color name="colorWhite">#FFF</color>
+    <color name="colorGray">#C0C0C0</color>
+    <color name="colorBlack">#000</color>classify_rb_color
+    <color name="classify_rb_color">#FC5832</color>
 </resources>

@@ -4,6 +4,8 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,6 +17,7 @@ import android.widget.TextView;
 import com.bestteam.supermarket.R;
 import com.bestteam.supermarket.parse.ClassLeftBean;
 import com.bestteam.supermarket.utils.CommonUrl;
+import com.bestteam.supermarket.utils.ConstantValue;
 import com.bestteam.supermarket.utils.OkHttpManager;
 
 import java.io.IOException;
@@ -36,11 +39,6 @@ public class ClassifyFragment extends Fragment {
     private View mFragment_classify;
 
     /**
-     * ListView
-     */
-    private ListView mLv_classify;
-
-    /**
      * ListView的适配器
      */
     private LvClassifyAdapter mLvClassifyAdapter = new LvClassifyAdapter();
@@ -51,10 +49,19 @@ public class ClassifyFragment extends Fragment {
     private List<ClassLeftBean.Items> mLvTitles = new ArrayList<>();
 
     /**
-     * 判断ListView的Item前一次被选中的下标
+     * 判断是否第一次进入
      */
-    private int flag = -1;
+    private boolean flag;
 
+    /**
+     * 判断上一次position是否和当前一样
+     */
+    private int lastPosition;
+
+    /**
+     * Fragment的管理器对象
+     */
+    private FragmentManager mFragmentManager;
 
     @Nullable
     @Override
@@ -70,10 +77,39 @@ public class ClassifyFragment extends Fragment {
 
         mFragment_classify = inflater.inflate(R.layout.fragment_classify, container, false);
 
+        mFragmentManager = getFragmentManager();
+
         initUI();
         initData();
 
         return mFragment_classify;
+    }
+
+    /**
+     * 初始化UI
+     */
+    private void initUI() {
+        /*
+      ListView
+     */
+        ListView lv_classify = (ListView) mFragment_classify.findViewById(R.id.lv_classify);
+
+        // 设置适配器
+        lv_classify.setAdapter(mLvClassifyAdapter);
+
+        // 设置监听
+        lv_classify.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+                if (lastPosition != position) {
+                    lastPosition = position;
+                    replaceFragment(position);
+                }
+
+                mLvClassifyAdapter.setDefSelect(position);
+            }
+        });
     }
 
     /**
@@ -98,48 +134,38 @@ public class ClassifyFragment extends Fragment {
     }
 
     /**
-     * 初始化UI
+     * 切换Fragment的方法
      */
-    private void initUI() {
-        mLv_classify = (ListView) mFragment_classify.findViewById(R.id.lv_classify);
-
-        // 设置适配器
-        mLv_classify.setAdapter(mLvClassifyAdapter);
-
-        // 设置监听
-        mLv_classify.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                TextView tv;
-                if (flag == -1) {
-                    flag = position;
-                    View view1 = mLv_classify.getChildAt(flag);
-                    tv = (TextView) view1.findViewById(R.id.tv_lv_classify);
-                    tv.setTextColor(Color.RED);
-                    tv.setSelected(true);
-                } else {
-                    if (flag != position) {
-                        View view1 = mLv_classify.getChildAt(flag);
-                        tv = (TextView) view1.findViewById(R.id.tv_lv_classify);
-                        tv.setTextColor(Color.BLACK);
-                        tv.setSelected(false);
-                        flag = position;
-                        tv = (TextView) view.findViewById(R.id.tv_lv_classify);
-                        tv.setTextColor(Color.RED);
-                        tv.setSelected(true);
-                    }
-                }
-            }
-        });
+    private void replaceFragment(int position) {
+        /*
+      事务管理器
+     */
+        FragmentTransaction transaction = mFragmentManager.beginTransaction();
+        ClassifyContentFragment fragment = new ClassifyContentFragment();
+        Bundle bundle = new Bundle();
+        bundle.putString(ConstantValue.CLASSIFY_ID_KEY, mLvTitles.get(position).getId());
+        fragment.setArguments(bundle);
+        transaction.replace(R.id.fl_classify_size, fragment).commit();
     }
 
     /**
      * ListView的适配器
      */
     private class LvClassifyAdapter extends BaseAdapter {
+        private int defItem;
+
+        LvClassifyAdapter() {
+            defItem = -1;
+        }
+
         @Override
         public int getCount() {
             return mLvTitles.size();
+        }
+
+        void setDefSelect(int position) {
+            this.defItem = position;
+            notifyDataSetChanged();
         }
 
         @Override
@@ -163,6 +189,22 @@ public class ClassifyFragment extends Fragment {
             } else {
                 viewHolder = (ViewHolder) convertView.getTag();
             }
+
+            if (defItem == position) {
+                viewHolder.tv.setSelected(true);
+                viewHolder.tv.setTextColor(Color.RED);
+            } else {
+                viewHolder.tv.setSelected(false);
+                viewHolder.tv.setTextColor(Color.BLACK);
+            }
+
+            if (!flag && position == 0) {
+                flag = true;
+                lastPosition = position;
+                replaceFragment(position);
+                setDefSelect(position);
+            }
+
             viewHolder.tv.setText(mLvTitles.get(position).getAliasName());
 
             return convertView;

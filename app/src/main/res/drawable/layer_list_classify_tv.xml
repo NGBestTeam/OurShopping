@@ -9,7 +9,7 @@
     <!-- 主体背景颜色值 -->
     <item android:left="2dp">
         <shape>
-            <solid android:color="#ffffff"/>
+            <solid android:color="#DCDCDC"/>
         </shape>
     </item>
 

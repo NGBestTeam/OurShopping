@@ -11,4 +11,9 @@ public class ConstantValue {
      * 是否是第一次进入程序
      */
     public static final  String FIRST_ENTER_APP = "first_enter_app";
+
+    /**
+     * Classify中传值的id的key
+     */
+    public static final String CLASSIFY_ID_KEY = "classifyId";
 }
