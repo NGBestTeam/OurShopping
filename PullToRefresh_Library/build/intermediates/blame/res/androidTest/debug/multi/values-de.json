@@ -1,5 +1,6 @@
 [
     {
+<<<<<<< Updated upstream
         "outputFile": "G:\\android_studio_study\\NewTeam\\OurShopping\\PullToRefresh_Library\\build\\intermediates\\incremental\\mergeDebugAndroidTestResources\\merged.dir\\values-de\\values-de.xml",
         "map": [
             {
@@ -63,6 +64,9 @@
     },
     {
         "outputFile": "D:\\Develop\\OurShopping\\PullToRefresh_Library\\build\\intermediates\\incremental\\mergeDebugAndroidTestResources\\merged.dir\\values-de\\values-de.xml",
+=======
+        "outputFile": "/Users/myself/Downloads/OurShopping/PullToRefresh_Library/build/intermediates/incremental/mergeDebugAndroidTestResources/merged.dir/values-de/values-de.xml",
+>>>>>>> Stashed changes
         "map": [
             {
                 "to": {
@@ -73,7 +77,7 @@
                     "endOffset": 131
                 },
                 "from": {
-                    "file": "D:\\Develop\\OurShopping\\PullToRefresh_Library\\build\\intermediates\\bundles\\debug\\res\\values-de\\values-de.xml",
+                    "file": "/Users/myself/Downloads/OurShopping/PullToRefresh_Library/build/intermediates/bundles/debug/res/values-de/values-de.xml",
                     "position": {
                         "startLine": 2,
                         "startColumn": 4,
@@ -92,7 +96,7 @@
                     "endOffset": 199
                 },
                 "from": {
-                    "file": "D:\\Develop\\OurShopping\\PullToRefresh_Library\\build\\intermediates\\bundles\\debug\\res\\values-de\\values-de.xml",
+                    "file": "/Users/myself/Downloads/OurShopping/PullToRefresh_Library/build/intermediates/bundles/debug/res/values-de/values-de.xml",
                     "position": {
                         "startLine": 3,
                         "startColumn": 4,
@@ -111,7 +115,69 @@
                     "endOffset": 286
                 },
                 "from": {
-                    "file": "D:\\Develop\\OurShopping\\PullToRefresh_Library\\build\\intermediates\\bundles\\debug\\res\\values-de\\values-de.xml",
+                    "file": "/Users/myself/Downloads/OurShopping/PullToRefresh_Library/build/intermediates/bundles/debug/res/values-de/values-de.xml",
+                    "position": {
+                        "startLine": 4,
+                        "startColumn": 4,
+                        "startOffset": 204,
+                        "endColumn": 86,
+                        "endOffset": 286
+                    }
+                }
+            }
+        ]
+    },
+    {
+        "outputFile": "/Users/myself/Downloads/OurShopping/D:\\Develop\\OurShopping\\PullToRefresh_Library\\build\\intermediates\\incremental\\mergeDebugAndroidTestResources\\merged.dir\\values-de\\values-de.xml",
+        "map": [
+            {
+                "to": {
+                    "startLine": 2,
+                    "startColumn": 4,
+                    "startOffset": 55,
+                    "endColumn": 80,
+                    "endOffset": 131
+                },
+                "from": {
+                    "file": "/Users/myself/Downloads/OurShopping/D:\\Develop\\OurShopping\\PullToRefresh_Library\\build\\intermediates\\bundles\\debug\\res\\values-de\\values-de.xml",
+                    "position": {
+                        "startLine": 2,
+                        "startColumn": 4,
+                        "startOffset": 55,
+                        "endColumn": 80,
+                        "endOffset": 131
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 3,
+                    "startColumn": 4,
+                    "startOffset": 136,
+                    "endColumn": 67,
+                    "endOffset": 199
+                },
+                "from": {
+                    "file": "/Users/myself/Downloads/OurShopping/D:\\Develop\\OurShopping\\PullToRefresh_Library\\build\\intermediates\\bundles\\debug\\res\\values-de\\values-de.xml",
+                    "position": {
+                        "startLine": 3,
+                        "startColumn": 4,
+                        "startOffset": 136,
+                        "endColumn": 67,
+                        "endOffset": 199
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 4,
+                    "startColumn": 4,
+                    "startOffset": 204,
+                    "endColumn": 86,
+                    "endOffset": 286
+                },
+                "from": {
+                    "file": "/Users/myself/Downloads/OurShopping/D:\\Develop\\OurShopping\\PullToRefresh_Library\\build\\intermediates\\bundles\\debug\\res\\values-de\\values-de.xml",
                     "position": {
                         "startLine": 4,
                         "startColumn": 4,
