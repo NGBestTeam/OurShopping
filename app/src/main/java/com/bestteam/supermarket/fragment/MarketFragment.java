@@ -1,5 +1,6 @@
 package com.bestteam.supermarket.fragment;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.Rect;
 import android.os.Bundle;
@@ -20,12 +21,15 @@ import com.bestteam.supermarket.parse.HypermarketDownBean;
 import com.bestteam.supermarket.parse.HypermarketUpBean;
 import com.bestteam.supermarket.utils.CommonUrl;
 import com.bestteam.supermarket.utils.OkHttpManager;
+import com.bestteam.supermarket.utils.TitleEvenUtils;
 
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
 import okhttp3.Request;
+
+import static android.app.Activity.RESULT_OK;
 
 /**
  * 大麦场
@@ -39,6 +43,12 @@ public class MarketFragment extends Fragment{
     private List<HypermarketDownBean.Items> downData;
     private SwipeRefreshLayout swipeRefreshLayout;
 
+    /**
+     * titleBar
+     */
+    private View mTitleView;
+    private TitleEvenUtils mTitleBar;
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -46,7 +56,7 @@ public class MarketFragment extends Fragment{
 
         init(view);
         LoadData();
-
+        initControl();
         return view;
     }
 
@@ -67,6 +77,10 @@ public class MarketFragment extends Fragment{
         mRv.setAdapter(adapter);
 
         mRv.addItemDecoration(new MyItemDecoration());
+
+        //Title设置 初始化
+        mTitleView = view.findViewById(R.id.market_fragment_title_bar);
+        mTitleBar = new TitleEvenUtils(mTitleView);
 
     }
 
@@ -164,8 +178,47 @@ public class MarketFragment extends Fragment{
 
     }
 
+    /**
+     * TitleBar 控制方法
+     */
+    private void initControl() {
 
+        mTitleBar.saobtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(getActivity(), "扫一扫", Toast.LENGTH_SHORT).show();
+                Intent intent=new Intent();
+                intent.setClass(getActivity(), com.zxing.activity.CaptureActivity.class);
+                startActivityForResult(intent,101);
+            }
+        });
+        mTitleBar.searchBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(getActivity(), "跳转搜索", Toast.LENGTH_SHORT).show();
 
+            }
+        });
+        mTitleBar.msgBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(getActivity(), "信息搭建中 请改天再来", Toast.LENGTH_SHORT).show();
+
+            }
+        });
+
+    }
+    /**
+     * 扫描二维码
+     */
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if(requestCode==101 && resultCode==RESULT_OK){
+            String info=data.getExtras().getString("result");
+            Toast.makeText(getActivity(), info+"", Toast.LENGTH_SHORT).show();
+        }
+    }
 
     /**
      * 为RecyclerView设置分割线

@@ -64,8 +64,7 @@ public class MarketRecylerAdapter extends RecyclerView.Adapter<RecyclerView.View
                 HypermarketUpBean.Adverts bean=data.get(position);
                 ViewHolder0 viewHolder0= (ViewHolder0) holder;
                 String url= CommonUrl.replaceImgUrl(bean.getImgPath());
-                Glide.with(context).load(url).placeholder(R.mipmap.ic_launcher)
-                        .error(R.mipmap.ic_launcher)
+                Glide.with(context).load(url)
                         .into(viewHolder0.iv);
 
                 break;
