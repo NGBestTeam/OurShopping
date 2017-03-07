@@ -1,5 +1,6 @@
 package com.bestteam.supermarket.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentTabHost;
 import android.support.v7.app.AppCompatActivity;
@@ -9,7 +10,6 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TabHost;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.bestteam.supermarket.R;
 import com.bestteam.supermarket.fragment.ClassifyFragment;
@@ -17,7 +17,11 @@ import com.bestteam.supermarket.fragment.HomeFragment;
 import com.bestteam.supermarket.fragment.MarketFragment;
 import com.bestteam.supermarket.fragment.MyselfFragment;
 import com.bestteam.supermarket.fragment.ShoppingFragment;
+import com.bestteam.supermarket.utils.ConstantValue;
+import com.bestteam.supermarket.utils.SpUtil;
 import com.bestteam.supermarket.utils.ToastUtil;
+
+import java.util.Calendar;
 
 /**
  * 主界面
@@ -65,16 +69,77 @@ public class HomeActivity extends AppCompatActivity {
         mTabHost.getTabWidget().getChildTabViewAt(3).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // 进行本地登录状态判断
+                enterLogin(3);
             }
         });
 
         mTabHost.getTabWidget().getChildTabViewAt(4).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // 进行本地登录状态判断
+                enterLogin(4);
             }
         });
+    }
+
+    /**
+     * 进入登陆界面之前的判断
+     * @param position  用户想要切换的Fragment页卡
+     */
+    private void enterLogin(int position) {
+        // 先判断本地的当前登陆状态
+        Boolean isLogin = SpUtil.getBoolean(this, ConstantValue.IS_LOGIN, false);
+
+        if (isLogin) {
+            // 获取上一次的时间和此次作比较
+            int diffDays = compareTime();
+            if (diffDays > 7) {
+                // 登录状态变为否
+                SpUtil.putBoolean(this, ConstantValue.IS_LOGIN, false);
+
+                // 将已保存的密码清空
+                SpUtil.putString(this, ConstantValue.USER_PASSWORD, "");
+
+                // 进入登陆界面
+                startEnterLogin(position);
+            } else {
+                // 跳转至相应的Fragment
+                mTabHost.setCurrentTab(position);
+            }
+        } else {
+            // 进入登陆界面
+            startEnterLogin(position);
+        }
+
+    }
+
+    /**
+     * 开启进入登陆界面
+     * @param position  用户想要切换的Fragment页卡
+     */
+    private void startEnterLogin(int position) {
+        ToastUtil.show(this, "请先登录哦！");
+        Intent intent = new Intent(this, LoginActivity.class);
+        startActivity(intent);
+    }
+
+    /**
+     * 比较上次登入时间和此次登入时间的时间差
+     */
+    private int compareTime() {
+        String lastTime = SpUtil.getString(this, ConstantValue.ENTER_APP_TIME, "");
+        Calendar lastC = Calendar.getInstance();
+        String[] lt = lastTime.split("/");
+        lastC.set(Integer.parseInt(lt[0]), Integer.parseInt(lt[1]), Integer.parseInt(lt[2]));
+        Calendar currC = Calendar.getInstance();
+
+        // 将此次登录时间作为上一次登录时间
+        int year = currC.get(Calendar.YEAR);
+        int month = currC.get(Calendar.MONTH);
+        int day = currC.get(Calendar.DAY_OF_MONTH);
+        String time = year + "/" + month + "/" + day;
+        SpUtil.putString(this, ConstantValue.ENTER_APP_TIME, time);
+
+        return (int)((currC.getTimeInMillis() - lastC.getTimeInMillis()) / (1000 * 60 * 60 * 24));
     }
 
     /**

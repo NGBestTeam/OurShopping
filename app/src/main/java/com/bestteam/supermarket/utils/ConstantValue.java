@@ -21,4 +21,24 @@ public class ConstantValue {
      * Bmob后端云的密钥
      */
     public static final String BMOB_KEY = "742c82a47f90fda24cb0f80977f5fc51";
+
+    /**
+     * 记录当前进入App的时间
+     */
+    public static final String ENTER_APP_TIME = "enter_app_time";
+
+    /**
+     * 判断当前用户是否已经登陆
+     */
+    public static final String IS_LOGIN = "is_login";
+
+    /**
+     * 记录用户的账号
+     */
+    public static final String USER_NAME = "";
+
+    /**
+     * 记录用户的密码
+     */
+    public static final String USER_PASSWORD = "";
 }

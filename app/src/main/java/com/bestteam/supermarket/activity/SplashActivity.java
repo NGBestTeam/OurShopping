@@ -39,6 +39,7 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 import okhttp3.Call;
@@ -180,6 +181,14 @@ public class SplashActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        // 存入当前进入App的时间
+        Calendar calendar = Calendar.getInstance();
+        int year = calendar.get(Calendar.YEAR);
+        int month = calendar.get(Calendar.MONTH);
+        int day = calendar.get(Calendar.DAY_OF_MONTH);
+        String time = year + "/" + month + "/" + day;
+        SpUtil.putString(this, ConstantValue.ENTER_APP_TIME, time);
 
         // 判断是否是第一次进入本程序
         boolean first_enter_app = SpUtil.getBoolean(this, ConstantValue.FIRST_ENTER_APP, true);
