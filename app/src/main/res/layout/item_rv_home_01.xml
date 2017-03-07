@@ -18,6 +18,8 @@
         android:columnWidth="10dp"
         android:horizontalSpacing="10dp"
         android:verticalSpacing="10dp"
+        android:overScrollMode="never"
+        android:scrollbars="none"
         />
 
 
