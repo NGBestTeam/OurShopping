@@ -1,2 +1,2 @@
 <?xml version="1.0" encoding="utf-8"?>
-<merger version="3"><dataSet config="main"><source path="/Users/myself/Downloads/OurShopping/PullToRefresh_Library/assets"/><source path="/Users/myself/Downloads/OurShopping/PullToRefresh_Library/build/generated/assets/shaders/debug"/></dataSet><dataSet config="debug"><source path="/Users/myself/Downloads/OurShopping/PullToRefresh_Library/build-types/debug/assets"/></dataSet></merger>
+<merger version="3"><dataSet config="main"><source path="D:\Develop\OurShopping\PullToRefresh_Library\assets"/><source path="D:\Develop\OurShopping\PullToRefresh_Library\build\generated\assets\shaders\debug"/></dataSet><dataSet config="debug"><source path="D:\Develop\OurShopping\PullToRefresh_Library\build-types\debug\assets"/></dataSet></merger>
