@@ -67,6 +67,9 @@ public class ClassifyFragment extends Fragment {
      * Fragment的管理器对象
      */
     private FragmentManager mFragmentManager;
+    /**
+     * titleBar
+     */
     private View mTitleView;
     private TitleEvenUtils mTitleBar;
 
@@ -90,6 +93,61 @@ public class ClassifyFragment extends Fragment {
         initData();
         initControl();
         return mFragment_classify;
+    }
+
+
+
+    /**
+     * 初始化UI
+     */
+    private void initUI() {
+        /*
+      ListView
+     */
+        ListView lv_classify = (ListView) mFragment_classify.findViewById(R.id.lv_classify);
+
+        // 设置适配器
+        lv_classify.setAdapter(mLvClassifyAdapter);
+
+        // 设置监听
+        lv_classify.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+                if (lastPosition != position) {
+                    lastPosition = position;
+                    replaceFragment(position);
+                }
+
+                mLvClassifyAdapter.setDefSelect(position);
+            }
+        });
+
+        //Title设置 初始化
+        mTitleView = mFragment_classify.findViewById(R.id.main_tool_bar);
+        mTitleBar = new TitleEvenUtils(mTitleView);
+
+    }
+
+    /**
+     * 初始化数据
+     */
+    private void initData() {
+        OkHttpManager.getAsync(CommonUrl.url9, new OkHttpManager.DataCallBack() {
+            @Override
+            public void requestFailure(Request request, IOException e) {
+
+            }
+
+            @Override
+            public void requestSuccess(String result) throws Exception {
+                List<ClassLeftBean.Items> itemses = ClassLeftBean.getParseClassLeftBean(result).getResultData().getItems();
+                if (itemses != null && itemses.size() > 0) {
+                    mLvTitles.addAll(itemses);
+                    mLvClassifyAdapter.notifyDataSetChanged();
+                }
+            }
+        });
     }
 
     private void initControl() {
@@ -119,60 +177,6 @@ public class ClassifyFragment extends Fragment {
         });
 
     }
-
-    /**
-     * 初始化UI
-     */
-    private void initUI() {
-        /*
-      ListView
-     */
-        ListView lv_classify = (ListView) mFragment_classify.findViewById(R.id.lv_classify);
-
-        // 设置适配器
-        lv_classify.setAdapter(mLvClassifyAdapter);
-
-        // 设置监听
-        lv_classify.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-
-                if (lastPosition != position) {
-                    lastPosition = position;
-                    replaceFragment(position);
-                }
-
-                mLvClassifyAdapter.setDefSelect(position);
-            }
-        });
-
-        //Title设置
-        mTitleView = mFragment_classify.findViewById(R.id.main_tool_bar);
-        mTitleBar = new TitleEvenUtils(mTitleView);
-
-    }
-
-    /**
-     * 初始化数据
-     */
-    private void initData() {
-        OkHttpManager.getAsync(CommonUrl.url9, new OkHttpManager.DataCallBack() {
-            @Override
-            public void requestFailure(Request request, IOException e) {
-
-            }
-
-            @Override
-            public void requestSuccess(String result) throws Exception {
-                List<ClassLeftBean.Items> itemses = ClassLeftBean.getParseClassLeftBean(result).getResultData().getItems();
-                if (itemses != null && itemses.size() > 0) {
-                    mLvTitles.addAll(itemses);
-                    mLvClassifyAdapter.notifyDataSetChanged();
-                }
-            }
-        });
-    }
-
     /**
      * 扫描二维码
      */
