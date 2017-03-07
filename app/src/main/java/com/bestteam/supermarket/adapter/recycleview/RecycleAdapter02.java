@@ -40,11 +40,14 @@ public class RecycleAdapter02 extends RecyclerView.Adapter<RecycleAdapter02.View
     public void onBindViewHolder(ViewHolode holder, int position) {
         holder.tv.setText(data.get(position).getDiscountPrice());
         holder.tv2.setText(data.get(position).getPrice());
+//        holder.tv2.getPaint().setFlags(Paint. STRIKE_THRU_TEXT_FLAG );
+//        holder.tv2.getPaint().setAntiAlias(true);
         String url= CommonUrl.replaceImgUrl(data.get(position).getActivityImgPath());
+
                         Glide.with(context)//  可以接收 Activity  Context Fragment对象
                                 .load(url)
-                                .placeholder(R.mipmap.ic_launcher)//加载时显示的资源
-                                .error(R.mipmap.ic_launcher)//加载失败时显示的资源
+//                                .placeholder(R.mipmap.ic_launcher)//加载时显示的资源
+//                                .error(R.mipmap.ic_launcher)//加载失败时显示的资源
                                 .into(holder.iv);
     }
 
