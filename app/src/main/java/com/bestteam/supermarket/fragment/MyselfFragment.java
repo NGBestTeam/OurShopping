@@ -6,7 +6,6 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 
 import com.bestteam.supermarket.R;
 
@@ -18,9 +17,8 @@ public class MyselfFragment extends Fragment{
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view=inflater.inflate(R.layout.fragment,container,false);
-        TextView tv= (TextView) view.findViewById(R.id.tv);
-        tv.setText("我的");
+        View view=inflater.inflate(R.layout.fragment_myself,container,false);
+
         return view;
     }
 }
