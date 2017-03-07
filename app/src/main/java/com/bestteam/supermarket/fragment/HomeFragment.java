@@ -56,13 +56,20 @@ public class HomeFragment extends Fragment {
 
         mRv = (RecyclerView) view.findViewById(R.id.rv_home);
 
+//        View view= view.findViewById(R.id.)
         initData();
         initAdapter();
         LoadData01();
         loadData02();
         loadData03();
+        initControl();
 
         return view;
+    }
+
+    private void initControl() {
+
+
     }
 
     private void loadData03() {

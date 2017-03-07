@@ -9,9 +9,6 @@
         android:id="@+id/rv_home"
         />
 
-
-
-
     <include
       android:id="@+id/main_tool_bar"
       layout="@layout/title_bar"
