@@ -16,4 +16,9 @@ public class ConstantValue {
      * Classify中传值的id的key
      */
     public static final String CLASSIFY_ID_KEY = "classifyId";
+
+    /**
+     * Bmob后端云的密钥
+     */
+    public static final String BMOB_KEY = "742c82a47f90fda24cb0f80977f5fc51";
 }
