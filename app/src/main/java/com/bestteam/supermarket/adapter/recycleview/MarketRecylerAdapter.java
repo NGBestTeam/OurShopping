@@ -64,8 +64,7 @@ public class MarketRecylerAdapter extends RecyclerView.Adapter<RecyclerView.View
                 HypermarketUpBean.Adverts bean=data.get(position);
                 ViewHolder0 viewHolder0= (ViewHolder0) holder;
                 String url= CommonUrl.replaceImgUrl(bean.getImgPath());
-                Glide.with(context).load(url).placeholder(R.mipmap.ic_launcher)
-                        .error(R.mipmap.ic_launcher)
+                Glide.with(context).load(url)
                         .into(viewHolder0.iv);
 
                 break;
@@ -74,8 +73,7 @@ public class MarketRecylerAdapter extends RecyclerView.Adapter<RecyclerView.View
                 HypermarketDownBean.Items downBean=downData.get(position-4);
                 ViewHolder1 viewHolder1= (ViewHolder1) holder;
                 String url1= CommonUrl.replaceImgUrl(downBean.getImagePath());
-                Glide.with(context).load(url1).placeholder(R.mipmap.ic_launcher)
-                        .error(R.mipmap.ic_launcher)
+                Glide.with(context).load(url1)
                         .into(viewHolder1.iv);
                 viewHolder1.tvLeft.setText(downBean.getActivityTitle());
                 viewHolder1.tvRight.setText(downBean.getStatusDesc().substring(18,23));
