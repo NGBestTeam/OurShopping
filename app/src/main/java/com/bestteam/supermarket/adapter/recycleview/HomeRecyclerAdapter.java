@@ -12,8 +12,7 @@ import android.widget.GridView;
 import android.widget.ImageView;
 
 import com.bestteam.supermarket.R;
-import com.bestteam.supermarket.adapter.base.BaseRecyclerAdapter;
-import com.bestteam.supermarket.adapter.base.RecyclerViewHolder;
+import com.bestteam.supermarket.adapter.base.SyLinearLayoutManager;
 import com.bestteam.supermarket.adapter.gridview.GvAdapter;
 import com.bestteam.supermarket.parse.HomePurchaseBean;
 import com.bestteam.supermarket.parse.HomeUpBean;
@@ -25,6 +24,7 @@ import java.util.List;
 
 /**
  * Created by myself on 17/3/4.
+ * 11111
  */
 public class HomeRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
@@ -32,19 +32,21 @@ public class HomeRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
     private List<String> headImgs; //首页无限轮播图片数据源
     private List<HomeUpBean.Adverts> headData;
     private List<HomePurchaseBean.HomePurchase> dataItem02;
+    private List<HomeUpBean.Adverts> datas;
 
 
 
-    public HomeRecyclerAdapter(Context context,List<String> headImgs, List<HomeUpBean.Adverts> headData, List<HomePurchaseBean.HomePurchase> dataItem02) {
+    public HomeRecyclerAdapter(Context context,List<String> headImgs, List<HomeUpBean.Adverts> headData, List<HomePurchaseBean.HomePurchase> dataItem02,List<HomeUpBean.Adverts> datas) {
         this.context = context;
         this.headImgs = headImgs;
         this.headData = headData;
         this.dataItem02 = dataItem02;
+        this.datas = datas;
     }
 
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view=null;
+        View view;
         RecyclerView.ViewHolder viewHolder=null;
         switch (viewType){
             case 0:
@@ -57,8 +59,12 @@ public class HomeRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
 
                 break;
             case 2:
-//                view=LayoutInflater.from(parent.getContext()).inflate(R.layout.itm_03,parent,false);
-//                viewHolder=new ViewHolder2(view);
+                view=LayoutInflater.from(parent.getContext()).inflate(R.layout.item_iv_rv_item03,parent,false);
+                viewHolder=new ViewHolder2(view);
+                break;
+            case 3:
+                view=LayoutInflater.from(parent.getContext()).inflate(R.layout.item_rv_ll_item03,parent,false);
+                viewHolder=new ViewHolder3(view);
                 break;
 
         }
@@ -77,36 +83,65 @@ public class HomeRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
                 break;
             case 1:
                 ViewHolder1 viewHolder1= (ViewHolder1) holder;
-                viewHolder1.rv.setAdapter(new BaseRecyclerAdapter<HomePurchaseBean.HomePurchase>(context,dataItem02){
-                    @Override
-                    public int getItemLayoutId(int viewType) {
-                        return R.layout.item_rv_rv_item02;
-                    }
-
-                    @Override
-                    public void bindData(RecyclerViewHolder holder, int position, HomePurchaseBean.HomePurchase item) {
-                        holder.setText(R.id.tv_rv_item02,item.getDiscountPrice());
-                        holder.setText(R.id.tv02_rv_item02,item.getPrice());
-                        String url= CommonUrl.replaceImgUrl(item.getActivityImgPath());
-                        Glide.with(context)//  可以接收 Activity  Context Fragment对象
-                                .load(url)
-                                .placeholder(R.mipmap.ic_launcher)//加载时显示的资源
-                                .error(R.mipmap.ic_launcher)//加载失败时显示的资源
-                                .into(holder.getImageView(R.id.iv_rv_item02));
-                    }
-                });
-                LinearLayoutManager manager = new LinearLayoutManager(context,LinearLayoutManager.HORIZONTAL,false);
+//                viewHolder1.rv.setAdapter(new BaseRecyclerAdapter<HomePurchaseBean.HomePurchase>(context,dataItem02){
+//                    @Override
+//                    public int getItemLayoutId(int viewType) {
+//                        return R.layout.item_rv_rv_item02;
+//                    }
+//
+//                    @Override
+//                    public void bindData(RecyclerViewHolder holder, int position, HomePurchaseBean.HomePurchase item) {
+//                        holder.setText(R.id.tv_rv_item02,item.getDiscountPrice());
+//                        holder.setText(R.id.tv02_rv_item02,item.getPrice());
+//                        String url= CommonUrl.replaceImgUrl(item.getActivityImgPath());
+//                        Glide.with(context)//  可以接收 Activity  Context Fragment对象
+//                                .load(url)
+//                                .placeholder(R.mipmap.ic_launcher)//加载时显示的资源
+//                                .error(R.mipmap.ic_launcher)//加载失败时显示的资源
+//                                .into(holder.getImageView(R.id.iv_rv_item02));
+//                    }
+//                });
+                viewHolder1.rv.setAdapter(new RecycleAdapter02(context,dataItem02));
+                SyLinearLayoutManager manager = new SyLinearLayoutManager(context,LinearLayoutManager.HORIZONTAL,false);
                 viewHolder1.rv.setLayoutManager(manager);
                 break;
-//            case 2:
-//                ViewHolder2 viewHolder2= (ViewHolder2) holder;
-//                TextView tv= (TextView) viewHolder2.layout01.getChildAt(0);
-//                tv.setText("类型31");
-//                break;
+
             case 2:
                 ViewHolder2 viewHolder2= (ViewHolder2) holder;
+                if (position==7){
+                    ViewGroup.LayoutParams paramas = viewHolder2.iv.getLayoutParams();
+                    paramas.height = 140;
+                    viewHolder2.iv.setLayoutParams(paramas);
+                    viewHolder2.iv.setImageResource(R.mipmap.home_title);
+                }else if (position==14){
+                    ViewGroup.LayoutParams paramas = viewHolder2.iv.getLayoutParams();
+                    paramas.height = 140;
+                    viewHolder2.iv.setLayoutParams(paramas);
+                    viewHolder2.iv.setImageResource(R.mipmap.market);
+                }else {
+                    String url = null;
 
-          //      viewHolder2.iv.setImageResource(imgs[position-6]);
+                    if (position>=8){
+
+                        url = CommonUrl.replaceImgUrl(datas.get(position - 3).getImgPath());
+
+                    }
+                    if (position>=15){
+                        url = CommonUrl.replaceImgUrl(datas.get(position-4).getImgPath());
+                    }
+                    if (position<8){
+                        url = CommonUrl.replaceImgUrl(datas.get(position-2).getImgPath());
+                    }
+
+                    Glide.with(context)//  可以接收 Activity  Context Fragment对象
+                            .load(url)
+                            .placeholder(R.mipmap.ic_launcher)//加载时显示的资源
+                            .error(R.mipmap.ic_launcher)//加载失败时显示的资源
+                            .into(viewHolder2.iv);
+                }
+                break;
+            case 3:
+
 
 
                 break;
@@ -115,7 +150,7 @@ public class HomeRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
 
     @Override
     public int getItemCount() {
-        return 2;
+        return 23;
     }
 
     @Override
@@ -124,34 +159,43 @@ public class HomeRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
             return 0;
         }else if (position==1){
             return 1;
-        }else {
+        } else {
             return 2;
         }
     }
 
-    public  class ViewHolder0 extends RecyclerView.ViewHolder
+    private  class ViewHolder0 extends RecyclerView.ViewHolder
     {
         ViewPager vp;
         GridView gv;
-        public ViewHolder0(View itemView) {
+        private ViewHolder0(View itemView) {
             super(itemView);
             vp = (ViewPager) itemView.findViewById(R.id.vp_item01);
             gv = (GridView) itemView.findViewById(R.id.gv_item01);
         }
     }
-    public  class ViewHolder1 extends RecyclerView.ViewHolder
+    private  class ViewHolder1 extends RecyclerView.ViewHolder
     {
         RecyclerView rv;
-        public ViewHolder1(View itemView) {
+        private ViewHolder1(View itemView) {
             super(itemView);
             rv = (RecyclerView) itemView.findViewById(R.id.rv_item02);
         }
     }
-    public  class ViewHolder2 extends RecyclerView.ViewHolder
+    private   class ViewHolder2 extends RecyclerView.ViewHolder
     {
         ImageView iv;
-        public ViewHolder2(View itemView) {
+        private ViewHolder2(View itemView) {
             super(itemView);
+            iv = (ImageView) itemView.findViewById(R.id.iv_rv_item03);
+        }
+    }
+    private  class ViewHolder3 extends RecyclerView.ViewHolder
+    {
+        ImageView iv;
+        private ViewHolder3(View itemView) {
+            super(itemView);
+            iv = (ImageView) itemView.findViewById(R.id.iv_ll);
         }
     }
 
@@ -159,8 +203,8 @@ public class HomeRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
     {
         private List<ImageView> mIvs;
 
-        public HomePagerAdapter() {
-           initIvs();
+        private HomePagerAdapter() {
+            initIvs();
         }
 
 
