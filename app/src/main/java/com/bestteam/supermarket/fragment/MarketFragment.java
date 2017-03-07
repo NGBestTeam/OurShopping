@@ -1,9 +1,11 @@
 package com.bestteam.supermarket.fragment;
 
+import android.graphics.Color;
 import android.graphics.Rect;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -31,10 +33,11 @@ import okhttp3.Request;
  */
 
 public class MarketFragment extends Fragment{
-    private RecyclerView rv;
+    private RecyclerView mRv;
     private MarketRecylerAdapter adapter;
     private List<HypermarketUpBean.Adverts> upData;
     private List<HypermarketDownBean.Items> downData;
+    private SwipeRefreshLayout swipeRefreshLayout;
 
     @Nullable
     @Override
@@ -42,11 +45,8 @@ public class MarketFragment extends Fragment{
         View view=inflater.inflate(R.layout.fragment_market,container,false);
 
         init(view);
-        View viewHead=LayoutInflater.from(getContext()).inflate(R.layout.item_rv_market03,container,false);
-
-
-
         LoadData();
+
         return view;
     }
 
@@ -55,16 +55,18 @@ public class MarketFragment extends Fragment{
      *
      */
     private void init(View view) {
-        rv= (RecyclerView) view.findViewById(R.id.rv_market);
+        mRv= (RecyclerView) view.findViewById(R.id.rv_market);
+        swipeRefreshLayout= (SwipeRefreshLayout) view.findViewById(R.id.swipe_market);
+
+        swipeRefreshLayout.setColorSchemeColors(Color.CYAN);
 
         upData=new ArrayList<>();
         downData=new ArrayList<>();
 
         adapter=new MarketRecylerAdapter(getActivity(),upData,downData);
-        rv.setAdapter(adapter);
+        mRv.setAdapter(adapter);
 
-        rv.addItemDecoration(new MyItemDecoration());
-
+        mRv.addItemDecoration(new MyItemDecoration());
 
     }
 
@@ -93,7 +95,7 @@ public class MarketFragment extends Fragment{
 
 
                     GridLayoutManager manager=new GridLayoutManager(getContext(),3);
-                    rv.setLayoutManager(manager);
+                    mRv.setLayoutManager(manager);
 
                     manager.setSpanSizeLookup(new GridLayoutManager.SpanSizeLookup() {
                         //返回的position对应的条目所占的size
@@ -130,26 +132,40 @@ public class MarketFragment extends Fragment{
             }
         });
 
+        //swipe的监听
+        swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                adapter.notifyDataSetChanged();
+                swipeRefreshLayout.setRefreshing(false);
+            }
+        });
+
 
         //监听
-        rv.addOnItemTouchListener(new RecyclerView.OnItemTouchListener() {
+        mRv.addOnItemTouchListener(new RecyclerView.OnItemTouchListener() {
             @Override
-            public boolean onInterceptTouchEvent(RecyclerView rv, MotionEvent e) {
+            public boolean onInterceptTouchEvent(RecyclerView mRv, MotionEvent e) {
+                //处理触摸事件
                 return false;
             }
 
             @Override
-            public void onTouchEvent(RecyclerView rv, MotionEvent e) {
+            public void onTouchEvent(RecyclerView mRv, MotionEvent e) {
+                //拦截触摸事件
 
             }
 
             @Override
             public void onRequestDisallowInterceptTouchEvent(boolean disallowIntercept) {
-
+                //处理触摸冲突的
             }
         });
 
     }
+
+
+
 
     /**
      * 为RecyclerView设置分割线
