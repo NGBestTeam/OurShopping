@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:background="#FFFAFA"
+              android:orientation="vertical">
+
+    <include
+        android:id="@+id/login_mobile_title_id"
+        layout="@layout/login_mobile_title"
+        />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:layout_marginTop="20dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <EditText
+            android:id="@+id/login_mobile_phonenumber_edt"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="5"
+            android:background="@drawable/login_edt_stroke"
+
+            android:hint="请输入您的手机号"
+            android:textSize="16sp"/>
+
+        <Button
+            android:id="@+id/login_mobile_getverify_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="28dp"
+            android:layout_marginLeft="10dp"
+            android:background="@drawable/raduio_btn_red"
+            android:text="获取验证码"
+            android:textColor="@color/login_red"/>
+
+    </LinearLayout>
+
+    <EditText
+        android:id="@+id/login_mobile_verify_edt"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/login_edt_stroke"
+        android:hint="请输入短信验证码"
+
+        android:textSize="16sp"/>
+
+    <Button
+        android:id="@+id/login_mobile_loginbtn"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_marginBottom="20dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:layout_marginTop="20dp"
+        android:background="@color/login_orign"
+        android:text="验证并登录"
+        android:textColor="#fff"
+        android:textSize="18sp"
+        />
+</LinearLayout>

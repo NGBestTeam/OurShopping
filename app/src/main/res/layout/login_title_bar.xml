@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:gravity="center_vertical"
+              android:layout_width="match_parent"
+                android:layout_height="?android:actionBarSize">
+
+    <Button
+        android:id="@+id/login_title_bar_backbtn"
+        android:background="@null"
+        android:drawableLeft="@mipmap/back_btn_normal"
+        android:paddingLeft="20dp"
+        android:gravity="center_vertical"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"/>
+
+
+</RelativeLayout>

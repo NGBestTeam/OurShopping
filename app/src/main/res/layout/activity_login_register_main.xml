@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:background="#FFFAFA"
+              android:orientation="vertical">
+
+    <include
+        android:id="@+id/login_register_title_id"
+        layout="@layout/login_register_title"
+        />
+    <EditText
+        android:id="@+id/login_register_phonenumber_edt"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/login_edt_stroke"
+        android:hint="请输入中国大陆手机号码"
+        android:maxLength="11"
+        android:textSize="16sp"/>
+
+
+    <Button
+        android:id="@+id/login_register_next_btn"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_marginBottom="20dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:layout_marginTop="20dp"
+        android:background="#c0c0c0"
+        android:text="下一步"
+        android:textColor="#fff"
+        android:textSize="18sp"
+        android:enabled="false"
+        />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="20dp"
+        android:gravity="center_vertical"
+        android:layout_marginBottom="20dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        >
+        <Button
+            android:id="@+id/login_register_login_btn"
+            android:layout_width="30dp"
+            android:layout_height="match_parent"
+            android:background="#000"
+            android:layout_alignParentRight="true"
+            android:text="登录"
+            android:textSize="12sp"
+            android:textColor="@color/login_red"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="已有账号？"
+            android:textColor="#c0c0c0"
+            android:textSize="12sp"
+            android:layout_toLeftOf="@+id/login_register_login_btn"
+
+            />
+
+    </RelativeLayout>
+</LinearLayout>

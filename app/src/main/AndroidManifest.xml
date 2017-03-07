@@ -18,6 +18,15 @@
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
+        <activity android:name=".activity.LoginActivity">
+
+        </activity>
+        <activity android:name=".activity.LoginMobileActivity">
+        </activity>
+        <activity android:name=".activity.LoginPwdLoseActivity">
+        </activity>
+        <activity android:name=".activity.LoginRegisterActivity">
+        </activity>
     </application>
 
 </manifest>

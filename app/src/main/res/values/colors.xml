@@ -5,4 +5,8 @@
     <color name="colorAccent">#FF4081</color>
     <color name="colorOrange">#FC5832</color>
     <color name="classify_rb_color">#FFFFFF</color>
+
+
+    <color name="login_orign">#FF6B13</color>
+    <color name="login_red">#FF3030</color>
 </resources>
