@@ -1,31 +1,56 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent"
+                xmlns:app="http://schemas.android.com/apk/res-auto"
+                android:layout_height="match_parent"
     >
-    <RelativeLayout
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/myself_tool_bar"
         android:layout_width="match_parent"
-        android:layout_height="200dp"
-        android:background="@color/colorGray">
-        <ImageView
+        android:layout_height="?android:actionBarSize"
+        android:background="#00000000"
+        app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+        >
+
+    </android.support.v7.widget.Toolbar>
+    <LinearLayout
+        android:id="@+id/myself_up_layout"
+        android:layout_width="match_parent"
+        android:layout_height="260dp"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:background="@mipmap/myself_up_bg">
+        <android.support.v7.widget.CardView
+
+            app:cardCornerRadius="50dp"
             android:layout_width="60dp"
-            android:layout_height="60dp"
-            android:id="@+id/iv_test"
-            android:src="@mipmap/ic_launcher"
             android:layout_centerInParent="true"
-            />
+            android:layout_height="60dp">
+            <ImageView
+                android:id="@+id/myself_user_img"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                />
+        </android.support.v7.widget.CardView>
+
         <TextView
-            android:layout_below="@id/iv_test"
+            android:id="@+id/myself_username_tv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:singleLine="true"
+            android:maxLength="10"
             android:text="请登录/注册"
-            android:layout_centerHorizontal="true"/>
-    </RelativeLayout>
+           />
+    </LinearLayout>
     <LinearLayout
+        android:id="@+id/myself_linear2"
+        android:layout_below="@id/myself_up_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
         <TextView
+            android:id="@+id/myself_all_form_tv"
             android:gravity="center"
             android:layout_width="0dp"
             android:layout_weight="1"
@@ -33,20 +58,25 @@
             android:text="全部订单"
             android:drawableTop="@mipmap/category_finance"/>
         <TextView
+            android:id="@+id/myself_no_pay_tv"
             android:gravity="center"
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_height="wrap_content"
             android:text="待付款"
             android:drawableTop="@mipmap/category_language"/>
+
         <TextView
             android:gravity="center"
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_height="wrap_content"
-            android:text="商场货"
-            android:drawableTop="@mipmap/category_news"/>
+            android:text="待收货"
+            android:drawableTop="@mipmap/category_news"
+            android:id="@+id/myself_no_have_tv"/>
+
         <TextView
+            android:id="@+id/myself_after_sale_tv"
             android:gravity="center"
             android:layout_width="0dp"
             android:layout_weight="1"
@@ -54,79 +84,20 @@
             android:text="退款/售后"
             android:drawableTop="@mipmap/category_novel"/>
     </LinearLayout>
-    <LinearLayout
-        android:layout_marginTop="20dp"
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/myself_recycler_view"
+        android:layout_below="@id/myself_linear2"
+
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
-        <Button
-            android:drawableLeft="@mipmap/ic_emotion_happy"
-            android:layout_width="match_parent"
-            android:layout_height="30dp"
-            android:drawableRight="@mipmap/ic_more_normal"
-            android:text="我的足迹"
-            android:gravity="left|center_vertical"
-            android:background="@color/colorWhite"
-            />
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="@color/colorGray"/>
-        <Button
-            android:drawableLeft="@mipmap/ic_emotion_happy"
-            android:drawableRight="@mipmap/ic_more_normal"
-            android:layout_width="match_parent"
-            android:layout_height="30dp"
-            android:text="我的账单"
-            android:gravity="left|center_vertical"
-            android:background="@color/colorWhite"
-            />
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="@color/colorGray"/>
-        <Button
-            android:drawableLeft="@mipmap/ic_emotion_happy"
-            android:drawableRight="@mipmap/ic_more_normal"
-            android:layout_width="match_parent"
-            android:layout_height="30dp"
-            android:text="兑换优惠券"
-            android:gravity="left|center_vertical"
-            android:background="@color/colorWhite"
-            />
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="@color/colorGray"/>
-        <Button
-            android:drawableLeft="@mipmap/ic_emotion_happy"
-            android:drawableRight="@mipmap/ic_more_normal"
-            android:layout_width="match_parent"
-            android:layout_height="30dp"
-            android:text="我的优惠券"
-            android:gravity="left|center_vertical"
-            android:background="@color/colorWhite"
-            />
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="@color/colorGray"/>
-    </LinearLayout>
+        android:layout_height="wrap_content">
 
-    <Button
-        android:layout_marginTop="20dp"
-        android:drawableLeft="@mipmap/ic_emotion_happy"
-        android:drawableRight="@mipmap/ic_more_normal"
-        android:layout_width="match_parent"
-        android:layout_height="30dp"
-        android:text="帮助中心"
-        android:gravity="left|center_vertical"
-        android:background="@color/colorWhite"
-        />
+
+    </android.support.v7.widget.RecyclerView>
 
 
 
 
 
 
-</LinearLayout>
+
+</RelativeLayout>
