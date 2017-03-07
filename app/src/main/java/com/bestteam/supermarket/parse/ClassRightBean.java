@@ -15,19 +15,18 @@ import java.util.List;
  */
 
 /**
- *      分类：
- *右边内容   解析类： ClassRightBean
- *
-  items             是右侧的整页数据
-  DetailedItems     每一个item的类
- *
+ * 分类：
+ * 右边内容   解析类： ClassRightBean
+ * <p>
+ * items             是右侧的整页数据
+ * DetailedItems     每一个item的类
  */
 
 public class ClassRightBean {
 
-    public static ClassRightBean getParseClassRightBean(String strJson){
+    public static ClassRightBean getParseClassRightBean(String strJson) {
 
-        return new Gson().fromJson(strJson,ClassRightBean.class);
+        return new Gson().fromJson(strJson, ClassRightBean.class);
     }
 
     private ResultData resultData;
@@ -36,55 +35,64 @@ public class ClassRightBean {
 
     private int resultStatus;
 
-    public void setResultData(ResultData resultData){
+    public void setResultData(ResultData resultData) {
         this.resultData = resultData;
     }
-    public ResultData getResultData(){
+
+    public ResultData getResultData() {
         return this.resultData;
     }
-    public void setResultMsg(String resultMsg){
+
+    public void setResultMsg(String resultMsg) {
         this.resultMsg = resultMsg;
     }
-    public String getResultMsg(){
+
+    public String getResultMsg() {
         return this.resultMsg;
     }
-    public void setResultStatus(int resultStatus){
+
+    public void setResultStatus(int resultStatus) {
         this.resultStatus = resultStatus;
     }
-    public int getResultStatus(){
+
+    public int getResultStatus() {
         return this.resultStatus;
     }
-    public class ResultData
-    {
+
+    public class ResultData {
         private List<Items> items;
 
         private String categoryId;
 
-        public void setItems(List<Items> items){
+        public void setItems(List<Items> items) {
             this.items = items;
         }
-        public List<Items> getItems(){
+
+        public List<Items> getItems() {
             return this.items;
         }
-        public void setCategoryId(String categoryId){
+
+        public void setCategoryId(String categoryId) {
             this.categoryId = categoryId;
         }
-        public String getCategoryId(){
+
+        public String getCategoryId() {
             return this.categoryId;
         }
     }
-    public class Items
-    {
+
+    public class Items {
         private String categoryName;
 
         private List<DetailedItems> items;
 
         private String categoryId;
 
-        public void setCategoryName(String categoryName){
+        public void setCategoryName(String categoryName) {
             this.categoryName = categoryName;
         }
-        public String getCategoryName(){
+
+        public String getCategoryName() {
             return this.categoryName;
         }
 
@@ -96,15 +104,16 @@ public class ClassRightBean {
             this.items = items;
         }
 
-        public void setCategoryId(String categoryId){
+        public void setCategoryId(String categoryId) {
             this.categoryId = categoryId;
         }
-        public String getCategoryId(){
+
+        public String getCategoryId() {
             return this.categoryId;
         }
     }
-    public class DetailedItems
-    {
+
+    public class DetailedItems {
         private String aliasName;
 
         private String id;
@@ -117,40 +126,51 @@ public class ClassRightBean {
 
         private String code;
 
-        public void setAliasName(String aliasName){
+        public void setAliasName(String aliasName) {
             this.aliasName = aliasName;
         }
-        public String getAliasName(){
+
+        public String getAliasName() {
             return this.aliasName;
         }
-        public void setId(String id){
+
+        public void setId(String id) {
             this.id = id;
         }
-        public String getId(){
+
+        public String getId() {
             return this.id;
         }
-        public void setParentId(String parentId){
+
+        public void setParentId(String parentId) {
             this.parentId = parentId;
         }
-        public String getParentId(){
+
+        public String getParentId() {
             return this.parentId;
         }
-        public void setSort(int sort){
+
+        public void setSort(int sort) {
             this.sort = sort;
         }
-        public int getSort(){
+
+        public int getSort() {
             return this.sort;
         }
-        public void setImgPath(String imgPath){
+
+        public void setImgPath(String imgPath) {
             this.imgPath = imgPath;
         }
-        public String getImgPath(){
+
+        public String getImgPath() {
             return this.imgPath;
         }
-        public void setCode(String code){
+
+        public void setCode(String code) {
             this.code = code;
         }
-        public String getCode(){
+
+        public String getCode() {
             return this.code;
         }
     }
