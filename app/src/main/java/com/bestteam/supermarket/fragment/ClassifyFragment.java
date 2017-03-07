@@ -1,5 +1,6 @@
 package com.bestteam.supermarket.fragment;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -13,18 +14,22 @@ import android.widget.AdapterView;
 import android.widget.BaseAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bestteam.supermarket.R;
 import com.bestteam.supermarket.parse.ClassLeftBean;
 import com.bestteam.supermarket.utils.CommonUrl;
 import com.bestteam.supermarket.utils.ConstantValue;
 import com.bestteam.supermarket.utils.OkHttpManager;
+import com.bestteam.supermarket.utils.TitleEvenUtils;
 
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
 import okhttp3.Request;
+
+import static android.app.Activity.RESULT_OK;
 
 /**
  * Created by WangJinRui on 2017/3/6.
@@ -62,6 +67,8 @@ public class ClassifyFragment extends Fragment {
      * Fragment的管理器对象
      */
     private FragmentManager mFragmentManager;
+    private View mTitleView;
+    private TitleEvenUtils mTitleBar;
 
     @Nullable
     @Override
@@ -81,8 +88,36 @@ public class ClassifyFragment extends Fragment {
 
         initUI();
         initData();
-
+        initControl();
         return mFragment_classify;
+    }
+
+    private void initControl() {
+
+        mTitleBar.saobtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(getActivity(), "扫一扫", Toast.LENGTH_SHORT).show();
+                Intent intent=new Intent();
+                intent.setClass(getActivity(), com.zxing.activity.CaptureActivity.class);
+                startActivityForResult(intent,101);
+            }
+        });
+        mTitleBar.searchBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(getActivity(), "跳转搜索", Toast.LENGTH_SHORT).show();
+
+            }
+        });
+        mTitleBar.msgBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(getActivity(), "信息搭建中 请改天再来", Toast.LENGTH_SHORT).show();
+
+            }
+        });
+
     }
 
     /**
@@ -110,6 +145,11 @@ public class ClassifyFragment extends Fragment {
                 mLvClassifyAdapter.setDefSelect(position);
             }
         });
+
+        //Title设置
+        mTitleView = mFragment_classify.findViewById(R.id.main_tool_bar);
+        mTitleBar = new TitleEvenUtils(mTitleView);
+
     }
 
     /**
@@ -131,6 +171,18 @@ public class ClassifyFragment extends Fragment {
                 }
             }
         });
+    }
+
+    /**
+     * 扫描二维码
+     */
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if(requestCode==101 && resultCode==RESULT_OK){
+            String info=data.getExtras().getString("result");
+            Toast.makeText(getActivity(), info+"", Toast.LENGTH_SHORT).show();
+        }
     }
 
     /**

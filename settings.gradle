@@ -1,1 +1,1 @@
-include ':app', ':PullToRefresh_Library'
+include ':app', ':PullToRefresh_Library', ':qrcode'

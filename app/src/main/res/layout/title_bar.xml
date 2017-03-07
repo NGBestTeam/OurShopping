@@ -5,18 +5,21 @@
                 android:gravity="center_vertical">
 
     <Button
+        android:id="@+id/title_bar_sao"
         android:layout_width="40dp"
         android:layout_margin="10dp"
         android:layout_height="40dp"
         android:background="@mipmap/title_sao"/>
 
     <Button
+        android:id="@+id/title_bar_search"
         android:layout_width="250dp"
         android:layout_height="40dp"
         android:layout_centerInParent="true"
         android:background="@mipmap/title_searchview"/>
 
     <Button
+        android:id="@+id/title_bar_message"
         android:layout_width="40dp"
         android:layout_height="40dp"
         android:layout_alignParentRight="true"
