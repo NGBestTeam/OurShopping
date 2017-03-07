@@ -51,7 +51,7 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         initView();
-        contral();
+        control();
     }
 
     //控件初始化
@@ -81,7 +81,7 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     //控件控制
-    private void contral() {
+    private void control() {
         //标题返回键
         mBack.setOnClickListener(new View.OnClickListener() {
             @Override
