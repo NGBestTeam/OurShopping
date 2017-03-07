@@ -6,8 +6,8 @@
 
     <Button
         android:layout_width="40dp"
-        android:layout_height="40dp"
         android:layout_margin="10dp"
+        android:layout_height="40dp"
         android:background="@mipmap/title_sao"/>
 
     <Button

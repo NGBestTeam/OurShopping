@@ -35,7 +35,7 @@
             android:layout_height="28dp"
             android:layout_marginLeft="10dp"
             android:background="@drawable/raduio_btn_red"
-            android:text="获取验证码"
+            android:text="获取验证码 "
             android:textColor="@color/login_red"/>
 
     </LinearLayout>

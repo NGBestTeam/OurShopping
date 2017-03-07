@@ -8,8 +8,8 @@
         android:id="@+id/login_title_bar_backbtn"
         android:background="@null"
         android:drawableLeft="@mipmap/back_btn_normal"
-        android:paddingLeft="20dp"
         android:gravity="center_vertical"
+        android:paddingLeft="20dp"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"/>
 

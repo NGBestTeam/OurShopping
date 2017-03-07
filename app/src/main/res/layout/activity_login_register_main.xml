@@ -46,8 +46,8 @@
         android:layout_marginRight="30dp"
         >
         <Button
-            android:id="@+id/login_register_login_btn"
             android:layout_width="30dp"
+            android:id="@+id/login_register_login_btn"
             android:layout_height="match_parent"
             android:background="#000"
             android:layout_alignParentRight="true"

@@ -21,7 +21,7 @@ public class LoginPwdLoseActivity extends AppCompatActivity {
     private EditText mPhoneNumber;
     private Button mNext;
     private View mTitleView;
-    private Button mBack;
+    private Button mBack ;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

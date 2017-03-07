@@ -49,7 +49,7 @@ public class LoginRegisterActivity extends AppCompatActivity {
             public void onTextChanged(CharSequence s, int start, int before, int count) {
                 if(s.length()==11){
                     mNextBtn.setBackgroundColor(getResources().getColor(R.color.login_orign));
-                    mNextBtn.setEnabled(true) ;
+                    mNextBtn.setEnabled(true);
                 }
             }
 
