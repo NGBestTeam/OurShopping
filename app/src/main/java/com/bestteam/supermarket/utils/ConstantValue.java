@@ -41,4 +41,9 @@ public class ConstantValue {
      * 记录用户的密码
      */
     public static final String USER_PASSWORD = "";
+
+    /**
+     * 手机登录页面成功的返回码
+     */
+    public static final int MOBILE_LOGIN_OK = 22;
 }
