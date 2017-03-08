@@ -93,7 +93,7 @@ public class MarketFragment extends Fragment{
         OkHttpManager.getAsync(CommonUrl.url11, new OkHttpManager.DataCallBack() {
             @Override
             public void requestFailure(Request request, IOException e) {
-                Toast.makeText(getContext(),"请求失败",Toast.LENGTH_LONG).show();
+                Toast.makeText(getContext(),"网络开小差了，请稍后....",Toast.LENGTH_LONG).show();
             }
 
             @Override
@@ -132,7 +132,7 @@ public class MarketFragment extends Fragment{
         OkHttpManager.getAsync(CommonUrl.url12, new OkHttpManager.DataCallBack() {
             @Override
             public void requestFailure(Request request, IOException e) {
-                Toast.makeText(getContext(),"获取数据失败",Toast.LENGTH_LONG).show();
+                Toast.makeText(getContext(),"网络开小差了，请稍后....",Toast.LENGTH_LONG).show();
             }
 
             @Override
