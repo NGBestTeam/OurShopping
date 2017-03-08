@@ -1,6 +1,7 @@
 package com.bestteam.supermarket.adapter.recycleview;
 
 import android.content.Context;
+import android.graphics.Paint;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -40,8 +41,8 @@ public class RecycleAdapter02 extends RecyclerView.Adapter<RecycleAdapter02.View
     public void onBindViewHolder(ViewHolode holder, int position) {
         holder.tv.setText(data.get(position).getDiscountPrice());
         holder.tv2.setText(data.get(position).getPrice());
-//        holder.tv2.getPaint().setFlags(Paint. STRIKE_THRU_TEXT_FLAG );
-//        holder.tv2.getPaint().setAntiAlias(true);
+        holder.tv2.getPaint().setFlags(Paint. STRIKE_THRU_TEXT_FLAG );
+        holder.tv2.getPaint().setAntiAlias(true);
         String url= CommonUrl.replaceImgUrl(data.get(position).getActivityImgPath());
 
                         Glide.with(context)//  可以接收 Activity  Context Fragment对象

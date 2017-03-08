@@ -8,12 +8,15 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.GridView;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import com.bestteam.supermarket.R;
+import com.bestteam.supermarket.adapter.base.BaseRecyclerAdapter;
 import com.bestteam.supermarket.adapter.base.FullyLinearLayoutManager;
-import com.bestteam.supermarket.adapter.base.SyLinearLayoutManager;
+import com.bestteam.supermarket.adapter.base.RecyclerViewHolder;
 import com.bestteam.supermarket.adapter.gridview.GvAdapter;
 import com.bestteam.supermarket.parse.HomePurchaseBean;
 import com.bestteam.supermarket.parse.HomeUpBean;
@@ -34,6 +37,7 @@ public class HomeRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
     private List<HomeUpBean.Adverts> headData;
     private List<HomePurchaseBean.HomePurchase> dataItem02;
     private List<HomeUpBean.Adverts> datas;
+    private BaseRecyclerAdapter.OnItemClickListener mClickListener;
 
 
 
@@ -81,28 +85,45 @@ public class HomeRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
                 ViewHolder0 viewHolder0= (ViewHolder0) holder;
                 viewHolder0.vp.setAdapter(new HomePagerAdapter());
                 viewHolder0.gv.setAdapter(new GvAdapter(context,headData));
+                viewHolder0.gv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                    @Override
+                    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                        Toast.makeText(context,"1111"+position,Toast.LENGTH_LONG).show();
+                    }
+                });
                 break;
             case 1:
                 ViewHolder1 viewHolder1= (ViewHolder1) holder;
-//                viewHolder1.rv.setAdapter(new BaseRecyclerAdapter<HomePurchaseBean.HomePurchase>(context,dataItem02){
-//                    @Override
-//                    public int getItemLayoutId(int viewType) {
-//                        return R.layout.item_rv_rv_item02;
-//                    }
-//
-//                    @Override
-//                    public void bindData(RecyclerViewHolder holder, int position, HomePurchaseBean.HomePurchase item) {
-//                        holder.setText(R.id.tv_rv_item02,item.getDiscountPrice());
-//                        holder.setText(R.id.tv02_rv_item02,item.getPrice());
-//                        String url= CommonUrl.replaceImgUrl(item.getActivityImgPath());
-//                        Glide.with(context)//  可以接收 Activity  Context Fragment对象
-//                                .load(url)
-//                                .placeholder(R.mipmap.ic_launcher)//加载时显示的资源
-//                                .error(R.mipmap.ic_launcher)//加载失败时显示的资源
-//                                .into(holder.getImageView(R.id.iv_rv_item02));
-//                    }
-//                });
-                viewHolder1.rv.setAdapter(new RecycleAdapter02(context,dataItem02));
+              BaseRecyclerAdapter<HomePurchaseBean.HomePurchase> adapter =  new BaseRecyclerAdapter<HomePurchaseBean.HomePurchase>(context,dataItem02){
+                    @Override
+                    public int getItemLayoutId(int viewType) {
+                        return R.layout.item_rv_rv_item02;
+                    }
+
+                    @Override
+                    public void bindData(RecyclerViewHolder holder, int position, HomePurchaseBean.HomePurchase item) {
+                        holder.setText(R.id.tv_rv_item02,item.getDiscountPrice());
+                        holder.setText(R.id.tv02_rv_item02,item.getPrice());
+                        String url= CommonUrl.replaceImgUrl(item.getActivityImgPath());
+                        Glide.with(context)//  可以接收 Activity  Context Fragment对象
+                                .load(url)
+                                .placeholder(R.mipmap.ic_launcher)//加载时显示的资源
+                                .error(R.mipmap.ic_launcher)//加载失败时显示的资源
+                                .into(holder.getImageView(R.id.iv_rv_item02));
+                    }
+
+
+
+                };
+                viewHolder1.rv.setAdapter(adapter);
+                adapter.setOnItemClickListener(new BaseRecyclerAdapter.OnItemClickListener() {
+                    @Override
+                    public void onItemClick(View itemView, int pos) {
+                        Toast.makeText(context, "22222"+pos, Toast.LENGTH_SHORT).show();
+                    }
+                });
+
+
                 FullyLinearLayoutManager manager = new FullyLinearLayoutManager(context,LinearLayoutManager.HORIZONTAL,false);
                 viewHolder1.rv.setLayoutManager(manager);
                 break;
@@ -147,6 +168,14 @@ public class HomeRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
 
                 break;
         }
+    }
+
+    public interface OnItemClickListener {
+        public void onItemClick(View itemView, int pos);
+    }
+
+    public void setOnItemClickListener(BaseRecyclerAdapter.OnItemClickListener listener) {
+        mClickListener = listener;
     }
 
     @Override

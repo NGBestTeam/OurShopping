@@ -19,7 +19,7 @@ import java.util.List;
  * Created by LJWE on 2017/3/4.
  */
 
-public class GvAdapter extends BaseAdapter{
+public class GvAdapter extends BaseAdapter {
 
     private Context context;
     private List<HomeUpBean.Adverts> data;
@@ -62,6 +62,7 @@ public class GvAdapter extends BaseAdapter{
 
         HomeUpBean.Adverts databean= data.get(position);
         viewHolder.tv.setText(databean.getTitle());
+
         //Gilde加载图片
         String url= CommonUrl.replaceImgUrl(databean.getImgPath());
         Glide.with(context)//  可以接收 Activity  Context Fragment对象

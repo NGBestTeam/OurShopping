@@ -1,5 +1,37 @@
 [
     {
+        "merged": "D:\\Users\\myself\\Downloads\\OurShopping\\PullToRefresh_Library\\build\\intermediates\\res\\merged\\androidTest\\debug\\anim\\slide_in_from_bottom.xml",
+        "source": "D:\\Users\\myself\\Downloads\\OurShopping\\PullToRefresh_Library\\build\\intermediates\\bundles\\debug\\res\\anim\\slide_in_from_bottom.xml"
+    },
+    {
+        "merged": "D:\\Users\\myself\\Downloads\\OurShopping\\G:\\android_studio_study\\NewTeam\\OurShopping\\PullToRefresh_Library\\build\\intermediates\\res\\merged\\androidTest\\debug\\anim\\slide_in_from_top.xml",
+        "source": "D:\\Users\\myself\\Downloads\\OurShopping\\G:\\android_studio_study\\NewTeam\\OurShopping\\PullToRefresh_Library\\build\\intermediates\\bundles\\debug\\res\\anim\\slide_in_from_top.xml"
+    },
+    {
+        "merged": "D:\\Users\\myself\\Downloads\\OurShopping\\PullToRefresh_Library\\build\\intermediates\\res\\merged\\androidTest\\debug\\anim\\slide_in_from_top.xml",
+        "source": "D:\\Users\\myself\\Downloads\\OurShopping\\PullToRefresh_Library\\build\\intermediates\\bundles\\debug\\res\\anim\\slide_in_from_top.xml"
+    },
+    {
+        "merged": "D:\\SuperMarket\\OurShopping\\PullToRefresh_Library\\build\\intermediates\\res\\merged\\androidTest\\debug\\anim\\slide_in_from_bottom.xml",
+        "source": "D:\\SuperMarket\\OurShopping\\PullToRefresh_Library\\build\\intermediates\\bundles\\debug\\res\\anim\\slide_in_from_bottom.xml"
+    },
+    {
+        "merged": "D:\\Users\\myself\\Downloads\\OurShopping\\D:\\Develop\\OurShopping\\PullToRefresh_Library\\build\\intermediates\\res\\merged\\androidTest\\debug\\anim\\slide_out_to_bottom.xml",
+        "source": "D:\\Users\\myself\\Downloads\\OurShopping\\D:\\Develop\\OurShopping\\PullToRefresh_Library\\build\\intermediates\\bundles\\debug\\res\\anim\\slide_out_to_bottom.xml"
+    },
+    {
+        "merged": "D:\\Users\\myself\\Downloads\\OurShopping\\G:\\android_studio_study\\NewTeam\\OurShopping\\PullToRefresh_Library\\build\\intermediates\\res\\merged\\androidTest\\debug\\anim\\slide_in_from_bottom.xml",
+        "source": "D:\\Users\\myself\\Downloads\\OurShopping\\G:\\android_studio_study\\NewTeam\\OurShopping\\PullToRefresh_Library\\build\\intermediates\\bundles\\debug\\res\\anim\\slide_in_from_bottom.xml"
+    },
+    {
+        "merged": "D:\\Users\\myself\\Downloads\\OurShopping\\D:\\Develop\\OurShopping\\PullToRefresh_Library\\build\\intermediates\\res\\merged\\androidTest\\debug\\anim\\slide_in_from_top.xml",
+        "source": "D:\\Users\\myself\\Downloads\\OurShopping\\D:\\Develop\\OurShopping\\PullToRefresh_Library\\build\\intermediates\\bundles\\debug\\res\\anim\\slide_in_from_top.xml"
+    },
+    {
+        "merged": "D:\\Users\\myself\\Downloads\\OurShopping\\D:\\Develop\\OurShopping\\PullToRefresh_Library\\build\\intermediates\\res\\merged\\androidTest\\debug\\anim\\slide_in_from_bottom.xml",
+        "source": "D:\\Users\\myself\\Downloads\\OurShopping\\D:\\Develop\\OurShopping\\PullToRefresh_Library\\build\\intermediates\\bundles\\debug\\res\\anim\\slide_in_from_bottom.xml"
+    },
+    {
         "merged": "D:\\Users\\myself\\Downloads\\OurShopping\\G:\\android_studio_study\\NewTeam\\OurShopping\\PullToRefresh_Library\\build\\intermediates\\res\\merged\\androidTest\\debug\\anim\\slide_out_to_bottom.xml",
         "source": "D:\\Users\\myself\\Downloads\\OurShopping\\G:\\android_studio_study\\NewTeam\\OurShopping\\PullToRefresh_Library\\build\\intermediates\\bundles\\debug\\res\\anim\\slide_out_to_bottom.xml"
     },
@@ -8,48 +40,16 @@
         "source": "D:\\Users\\myself\\Downloads\\OurShopping\\PullToRefresh_Library\\build\\intermediates\\bundles\\debug\\res\\anim\\slide_out_to_top.xml"
     },
     {
-        "merged": "D:\\Users\\myself\\Downloads\\OurShopping\\G:\\android_studio_study\\NewTeam\\OurShopping\\PullToRefresh_Library\\build\\intermediates\\res\\merged\\androidTest\\debug\\anim\\slide_in_from_bottom.xml",
-        "source": "D:\\Users\\myself\\Downloads\\OurShopping\\G:\\android_studio_study\\NewTeam\\OurShopping\\PullToRefresh_Library\\build\\intermediates\\bundles\\debug\\res\\anim\\slide_in_from_bottom.xml"
-    },
-    {
-        "merged": "D:\\Users\\myself\\Downloads\\OurShopping\\D:\\Develop\\OurShopping\\PullToRefresh_Library\\build\\intermediates\\res\\merged\\androidTest\\debug\\anim\\slide_out_to_top.xml",
-        "source": "D:\\Users\\myself\\Downloads\\OurShopping\\D:\\Develop\\OurShopping\\PullToRefresh_Library\\build\\intermediates\\bundles\\debug\\res\\anim\\slide_out_to_top.xml"
-    },
-    {
-        "merged": "D:\\SuperMarket\\OurShopping\\PullToRefresh_Library\\build\\intermediates\\res\\merged\\androidTest\\debug\\anim\\slide_in_from_bottom.xml",
-        "source": "D:\\SuperMarket\\OurShopping\\PullToRefresh_Library\\build\\intermediates\\bundles\\debug\\res\\anim\\slide_in_from_bottom.xml"
-    },
-    {
-        "merged": "D:\\Users\\myself\\Downloads\\OurShopping\\D:\\Develop\\OurShopping\\PullToRefresh_Library\\build\\intermediates\\res\\merged\\androidTest\\debug\\anim\\slide_in_from_top.xml",
-        "source": "D:\\Users\\myself\\Downloads\\OurShopping\\D:\\Develop\\OurShopping\\PullToRefresh_Library\\build\\intermediates\\bundles\\debug\\res\\anim\\slide_in_from_top.xml"
-    },
-    {
-        "merged": "D:\\Users\\myself\\Downloads\\OurShopping\\PullToRefresh_Library\\build\\intermediates\\res\\merged\\androidTest\\debug\\anim\\slide_in_from_bottom.xml",
-        "source": "D:\\Users\\myself\\Downloads\\OurShopping\\PullToRefresh_Library\\build\\intermediates\\bundles\\debug\\res\\anim\\slide_in_from_bottom.xml"
-    },
-    {
-        "merged": "D:\\Users\\myself\\Downloads\\OurShopping\\PullToRefresh_Library\\build\\intermediates\\res\\merged\\androidTest\\debug\\anim\\slide_in_from_top.xml",
-        "source": "D:\\Users\\myself\\Downloads\\OurShopping\\PullToRefresh_Library\\build\\intermediates\\bundles\\debug\\res\\anim\\slide_in_from_top.xml"
-    },
-    {
-        "merged": "D:\\Users\\myself\\Downloads\\OurShopping\\G:\\android_studio_study\\NewTeam\\OurShopping\\PullToRefresh_Library\\build\\intermediates\\res\\merged\\androidTest\\debug\\anim\\slide_in_from_top.xml",
-        "source": "D:\\Users\\myself\\Downloads\\OurShopping\\G:\\android_studio_study\\NewTeam\\OurShopping\\PullToRefresh_Library\\build\\intermediates\\bundles\\debug\\res\\anim\\slide_in_from_top.xml"
-    },
-    {
         "merged": "D:\\SuperMarket\\OurShopping\\PullToRefresh_Library\\build\\intermediates\\res\\merged\\androidTest\\debug\\anim\\slide_out_to_bottom.xml",
         "source": "D:\\SuperMarket\\OurShopping\\PullToRefresh_Library\\build\\intermediates\\bundles\\debug\\res\\anim\\slide_out_to_bottom.xml"
-    },
-    {
-        "merged": "D:\\Users\\myself\\Downloads\\OurShopping\\D:\\Develop\\OurShopping\\PullToRefresh_Library\\build\\intermediates\\res\\merged\\androidTest\\debug\\anim\\slide_in_from_bottom.xml",
-        "source": "D:\\Users\\myself\\Downloads\\OurShopping\\D:\\Develop\\OurShopping\\PullToRefresh_Library\\build\\intermediates\\bundles\\debug\\res\\anim\\slide_in_from_bottom.xml"
     },
     {
         "merged": "D:\\Users\\myself\\Downloads\\OurShopping\\G:\\android_studio_study\\NewTeam\\OurShopping\\PullToRefresh_Library\\build\\intermediates\\res\\merged\\androidTest\\debug\\anim\\slide_out_to_top.xml",
         "source": "D:\\Users\\myself\\Downloads\\OurShopping\\G:\\android_studio_study\\NewTeam\\OurShopping\\PullToRefresh_Library\\build\\intermediates\\bundles\\debug\\res\\anim\\slide_out_to_top.xml"
     },
     {
-        "merged": "D:\\Users\\myself\\Downloads\\OurShopping\\D:\\Develop\\OurShopping\\PullToRefresh_Library\\build\\intermediates\\res\\merged\\androidTest\\debug\\anim\\slide_out_to_bottom.xml",
-        "source": "D:\\Users\\myself\\Downloads\\OurShopping\\D:\\Develop\\OurShopping\\PullToRefresh_Library\\build\\intermediates\\bundles\\debug\\res\\anim\\slide_out_to_bottom.xml"
+        "merged": "D:\\Users\\myself\\Downloads\\OurShopping\\D:\\Develop\\OurShopping\\PullToRefresh_Library\\build\\intermediates\\res\\merged\\androidTest\\debug\\anim\\slide_out_to_top.xml",
+        "source": "D:\\Users\\myself\\Downloads\\OurShopping\\D:\\Develop\\OurShopping\\PullToRefresh_Library\\build\\intermediates\\bundles\\debug\\res\\anim\\slide_out_to_top.xml"
     },
     {
         "merged": "D:\\SuperMarket\\OurShopping\\PullToRefresh_Library\\build\\intermediates\\res\\merged\\androidTest\\debug\\anim\\slide_in_from_top.xml",

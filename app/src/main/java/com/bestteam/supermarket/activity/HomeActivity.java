@@ -47,14 +47,12 @@ public class HomeActivity extends AppCompatActivity {
         mTabHost= (FragmentTabHost) findViewById(android.R.id.tabhost);
         mTabHost.setup(this,getSupportFragmentManager(),R.id.fl_home);
 
-
         //得到fragment的个数
         for (int i=0;i<mFragments.length;i++){
             TabHost.TabSpec tabbspec=mTabHost.newTabSpec(mTitles[i]).setIndicator(getTabItemView(i));
             //将tab按钮添加进tab选项卡中
             mTabHost.addTab(tabbspec,mFragments[i],null);
         }
-
     }
 
     /**
@@ -67,7 +65,6 @@ public class HomeActivity extends AppCompatActivity {
 
         TextView textView = (TextView) view.findViewById(R.id.tv_tab_item);
         textView.setText(mTitles[index]);
-
 
         return view;
     }

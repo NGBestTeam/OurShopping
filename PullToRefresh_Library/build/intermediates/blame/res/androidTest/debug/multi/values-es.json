@@ -62,7 +62,7 @@
         ]
     },
     {
-        "outputFile": "D:\\Users\\myself\\Downloads\\OurShopping\\D:\\Develop\\OurShopping\\PullToRefresh_Library\\build\\intermediates\\incremental\\mergeDebugAndroidTestResources\\merged.dir\\values-es\\values-es.xml",
+        "outputFile": "D:\\SuperMarket\\OurShopping\\PullToRefresh_Library\\build\\intermediates\\incremental\\mergeDebugAndroidTestResources\\merged.dir\\values-es\\values-es.xml",
         "map": [
             {
                 "to": {
@@ -73,7 +73,7 @@
                     "endOffset": 128
                 },
                 "from": {
-                    "file": "D:\\Users\\myself\\Downloads\\OurShopping\\D:\\Develop\\OurShopping\\PullToRefresh_Library\\build\\intermediates\\bundles\\debug\\res\\values-es\\values-es.xml",
+                    "file": "D:\\SuperMarket\\OurShopping\\PullToRefresh_Library\\build\\intermediates\\bundles\\debug\\res\\values-es\\values-es.xml",
                     "position": {
                         "startLine": 2,
                         "startColumn": 4,
@@ -92,7 +92,7 @@
                     "endOffset": 199
                 },
                 "from": {
-                    "file": "D:\\Users\\myself\\Downloads\\OurShopping\\D:\\Develop\\OurShopping\\PullToRefresh_Library\\build\\intermediates\\bundles\\debug\\res\\values-es\\values-es.xml",
+                    "file": "D:\\SuperMarket\\OurShopping\\PullToRefresh_Library\\build\\intermediates\\bundles\\debug\\res\\values-es\\values-es.xml",
                     "position": {
                         "startLine": 3,
                         "startColumn": 4,
@@ -111,7 +111,7 @@
                     "endOffset": 281
                 },
                 "from": {
-                    "file": "D:\\Users\\myself\\Downloads\\OurShopping\\D:\\Develop\\OurShopping\\PullToRefresh_Library\\build\\intermediates\\bundles\\debug\\res\\values-es\\values-es.xml",
+                    "file": "D:\\SuperMarket\\OurShopping\\PullToRefresh_Library\\build\\intermediates\\bundles\\debug\\res\\values-es\\values-es.xml",
                     "position": {
                         "startLine": 4,
                         "startColumn": 4,
@@ -186,7 +186,7 @@
         ]
     },
     {
-        "outputFile": "D:\\SuperMarket\\OurShopping\\PullToRefresh_Library\\build\\intermediates\\incremental\\mergeDebugAndroidTestResources\\merged.dir\\values-es\\values-es.xml",
+        "outputFile": "D:\\Users\\myself\\Downloads\\OurShopping\\D:\\Develop\\OurShopping\\PullToRefresh_Library\\build\\intermediates\\incremental\\mergeDebugAndroidTestResources\\merged.dir\\values-es\\values-es.xml",
         "map": [
             {
                 "to": {
@@ -197,7 +197,7 @@
                     "endOffset": 128
                 },
                 "from": {
-                    "file": "D:\\SuperMarket\\OurShopping\\PullToRefresh_Library\\build\\intermediates\\bundles\\debug\\res\\values-es\\values-es.xml",
+                    "file": "D:\\Users\\myself\\Downloads\\OurShopping\\D:\\Develop\\OurShopping\\PullToRefresh_Library\\build\\intermediates\\bundles\\debug\\res\\values-es\\values-es.xml",
                     "position": {
                         "startLine": 2,
                         "startColumn": 4,
@@ -216,7 +216,7 @@
                     "endOffset": 199
                 },
                 "from": {
-                    "file": "D:\\SuperMarket\\OurShopping\\PullToRefresh_Library\\build\\intermediates\\bundles\\debug\\res\\values-es\\values-es.xml",
+                    "file": "D:\\Users\\myself\\Downloads\\OurShopping\\D:\\Develop\\OurShopping\\PullToRefresh_Library\\build\\intermediates\\bundles\\debug\\res\\values-es\\values-es.xml",
                     "position": {
                         "startLine": 3,
                         "startColumn": 4,
@@ -235,7 +235,7 @@
                     "endOffset": 281
                 },
                 "from": {
-                    "file": "D:\\SuperMarket\\OurShopping\\PullToRefresh_Library\\build\\intermediates\\bundles\\debug\\res\\values-es\\values-es.xml",
+                    "file": "D:\\Users\\myself\\Downloads\\OurShopping\\D:\\Develop\\OurShopping\\PullToRefresh_Library\\build\\intermediates\\bundles\\debug\\res\\values-es\\values-es.xml",
                     "position": {
                         "startLine": 4,
                         "startColumn": 4,
