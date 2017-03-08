@@ -100,23 +100,22 @@ public class HomeActivity extends AppCompatActivity {
                 SpUtil.putString(this, ConstantValue.USER_PASSWORD, "");
 
                 // 进入登陆界面
-                startEnterLogin(position);
+                startEnterLogin();
             } else {
                 // 跳转至相应的Fragment
                 mTabHost.setCurrentTab(position);
             }
         } else {
             // 进入登陆界面
-            startEnterLogin(position);
+            startEnterLogin();
         }
 
     }
 
     /**
      * 开启进入登陆界面
-     * @param position  用户想要切换的Fragment页卡
      */
-    private void startEnterLogin(int position) {
+    private void startEnterLogin() {
         ToastUtil.show(this, "请先登录哦！");
         Intent intent = new Intent(this, LoginActivity.class);
         startActivity(intent);
