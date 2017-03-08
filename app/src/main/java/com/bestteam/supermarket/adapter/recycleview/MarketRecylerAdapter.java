@@ -26,6 +26,7 @@ public class MarketRecylerAdapter extends RecyclerView.Adapter<RecyclerView.View
     private List<HypermarketUpBean.Adverts> data;
     private List<HypermarketDownBean.Items> downData;
     private boolean tag=true;
+    private onRecyclerViewItemClickListener listener;
 
 
     public MarketRecylerAdapter(Context context, List<HypermarketUpBean.Adverts> data,List<HypermarketDownBean.Items> downData) {
@@ -44,14 +45,15 @@ public class MarketRecylerAdapter extends RecyclerView.Adapter<RecyclerView.View
         switch (viewType){
             case 0:
                 view= LayoutInflater.from(parent.getContext()).inflate(R.layout.item_rv_market01,parent,false);
-                viewHolder=new ViewHolder0(view);
+                viewHolder=new ViewHolder0(view,listener);
                 break;
             case 1:
                 view=LayoutInflater.from(parent.getContext()).inflate(R.layout.item_rv_market02,parent,false);
-                viewHolder=new ViewHolder1(view);
+                viewHolder=new ViewHolder1(view,listener);
 
                 break;
     }
+
         return viewHolder;
     }
 
@@ -120,23 +122,35 @@ public class MarketRecylerAdapter extends RecyclerView.Adapter<RecyclerView.View
     /**
      * 第一种布局
      */
-    public  class ViewHolder0 extends RecyclerView.ViewHolder{
+    public  class ViewHolder0 extends RecyclerView.ViewHolder implements View.OnClickListener{
         ImageView iv;
+        onRecyclerViewItemClickListener listener;
 
-        public ViewHolder0(View itemView) {
+        public ViewHolder0(View itemView,onRecyclerViewItemClickListener listener) {
             super(itemView);
             iv= (ImageView) itemView.findViewById(R.id.iv_market01_item);
+            this.listener=listener;
+            itemView.setOnClickListener(this);
+        }
+
+        @Override
+        public void onClick(View v) {
+
+            if (listener!=null){
+                listener.onItemClick(v,getPosition());
+            }
         }
     }
 
     /**
      * 第二种布局
      */
-    public class ViewHolder1 extends RecyclerView.ViewHolder{
+    public class ViewHolder1 extends RecyclerView.ViewHolder implements View.OnClickListener {
         ImageView iv;
         TextView tvLeft,tvRight,tvTitle,tvBottom;
+        onRecyclerViewItemClickListener listener=null;
 
-        public ViewHolder1(View itemView) {
+        public ViewHolder1(View itemView,onRecyclerViewItemClickListener listener) {
             super(itemView);
             iv= (ImageView) itemView.findViewById(R.id.iv_market02_item);
             tvLeft= (TextView) itemView.findViewById(R.id.tv_market02_left);
@@ -144,9 +158,31 @@ public class MarketRecylerAdapter extends RecyclerView.Adapter<RecyclerView.View
             tvTitle= (TextView) itemView.findViewById(R.id.tv_market02_title);
             tvBottom= (TextView) itemView.findViewById(R.id.tv_bottom);
 
+            this.listener=listener;
+            itemView.setOnClickListener(this);
+
+        }
+
+        @Override
+        public void onClick(View v) {
+            if (listener!=null){
+                listener.onItemClick(v,getPosition());
+            }
+
         }
     }
 
+    public void setOnItemClickListener(onRecyclerViewItemClickListener listener) {
+        this.listener = listener;
+
+    }
+
+
+
+    public interface onRecyclerViewItemClickListener {
+
+        void onItemClick(View v, int  position);
+     }
 
 
 

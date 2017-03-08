@@ -16,6 +16,7 @@ import android.view.ViewGroup;
 import android.widget.Toast;
 
 import com.bestteam.supermarket.R;
+import com.bestteam.supermarket.activity.ProductActivity;
 import com.bestteam.supermarket.adapter.recycleview.MarketRecylerAdapter;
 import com.bestteam.supermarket.parse.HypermarketDownBean;
 import com.bestteam.supermarket.parse.HypermarketUpBean;
@@ -74,6 +75,17 @@ public class MarketFragment extends Fragment{
         downData=new ArrayList<>();
 
         adapter=new MarketRecylerAdapter(getActivity(),upData,downData);
+        adapter.setOnItemClickListener(new MarketRecylerAdapter.onRecyclerViewItemClickListener() {
+            @Override
+            public void onItemClick(View v, int position) {
+                Toast.makeText(getContext(),"您点击了"+position,Toast.LENGTH_LONG).show();
+                if (position==5){
+                    Intent intent=new Intent(getActivity(),ProductActivity.class);
+                    startActivity(intent);
+                }
+            }
+        });
+
         mRv.setAdapter(adapter);
 
         mRv.addItemDecoration(new MyItemDecoration());

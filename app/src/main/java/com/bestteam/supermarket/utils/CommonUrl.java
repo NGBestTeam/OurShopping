@@ -52,6 +52,8 @@ public class CommonUrl {
     //down（下  精品特卖+每日更新） 解析类： HypermarketDownBean
     public static final String url12 = "http://app-client.ffzxnet.com/app-client-web/activity/findDMCActivity.do?params={\"page\":1,\"pageSize\":20}";
 
+    //二级页面
+    public static final  String url13="http://app-client.ffzxnet.com/app-client-web/activity/findActivityBanner.do?params={\"activityId\":\"a3b52573831b4d82864a21c562f762f1\"}";
     public static String replaceImgUrl(String imgUrl){
         return imgUrl.replace("size","origin");
     }
