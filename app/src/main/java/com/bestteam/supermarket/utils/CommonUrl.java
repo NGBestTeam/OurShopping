@@ -21,8 +21,8 @@ public class CommonUrl {
     //限时抢购
     public static final String url2 = "http://app-client.ffzxnet.com/app-client-web/activity/findPanicList.do?params={%22activityId%22:%22%22,%22cityId%22:%22%22,%22defaultPanic%22:%221%22,%22page%22:1,%22pageSize%22:10,%22startDate%22:%22%22}";
 
-    //今日精选
-    public static final String url3 = "http://app-client.ffzxnet.com/app-client-web/commodity/recommendCommodities.do?params={%22areaStr%22:%22INDEX_SELECTED%22,%22categoryId%22:%22%22,%22cityId%22:%22%22,%22page%22:1,%22pageSize%22:10}";
+//    //今日精选
+//    public static final String url3 = "http://app-client.ffzxnet.com/app-client-web/commodity/recommendCommodities.do?params={%22areaStr%22:%22INDEX_SELECTED%22,%22categoryId%22:%22%22,%22cityId%22:%22%22,%22page%22:1,%22pageSize%22:10}";
 
     //今日精选分类
     public static final String url4 = "http://app-client.ffzxnet.com/app-client-web/category/commendCategory.do";

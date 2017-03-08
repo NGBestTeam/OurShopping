@@ -2,6 +2,8 @@ package com.bestteam.supermarket.parse;/**
  * Created by Xu on 2017/3/5.
  */
 
+import com.google.gson.Gson;
+
 import java.util.List;
 
 /**
@@ -16,6 +18,11 @@ import java.util.List;
  * 家电汽配
  */
 public class TabAppliancesBean {
+
+    public static TabAppliancesBean getParseTabAppliancesBean(String strJson){
+
+        return new Gson().fromJson(strJson,TabAppliancesBean.class);
+    }
     private ResultData resultData;
 
     private String resultMsg;

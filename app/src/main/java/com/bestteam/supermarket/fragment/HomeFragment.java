@@ -14,6 +14,11 @@ import com.bestteam.supermarket.R;
 import com.bestteam.supermarket.adapter.recycleview.HomeRecyclerAdapter;
 import com.bestteam.supermarket.parse.HomePurchaseBean;
 import com.bestteam.supermarket.parse.HomeUpBean;
+import com.bestteam.supermarket.parse.TabAppliancesBean;
+import com.bestteam.supermarket.parse.TabFoodBean;
+import com.bestteam.supermarket.parse.TabFreshBean;
+import com.bestteam.supermarket.parse.TabLabelBean;
+import com.bestteam.supermarket.parse.TabSelectionBean;
 import com.bestteam.supermarket.utils.CommonUrl;
 import com.bestteam.supermarket.utils.OkHttpManager;
 
@@ -37,6 +42,12 @@ public class HomeFragment extends Fragment {
     private List<HomePurchaseBean.HomePurchase> dataItem02;
     private List<HomeUpBean.Adverts> datas;
     private View view;
+    //RecyclerView数据源 Down
+    private List<String> dTitles=new ArrayList<>();
+    private List<TabSelectionBean.HomeTabSelection> dTabSelection=new ArrayList<>();
+    private List<TabFoodBean.Items> dTabFoodBean=new ArrayList<>();
+    private List<TabFreshBean.Items> dTabFreshBean=new ArrayList<>();
+    private List<TabAppliancesBean.Items> dTabApplianceBean=new ArrayList<>();
 
     @Nullable
     @Override
@@ -69,22 +80,95 @@ public class HomeFragment extends Fragment {
 
     private void initControl() {
 
-
+//        viewHolder3.mTabLayout.addTab(viewHolder3.mTabLayout.newTab().setText("王金瑞"));
+//        viewHolder3.mTabLayout.addTab(viewHolder3.mTabLayout.newTab().setText("李俊伟"));
+//        viewHolder3.mTabLayout.addTab(viewHolder3.mTabLayout.newTab().setText("王宏彦"));
+//        viewHolder3.mTabLayout.addTab(viewHolder3.mTabLayout.newTab().setText("王金瑞"));
+//        viewHolder3.mTabLayout.addTab(viewHolder3.mTabLayout.newTab().setText("李俊伟"));
     }
 
     private void loadData03() {
+        //TabLayout 标签 数据源获取
+        OkHttpManager.getAsync(CommonUrl.url4, new OkHttpManager.DataCallBack() {
+            @Override
+            public void requestFailure(Request request, IOException e) {
+
+            }
+
+            @Override
+            public void requestSuccess(String result) throws Exception {
+                dTitles.add("今日精选");
+                List<TabLabelBean.Items> titles=TabLabelBean.getParseTabLabelBean(result).getResultData().getItems();
+                for (int i = 0; i < titles.size(); i++) {
+                    dTitles.add(titles.get(i).getAliasName());
+                }
+
+            }
+        });
+//        // 今日精选内容
+//        OkHttpManager.getAsync(CommonUrl.url5, new OkHttpManager.DataCallBack() {
+//            @Override
+//            public void requestFailure(Request request, IOException e) {
+//
+//            }
+//
+//            @Override
+//            public void requestSuccess(String result) throws Exception {
+//                List<TabSelectionBean.HomeTabSelection> data=TabSelectionBean.getParseTabSelectionBean(result).getResultData().getItems();
+//                dTabSelection.addAll(data);
+//            }
+//        });
+//        //食品酒饮
+//        OkHttpManager.getAsync(CommonUrl.url6, new OkHttpManager.DataCallBack() {
+//            @Override
+//            public void requestFailure(Request request, IOException e) {
+//
+//            }
+//
+//            @Override
+//            public void requestSuccess(String result) throws Exception {
+//                List<TabFoodBean.Items> data=TabFoodBean.getParseTabFoodBean(result).getResultData().getItems();
+//                dTabFoodBean.addAll(data);
+//            }
+//        });
+//        //生鲜冷藏
+//        OkHttpManager.getAsync(CommonUrl.url7, new OkHttpManager.DataCallBack() {
+//            @Override
+//            public void requestFailure(Request request, IOException e) {
+//
+//            }
+//
+//            @Override
+//            public void requestSuccess(String result) throws Exception {
+//                List<TabFreshBean.Items> data=TabFreshBean.getParseTabFreshBean(result).getResultData().getItems();
+//                dTabFreshBean.addAll(data);
+//            }
+//        });
+//        //家电汽配
+//        OkHttpManager.getAsync(CommonUrl.url8, new OkHttpManager.DataCallBack() {
+//            @Override
+//            public void requestFailure(Request request, IOException e) {
+//
+//            }
+//
+//            @Override
+//            public void requestSuccess(String result) throws Exception {
+//                List<TabAppliancesBean.Items> data= TabAppliancesBean.getParseTabAppliancesBean(result).getResultData().getItems();
+//                dTabApplianceBean.addAll(data);
+//            }
+//        });
 
     }
 
     private void initAdapter() {
-        mAdapter = new HomeRecyclerAdapter(getActivity(),headImgs,headData,dataItem02,datas);
+        mAdapter = new HomeRecyclerAdapter(getActivity(),getFragmentManager(),headImgs,headData,dataItem02,datas,dTitles);
         mRv.setAdapter(mAdapter);
         GridLayoutManager manager = new GridLayoutManager(getActivity(),4);
         mRv.setLayoutManager(manager);
         manager.setSpanSizeLookup(new GridLayoutManager.SpanSizeLookup() {
             @Override
             public int getSpanSize(int position) {
-                if (position==1||position==0||position==6||position==7||position==13||position==14||position==23) {
+                if (position==1||position==0||position==6||position==7||position==13||position==14||position>=23) {
                     return 4;
                 }else if (position==19||position==20||position==21||position==22)
                 {
