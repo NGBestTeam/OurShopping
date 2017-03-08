@@ -74,6 +74,13 @@ public class MarketFragment extends Fragment{
         downData=new ArrayList<>();
 
         adapter=new MarketRecylerAdapter(getActivity(),upData,downData);
+        adapter.setOnItemClickListener(new MarketRecylerAdapter.onRecyclerViewItemClickListener() {
+            @Override
+            public void onItemClick(View v, int position) {
+                Toast.makeText(getContext(),"您点击了"+position,Toast.LENGTH_LONG).show();
+            }
+        });
+
         mRv.setAdapter(adapter);
 
         mRv.addItemDecoration(new MyItemDecoration());
