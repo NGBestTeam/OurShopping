@@ -23,6 +23,7 @@ import android.widget.TextView;
 import com.bestteam.supermarket.R;
 import com.bestteam.supermarket.bean.User;
 import com.bestteam.supermarket.utils.ConstantValue;
+import com.bestteam.supermarket.utils.MD5Util;
 import com.bestteam.supermarket.utils.SpUtil;
 import com.bestteam.supermarket.utils.ToastUtil;
 
@@ -72,14 +73,14 @@ public class LoginActivity extends AppCompatActivity {
     private static final int START_LOGIN = 0;
 
     /**
-     * 登陆成功的回执码
-     */
-    private static final int LOGIN_SUCCESS = 1;
-
-    /**
      * 登陆时出现的进度条
      */
     private ProgressDialog mDialog;
+
+    /**
+     * 开启手机登录界面时要求返回的回执码：
+     */
+    private static final int ENTER_MOBILE_LOGIN = 21;
 
     /**
      * 用来处理用户登陆事件的Handler
@@ -151,7 +152,7 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(LoginActivity.this, LoginMobileActivity.class);
-                startActivity(intent);
+                startActivityForResult(intent, ENTER_MOBILE_LOGIN);
             }
         });
         //忘记密码
@@ -262,6 +263,20 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     /**
+     * 监听手机登陆页面返回的结果信息
+     */
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        switch (requestCode) {
+            case ENTER_MOBILE_LOGIN:
+                if (resultCode == ConstantValue.MOBILE_LOGIN_OK) {
+                    finish();
+                }
+                break;
+        }
+    }
+
+    /**
      * 用户开始登陆的方法：
      */
     private void startLogin() {
@@ -275,9 +290,9 @@ public class LoginActivity extends AppCompatActivity {
                 if (e == null) {
                     SpUtil.putBoolean(getApplicationContext(), ConstantValue.IS_LOGIN, true);
                     SpUtil.putString(getApplicationContext(), ConstantValue.USER_NAME, userNameStr);
+                    passWordStr = MD5Util.encoder(passWordStr);
                     SpUtil.putString(getApplicationContext(), ConstantValue.USER_PASSWORD, passWordStr);
                     ToastUtil.show(getApplicationContext(), "登陆成功！");
-                    setResult(LOGIN_SUCCESS, null);
                     finish();
                 } else {
                     ToastUtil.show(getApplicationContext(), "密码输入不正确，请核对后输入");
