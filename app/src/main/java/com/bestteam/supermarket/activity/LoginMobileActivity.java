@@ -186,7 +186,7 @@ public class LoginMobileActivity extends AppCompatActivity {
         // 获得验证码
         String verifyCode = OtherUtils.getSMSCodeUtil();
 
-        BmobSMS.requestSMSCode(userPhone, "非洲大卖场：您的验证码是" + verifyCode + "，有效期为%ttl%分钟。", new QueryListener<Integer>() {
+        BmobSMS.requestSMSCode(userPhone, "非洲大卖场：您的验证码是" + verifyCode + "，有效期为5分钟。", new QueryListener<Integer>() {
             @Override
             public void done(Integer integer, BmobException e) {
                 if (e == null) {
