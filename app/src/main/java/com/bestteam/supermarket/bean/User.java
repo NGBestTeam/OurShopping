@@ -8,7 +8,7 @@ import cn.bmob.v3.datatype.BmobFile;
  */
 
 public class User extends BmobUser {
-    BmobFile photo;
+    private BmobFile photo;
 
     public BmobFile getPhoto() {
         return photo;

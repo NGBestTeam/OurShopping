@@ -224,7 +224,7 @@ public class HomeFragment extends Fragment {
                 if (result!=null){
                     List<HomeUpBean.Items> bean=HomeUpBean.getParseHomeUpBean(result).getResultData().getItems();
                     //第一个条目的数据
-                    for (int i = 0; i < 3; i++) {
+                    for (int i = 0; i <bean.get(0).getAdverts().size() ; i++) {
                         headImgs.add(bean.get(0).getAdverts().get(i).getImgPath());
                     }
                     headData.addAll(bean.get(1).getAdverts());

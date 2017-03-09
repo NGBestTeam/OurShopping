@@ -13,6 +13,7 @@ import android.widget.EditText;
 import com.bestteam.supermarket.R;
 import com.bestteam.supermarket.bean.User;
 import com.bestteam.supermarket.utils.ConstantValue;
+import com.bestteam.supermarket.utils.OtherUtils;
 import com.bestteam.supermarket.utils.SpUtil;
 import com.bestteam.supermarket.utils.ToastUtil;
 
@@ -31,8 +32,6 @@ import cn.bmob.v3.listener.UpdateListener;
 
 public class LoginMobileActivity extends AppCompatActivity {
 
-    //标题栏
-    private View loginMobileTitleId;
     //输入手机号
     private EditText loginMobilePhonenumberEdt;
     //获取验证码
@@ -58,16 +57,6 @@ public class LoginMobileActivity extends AppCompatActivity {
      * 发送验证码的时间
      */
     private long sendTime;
-
-    /**
-     * 当前验证码
-     */
-    private int verifyCode;
-
-    /**
-     * 短信发送成功的验证码：
-     */
-    private static final int SMS_SEND_SUCCESS = 102;
 
     /**
      * 获取验证码的点击事件的时间计算
@@ -104,7 +93,7 @@ public class LoginMobileActivity extends AppCompatActivity {
     }
 
     private void initViews() {
-        loginMobileTitleId = findViewById(R.id.login_mobile_title_id);
+        View loginMobileTitleId = findViewById(R.id.login_mobile_title_id);
         mBack = (Button) loginMobileTitleId.findViewById(R.id.login_mobile_title_backbtn);
         loginMobilePhonenumberEdt = (EditText) findViewById(R.id.login_mobile_phonenumber_edt);
         loginMobileGetverifyBtn = (Button) findViewById(R.id.login_mobile_getverify_btn);
@@ -194,13 +183,8 @@ public class LoginMobileActivity extends AppCompatActivity {
      * 获取短信验证码的方法
      */
     private void getSMSCode() {
-        // 创建验证码
-        StringBuilder sb = new StringBuilder();
-        for (int i = 0; i < 6; i++) {
-            int x = (int) (Math.random() * 10);
-            sb.append(x);
-        }
-        verifyCode = Integer.parseInt(sb.toString());
+        // 获得验证码
+        String verifyCode = OtherUtils.getSMSCodeUtil();
 
         BmobSMS.requestSMSCode(userPhone, "非洲大卖场：您的验证码是" + verifyCode + "，有效期为%ttl%分钟。", new QueryListener<Integer>() {
             @Override
@@ -209,8 +193,8 @@ public class LoginMobileActivity extends AppCompatActivity {
                     ToastUtil.show(getApplicationContext(), "验证码已发送成功，请您注意查收！");
                     loginMobileGetverifyBtn.setEnabled(false);
                     loginMobileGetverifyBtn.setBackgroundColor(Color.GRAY);
+                    loginMobileGetverifyBtn.setText("重新获取");
                     sendTime = System.currentTimeMillis();
-                    mHandler.sendEmptyMessage(SMS_SEND_SUCCESS);
                 }
             }
         });

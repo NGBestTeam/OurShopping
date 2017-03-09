@@ -195,6 +195,9 @@ public class HomeRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
                 for (int i = 0; i < 6; i++) {
                     viewHolder3.mTabLayout.getTabAt(i).setText(mTitles[i]);
                 }
+
+                viewHolder3.mViewPager.setCurrentItem(0);
+
                 break;
         }
     }
