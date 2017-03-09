@@ -6,7 +6,6 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -33,6 +32,7 @@ public class LoginRegisterActivity extends AppCompatActivity {
     private Button mNextBtn;
     private Button mLoginBtn;
     private Button mBack;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -109,7 +109,7 @@ public class LoginRegisterActivity extends AppCompatActivity {
                         if (list != null && list.size()>0) {
                             ToastUtil.show(getApplicationContext(), "该用户已经存在，如果忘记密码，请找回密码");
                         } else {
-                            Intent intent = new Intent(getApplicationContext(), RegisterInfoActivity.class);
+                            Intent intent = new Intent(LoginRegisterActivity.this, RegisterInfoActivity.class);
                             intent.putExtra(ConstantValue.USER_REGIST_PHONE, phone);
                             startActivity(intent);
                             finish();

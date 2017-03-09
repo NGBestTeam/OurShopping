@@ -117,6 +117,33 @@ public class RegisterInfoActivity extends AppCompatActivity {
     }
 
     /**
+     * 初始化
+     */
+    private void initUI() {
+        mDialog = new ProgressDialog(this);
+        mDialog.setTitle("提示：");
+        mDialog.setMessage("注册中，请稍后...");
+        mDialog.setIcon(R.mipmap.login_loading);
+        mDialog.setCancelable(false);
+
+        // 得到传入的手机号：
+        userPhone = getIntent().getStringExtra(ConstantValue.USER_REGIST_PHONE);
+
+        String showPhone = userPhone.substring(3, 7);
+        showPhone = userPhone.replace(showPhone, "****");
+
+        TextView tv_send_info = (TextView) findViewById(R.id.tv_send_info);
+        tv_send_info.append(showPhone);
+
+        mEt_yzm = (EditText) findViewById(R.id.et_yzm);
+        mBt_get_verify_code = (Button) findViewById(R.id.bt_get_verify_code);
+        mEt_setpd = (EditText) findViewById(R.id.et_setpd);
+        mEt_confirmpd = (EditText) findViewById(R.id.et_confirmpd);
+
+        mCd_regist = (CardView) findViewById(R.id.cd_regist);
+    }
+
+    /**
      * 发送短信的方法
      */
     private void sendSMSCode() {
@@ -136,36 +163,6 @@ public class RegisterInfoActivity extends AppCompatActivity {
                 }
             }
         });
-    }
-
-    /**
-     * 初始化
-     */
-    private void initUI() {
-        mDialog = new ProgressDialog(this);
-        mDialog.setTitle("提示：");
-        mDialog.setMessage("注册中，请稍后...");
-        mDialog.setIcon(R.mipmap.login_loading);
-        mDialog.setCancelable(false);
-
-        // 得到传入的手机号：
-        userPhone = getIntent().getStringExtra(ConstantValue.USER_REGIST_PHONE);
-
-        String showPhone = userPhone.substring(3, 7);
-        showPhone = userPhone.replace(showPhone, "****");
-
-        /*
-      title显示说明
-     */
-        TextView tv_send_info = (TextView) findViewById(R.id.tv_send_info);
-        tv_send_info.append(showPhone);
-
-        mEt_yzm = (EditText) findViewById(R.id.et_yzm);
-        mBt_get_verify_code = (Button) findViewById(R.id.bt_get_verify_code);
-        mEt_setpd = (EditText) findViewById(R.id.et_setpd);
-        mEt_confirmpd = (EditText) findViewById(R.id.et_confirmpd);
-
-        mCd_regist = (CardView) findViewById(R.id.cd_regist);
     }
 
     /**
