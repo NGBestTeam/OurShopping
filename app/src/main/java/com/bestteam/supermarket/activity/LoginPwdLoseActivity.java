@@ -30,7 +30,7 @@ public class LoginPwdLoseActivity extends AppCompatActivity {
 
     private EditText mPhoneNumber;
     private Button mNext;
-    private Button mBack ;
+    private Button mBack;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,14 +46,14 @@ public class LoginPwdLoseActivity extends AppCompatActivity {
         mPhoneNumber.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-                if(s==null){
+                if (s == null) {
                     mNext.setBackgroundColor(Color.parseColor("#c0c0c0"));
                 }
             }
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-                if(s!=null){
+                if (s != null) {
                     mNext.setBackgroundDrawable(getResources().getDrawable(R.color.login_orign));
                 }
 
@@ -61,8 +61,12 @@ public class LoginPwdLoseActivity extends AppCompatActivity {
 
             @Override
             public void afterTextChanged(Editable s) {
-                if(s.length()<=3){
+                if (s.length() >= 11) {
+                    mNext.setBackgroundColor(Color.parseColor("#FE6A12"));
+                    mNext.setEnabled(true);
+                } else {
                     mNext.setBackgroundColor(Color.parseColor("#c0c0c0"));
+                    mNext.setEnabled(false);
                 }
             }
         });
@@ -79,7 +83,7 @@ public class LoginPwdLoseActivity extends AppCompatActivity {
             public void onClick(View v) {
                 final String phone = mPhoneNumber.getText().toString();
 
-                if (phone.length()!=11) {
+                if (phone.length() != 11) {
                     ToastUtil.show(getApplicationContext(), "请输入正确的大陆手机号码");
                     return;
                 }
@@ -112,6 +116,5 @@ public class LoginPwdLoseActivity extends AppCompatActivity {
         mNext = (Button) findViewById(R.id.login_pwd_lose_next_btn);
         mPhoneNumber = (EditText) findViewById(R.id.login_find_pwd_edt);
     }
-
 
 }

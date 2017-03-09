@@ -344,10 +344,10 @@ public class HomeRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
             return mFragments.size();
         }
 
-        @Override
-        public CharSequence getPageTitle(int position) {
-            return mTitles[position];
-        }
+//        @Override
+//        public CharSequence getPageTitle(int position) {
+//            return mTitles[position];
+//        }
     }
 
 }
