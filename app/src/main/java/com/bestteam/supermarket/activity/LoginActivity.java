@@ -10,11 +10,9 @@ import android.support.v7.widget.CardView;
 import android.text.Editable;
 import android.text.Selection;
 import android.text.Spannable;
-import android.text.TextUtils;
 import android.text.TextWatcher;
 import android.text.method.HideReturnsTransformationMethod;
 import android.text.method.PasswordTransformationMethod;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -35,7 +33,7 @@ import cn.bmob.v3.listener.FindListener;
 import cn.bmob.v3.listener.SaveListener;
 
 /**
- *
+ * 登陆的主界面
  */
 
 public class LoginActivity extends AppCompatActivity {
@@ -112,7 +110,7 @@ public class LoginActivity extends AppCompatActivity {
         mDialog.setCancelable(false);
         mDialog.setIcon(R.mipmap.login_loading);
 
-        mTitleView = (View) findViewById(R.id.login_title_layout);
+        mTitleView = findViewById(R.id.login_title_layout);
         mBack = (Button) findViewById(R.id.login_title_bar_backbtn);
 
         //用户输入
@@ -282,6 +280,7 @@ public class LoginActivity extends AppCompatActivity {
     private void startLogin() {
         User user = new User();
         user.setUsername(userNameStr);
+        passWordStr = MD5Util.encoder(passWordStr);
         user.setPassword(passWordStr);
         user.login(new SaveListener<User>() {
             @Override

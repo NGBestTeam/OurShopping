@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="10dp"
+    tools:context="com.bestteam.supermarket.activity.RegisterInfoActivity">
+
+    <include
+        android:id="@+id/login_register_title_id"
+        layout="@layout/login_register_title"
+        />
+
+    <TextView
+        android:id="@+id/tv_send_info"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/login_register_title_id"
+        android:layout_marginTop="20dp"
+        android:text="已发送验证码到你的手机："
+        android:textSize="16sp"/>
+
+
+    <TextView
+        android:id="@+id/tv_yzm"
+        style="@style/regist_tv_style"
+        android:layout_below="@id/tv_send_info"
+        android:layout_marginTop="30dp"
+        android:text="验证码："/>
+
+    <EditText
+        android:id="@+id/et_yzm"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@id/tv_yzm"
+        android:layout_toRightOf="@id/tv_yzm"
+        android:hint="请输入短信验证码"
+        android:textSize="16sp"/>
+
+    <Button
+        android:id="@+id/bt_get_verify_code"
+        android:layout_width="wrap_content"
+        android:layout_height="35dp"
+        android:layout_toRightOf="@id/et_yzm"
+        android:layout_alignBaseline="@id/tv_yzm"
+        android:background="@drawable/raduio_btn_red"
+        android:text="获取验证码 "
+        android:textSize="16sp"
+        android:textColor="@color/login_red"/>
+
+    <TextView
+        android:id="@+id/tv_setpd"
+        style="@style/regist_tv_style"
+        android:layout_below="@id/tv_yzm"
+        android:text="设置密码："/>
+
+    <EditText
+        android:id="@+id/et_setpd"
+        android:inputType="numberPassword"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@id/tv_setpd"
+        android:layout_toRightOf="@id/tv_setpd"
+        android:hint="6-12数字，字母"
+        android:textSize="16sp"/>
+
+    <TextView
+        android:id="@+id/tv_confirmpd"
+        style="@style/regist_tv_style"
+        android:layout_below="@id/tv_setpd"
+        android:text="确认密码："/>
+
+    <EditText
+        android:id="@+id/et_confirmpd"
+        android:inputType="numberPassword"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@id/tv_confirmpd"
+        android:layout_toRightOf="@id/tv_confirmpd"
+        android:hint="确认新密码"
+        android:textSize="16sp"/>
+
+    <TextView
+        android:id="@+id/tv_referee"
+        style="@style/regist_tv_style"
+        android:layout_below="@id/tv_confirmpd"
+        android:text="推荐人号码："/>
+
+    <EditText
+        android:id="@+id/et_referee"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@id/tv_referee"
+        android:layout_toRightOf="@id/tv_referee"
+        android:hint="推荐人号码（非必填）"
+        android:textSize="16sp"/>
+
+    <TextView
+        android:id="@+id/tv_rulers"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tv_referee"
+        android:layout_marginTop="10dp"
+        android:text="注册即视同意"
+        android:textSize="10sp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@id/tv_rulers"
+        android:layout_toRightOf="@id/tv_rulers"
+        android:text="《非洲大卖场服务协议》"
+        android:textColor="#FF6100"
+        android:textSize="10sp"/>
+
+    <android.support.v7.widget.CardView
+        android:id="@+id/cd_regist"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tv_rulers"
+        android:layout_marginTop="15dp"
+        app:cardBackgroundColor="@color/login_orign"
+        app:cardCornerRadius="2dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:gravity="center"
+            android:text="登录"
+            android:textColor="#fff"
+            />
+    </android.support.v7.widget.CardView>
+
+</RelativeLayout>

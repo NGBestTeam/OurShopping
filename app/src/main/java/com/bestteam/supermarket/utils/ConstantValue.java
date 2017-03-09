@@ -46,4 +46,9 @@ public class ConstantValue {
      * 手机登录页面成功的返回码
      */
     public static final int MOBILE_LOGIN_OK = 22;
+
+    /**
+     * 注册界面1向注册界面传值时的key
+     */
+    public static final String USER_REGIST_PHONE = "user_regist_phone";
 }
