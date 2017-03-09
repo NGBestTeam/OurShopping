@@ -10,7 +10,6 @@
     <ImageView
         android:layout_width="80dp"
         android:layout_height="80dp"
-        android:src="@mipmap/ic_launcher"
         android:id="@+id/iv_rv_item02"
         />
     <TextView
