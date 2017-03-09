@@ -1,6 +1,10 @@
 package com.bestteam.supermarket.adapter.recycleview;
 
 import android.content.Context;
+import android.support.design.widget.TabLayout;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.widget.LinearLayoutManager;
@@ -18,6 +22,8 @@ import com.bestteam.supermarket.adapter.base.BaseRecyclerAdapter;
 import com.bestteam.supermarket.adapter.base.FullyLinearLayoutManager;
 import com.bestteam.supermarket.adapter.base.RecyclerViewHolder;
 import com.bestteam.supermarket.adapter.gridview.GvAdapter;
+import com.bestteam.supermarket.fragment.HomeDownTab01Fragment;
+import com.bestteam.supermarket.fragment.HomeDownTab02Fragment;
 import com.bestteam.supermarket.parse.HomePurchaseBean;
 import com.bestteam.supermarket.parse.HomeUpBean;
 import com.bestteam.supermarket.utils.CommonUrl;
@@ -33,20 +39,28 @@ import java.util.List;
 public class HomeRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
     private Context context;
+    private FragmentManager fragmentManager;
     private List<String> headImgs; //首页无限轮播图片数据源
     private List<HomeUpBean.Adverts> headData;
     private List<HomePurchaseBean.HomePurchase> dataItem02;
     private List<HomeUpBean.Adverts> datas;
     private BaseRecyclerAdapter.OnItemClickListener mClickListener;
+    private List<Fragment> mFragments=new ArrayList<>();
+
+     private List<String> dTitles;
+    private String[] mTitles = new String[]{"王金瑞","李俊伟","王宏彦","王金瑞","李俊伟","王宏彦"};
 
 
-
-    public HomeRecyclerAdapter(Context context,List<String> headImgs, List<HomeUpBean.Adverts> headData, List<HomePurchaseBean.HomePurchase> dataItem02,List<HomeUpBean.Adverts> datas) {
+    public HomeRecyclerAdapter(Context context,FragmentManager fragmentManager,List<String> headImgs, List<HomeUpBean.Adverts> headData,
+                               List<HomePurchaseBean.HomePurchase> dataItem02,List<HomeUpBean.Adverts> datas
+                            ,List<String> dTitles) {
         this.context = context;
+        this.fragmentManager=fragmentManager;
         this.headImgs = headImgs;
         this.headData = headData;
         this.dataItem02 = dataItem02;
         this.datas = datas;
+        this.dTitles=dTitles;
     }
 
     @Override
@@ -68,7 +82,7 @@ public class HomeRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
                 viewHolder=new ViewHolder2(view);
                 break;
             case 3:
-                view=LayoutInflater.from(parent.getContext()).inflate(R.layout.item_rv_ll_item03,parent,false);
+                view=LayoutInflater.from(parent.getContext()).inflate(R.layout.home_down_view,parent,false);
                 viewHolder=new ViewHolder3(view);
                 break;
 
@@ -163,9 +177,24 @@ public class HomeRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
                 }
                 break;
             case 3:
+                ViewHolder3 viewHolder3= (ViewHolder3) holder;
+                mFragments.add(new HomeDownTab01Fragment());
+                mFragments.add(new HomeDownTab02Fragment());
+                mFragments.add(new HomeDownTab01Fragment());
+                mFragments.add(new HomeDownTab02Fragment());
+                mFragments.add(new HomeDownTab01Fragment());
+                mFragments.add(new HomeDownTab02Fragment());
 
 
 
+                viewHolder3.mViewPager.setAdapter(new HomeDownFragmentAdapter(fragmentManager));
+                viewHolder3.mViewPager.setOffscreenPageLimit(1);
+                viewHolder3.mTabLayout.setupWithViewPager(viewHolder3.mViewPager);
+                viewHolder3.mTabLayout.setTabMode(TabLayout.MODE_SCROLLABLE);
+
+                for (int i = 0; i < 6; i++) {
+                    viewHolder3.mTabLayout.getTabAt(i).setText(mTitles[i]);
+                }
                 break;
         }
     }
@@ -180,7 +209,7 @@ public class HomeRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
 
     @Override
     public int getItemCount() {
-        return 23;
+        return 24;
     }
 
     @Override
@@ -189,8 +218,10 @@ public class HomeRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
             return 0;
         }else if (position==1){
             return 1;
-        } else {
+        } else if(position>1 && position<23){
             return 2;
+        }else{
+            return 3;
         }
     }
 
@@ -204,6 +235,7 @@ public class HomeRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
             gv = (GridView) itemView.findViewById(R.id.gv_item01);
         }
     }
+
     private  class ViewHolder1 extends RecyclerView.ViewHolder
     {
         RecyclerView rv;
@@ -212,6 +244,7 @@ public class HomeRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
             rv = (RecyclerView) itemView.findViewById(R.id.rv_item02);
         }
     }
+
     private   class ViewHolder2 extends RecyclerView.ViewHolder
     {
         ImageView iv;
@@ -220,12 +253,15 @@ public class HomeRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
             iv = (ImageView) itemView.findViewById(R.id.iv_rv_item03);
         }
     }
+
     private  class ViewHolder3 extends RecyclerView.ViewHolder
     {
-        ImageView iv;
+        TabLayout mTabLayout;
+        ViewPager mViewPager;
         private ViewHolder3(View itemView) {
             super(itemView);
-            iv = (ImageView) itemView.findViewById(R.id.iv_ll);
+           this.mTabLayout= (TabLayout) itemView.findViewById(R.id.home_down_tablayout);
+            this.mViewPager= (ViewPager) itemView.findViewById(R.id.home_down_viewpager);
         }
     }
 
@@ -288,8 +324,27 @@ public class HomeRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
     }
 
 
+    //底部视图的ViewPager适配器
+    private class HomeDownFragmentAdapter extends FragmentPagerAdapter{
 
+        public HomeDownFragmentAdapter(FragmentManager fm) {
+            super(fm);
+        }
 
+        @Override
+        public Fragment getItem(int position) {
+            return mFragments.get(position);
+        }
 
+        @Override
+        public int getCount() {
+            return mFragments.size();
+        }
+
+        @Override
+        public CharSequence getPageTitle(int position) {
+            return mTitles[position];
+        }
+    }
 
 }
