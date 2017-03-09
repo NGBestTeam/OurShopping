@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="90dp"
+              android:layout_height="50dp"
+    >
+    <Button
+        android:id="@+id/home_down_view_ry_item_btn"
+        android:layout_width="90dp"
+        android:layout_height="45dp"
+        android:background="#fff"
+        />
+    <View
+        android:id="@+id/home_down_view_ry_item_view"
+        android:layout_width="90dp"
+        android:layout_height="4dp"
+        android:background="@color/login_red"/>
+</LinearLayout>

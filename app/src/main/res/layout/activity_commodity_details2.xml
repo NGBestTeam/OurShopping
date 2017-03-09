@@ -27,6 +27,20 @@
                         android:layout_height="400dp"
                         android:src="@mipmap/ic_launcher"
                         />
+                    <TextView
+                        android:id="@+id/activity_commodity_title"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:padding="10dp"
+                        android:text="标题"
+                        />
+                    <TextView
+                        android:id="@+id/activity_commodity_money"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="123123"
+                        android:textColor="@color/login_red"
+                        />
                     <ImageView
                         android:layout_width="match_parent"
                         android:layout_height="400dp"

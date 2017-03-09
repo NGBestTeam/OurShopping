@@ -1,31 +1,33 @@
 package com.bestteam.supermarket.adapter.recycleview;
 
 import android.content.Context;
-import android.support.design.widget.TabLayout;
-import android.support.v4.app.Fragment;
+import android.content.Intent;
+import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.FrameLayout;
 import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.bestteam.supermarket.R;
+import com.bestteam.supermarket.activity.CommodityDetailsActivity;
 import com.bestteam.supermarket.adapter.base.BaseRecyclerAdapter;
 import com.bestteam.supermarket.adapter.base.FullyLinearLayoutManager;
 import com.bestteam.supermarket.adapter.base.RecyclerViewHolder;
 import com.bestteam.supermarket.adapter.gridview.GvAdapter;
 import com.bestteam.supermarket.fragment.HomeDownTab01Fragment;
-import com.bestteam.supermarket.fragment.HomeDownTab02Fragment;
 import com.bestteam.supermarket.parse.HomePurchaseBean;
 import com.bestteam.supermarket.parse.HomeUpBean;
+import com.bestteam.supermarket.parse.TabLabelBean;
 import com.bestteam.supermarket.utils.CommonUrl;
 import com.bumptech.glide.Glide;
 
@@ -45,22 +47,22 @@ public class HomeRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
     private List<HomePurchaseBean.HomePurchase> dataItem02;
     private List<HomeUpBean.Adverts> datas;
     private BaseRecyclerAdapter.OnItemClickListener mClickListener;
-    private List<Fragment> mFragments=new ArrayList<>();
 
-     private List<String> dTitles;
-    private String[] mTitles = new String[]{"王金瑞","李俊伟","王宏彦","王金瑞","李俊伟","王宏彦"};
+    private boolean isTag=true;
+
+     private  List<TabLabelBean.Items> dTitles;
 
 
     public HomeRecyclerAdapter(Context context,FragmentManager fragmentManager,List<String> headImgs, List<HomeUpBean.Adverts> headData,
                                List<HomePurchaseBean.HomePurchase> dataItem02,List<HomeUpBean.Adverts> datas
-                            ,List<String> dTitles) {
+                            , List<TabLabelBean.Items> titles) {
         this.context = context;
         this.fragmentManager=fragmentManager;
         this.headImgs = headImgs;
         this.headData = headData;
         this.dataItem02 = dataItem02;
         this.datas = datas;
-        this.dTitles=dTitles;
+        this.dTitles=titles;
     }
 
     @Override
@@ -126,14 +128,18 @@ public class HomeRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
                                 .into(holder.getImageView(R.id.iv_rv_item02));
                     }
 
-
-
                 };
                 viewHolder1.rv.setAdapter(adapter);
                 adapter.setOnItemClickListener(new BaseRecyclerAdapter.OnItemClickListener() {
                     @Override
                     public void onItemClick(View itemView, int pos) {
                         Toast.makeText(context, "22222"+pos, Toast.LENGTH_SHORT).show();
+                        Intent intent=new Intent(context, CommodityDetailsActivity.class);
+                        Bundle bundle=new Bundle();//discountPrice
+                        bundle.putString("titles",dataItem02.get(pos).getActivityTitle());
+                        bundle.putString("discountPrice",dataItem02.get(pos).getDiscountPrice());
+                        intent.putExtras(bundle);
+                        context.startActivity(intent);
                     }
                 });
 
@@ -177,26 +183,59 @@ public class HomeRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
                 }
                 break;
             case 3:
-                ViewHolder3 viewHolder3= (ViewHolder3) holder;
-                mFragments.add(new HomeDownTab01Fragment());
-                mFragments.add(new HomeDownTab02Fragment());
-                mFragments.add(new HomeDownTab01Fragment());
-                mFragments.add(new HomeDownTab02Fragment());
-                mFragments.add(new HomeDownTab01Fragment());
-                mFragments.add(new HomeDownTab02Fragment());
+                final ViewHolder3 viewHolder3= (ViewHolder3) holder;
+
+                BaseRecyclerAdapter<TabLabelBean.Items> adapter3=new BaseRecyclerAdapter<TabLabelBean.Items>(context,dTitles) {
+                    @Override
+                    public int getItemLayoutId(int viewType) {
+                        return R.layout.home_down_view_ry_item;
+                    }
+
+                    @Override
+                    public void bindData(RecyclerViewHolder holder, final int position, TabLabelBean.Items item) {
+                        holder.setText(R.id.home_down_view_ry_item_btn,dTitles.get(position).getAliasName());
+                        holder.setClickListener(R.id.home_down_view_ry_item_btn, new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                Toast.makeText(context, "pos"+position, Toast.LENGTH_SHORT).show();
+                                Bundle bundle=new Bundle();
+                                bundle.putInt("home_Down_01",position);
+                                Log.e("infoAA","--------");
+                                HomeDownTab01Fragment mFragment=new HomeDownTab01Fragment();
+                                mFragment.setArguments(bundle);
+                                fragmentManager.beginTransaction()
+                                        .replace(R.id.home_down_view_framelayout, mFragment).commit();
+
+                            }
+                        });
+//                        holder.setBackground(R.id.home_down_view_ry_item_view,Color.RED);
+
+                        }
 
 
+                };
 
-                viewHolder3.mViewPager.setAdapter(new HomeDownFragmentAdapter(fragmentManager));
-                viewHolder3.mViewPager.setOffscreenPageLimit(1);
-                viewHolder3.mTabLayout.setupWithViewPager(viewHolder3.mViewPager);
-                viewHolder3.mTabLayout.setTabMode(TabLayout.MODE_SCROLLABLE);
 
-                for (int i = 0; i < 6; i++) {
-                    viewHolder3.mTabLayout.getTabAt(i).setText(mTitles[i]);
-                }
+                viewHolder3.mRecyclerView.setAdapter(adapter3);
+                LinearLayoutManager layoutManager=new LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL,false);
+                viewHolder3.mRecyclerView.setLayoutManager(layoutManager);
 
-                viewHolder3.mViewPager.setCurrentItem(0);
+//                viewHolder3.mRecyclerView.getLayoutManager().smoothScrollToPosition(viewHolder3.mRecyclerView, null,4);
+
+                adapter3.setOnItemClickListener(new BaseRecyclerAdapter.OnItemClickListener() {
+                    @Override
+                    public void onItemClick(View itemView, int pos) {
+                        Toast.makeText(context, "pos"+pos, Toast.LENGTH_SHORT).show();
+                        HomeDownTab01Fragment  mFragment = new HomeDownTab01Fragment();
+                        Bundle bundle=new Bundle();
+                        bundle.putInt("home_Down_01",0);
+                        Log.e("infoAA","--------");
+                        mFragment.setArguments(bundle);
+                        fragmentManager.beginTransaction()
+                                .replace(R.id.home_down_view_framelayout, mFragment).commit();
+
+                    }
+                });
 
                 break;
         }
@@ -259,12 +298,13 @@ public class HomeRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
 
     private  class ViewHolder3 extends RecyclerView.ViewHolder
     {
-        TabLayout mTabLayout;
-        ViewPager mViewPager;
+
+        RecyclerView mRecyclerView;
+        FrameLayout mFrameLayout;
         private ViewHolder3(View itemView) {
             super(itemView);
-           this.mTabLayout= (TabLayout) itemView.findViewById(R.id.home_down_tablayout);
-            this.mViewPager= (ViewPager) itemView.findViewById(R.id.home_down_viewpager);
+            this.mRecyclerView= (RecyclerView) itemView.findViewById(R.id.home_down_view_titles);
+            this.mFrameLayout= (FrameLayout) itemView.findViewById(R.id.home_down_view_framelayout);
         }
     }
 
@@ -328,26 +368,26 @@ public class HomeRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
 
 
     //底部视图的ViewPager适配器
-    private class HomeDownFragmentAdapter extends FragmentPagerAdapter{
-
-        public HomeDownFragmentAdapter(FragmentManager fm) {
-            super(fm);
-        }
-
-        @Override
-        public Fragment getItem(int position) {
-            return mFragments.get(position);
-        }
-
-        @Override
-        public int getCount() {
-            return mFragments.size();
-        }
-
-//        @Override
-//        public CharSequence getPageTitle(int position) {
-//            return mTitles[position];
+//    private class HomeDownFragmentAdapter extends FragmentPagerAdapter{
+//
+//        public HomeDownFragmentAdapter(FragmentManager fm) {
+//            super(fm);
 //        }
-    }
+//
+//        @Override
+//        public Fragment getItem(int position) {
+//            return mFragments.get(position);
+//        }
+//
+//        @Override
+//        public int getCount() {
+//            return mFragments.size();
+//        }
+//
+////        @Override
+////        public CharSequence getPageTitle(int position) {
+////            return mTitles[position];
+////        }
+//    }
 
 }

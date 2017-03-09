@@ -43,7 +43,7 @@ public class HomeFragment extends Fragment {
     private List<HomeUpBean.Adverts> datas;
     private View view;
     //RecyclerView数据源 Down
-    private List<String> dTitles=new ArrayList<>();
+    private List<TabLabelBean.Items> dTitles=new ArrayList<>();
     private List<TabSelectionBean.HomeTabSelection> dTabSelection=new ArrayList<>();
     private List<TabFoodBean.Items> dTabFoodBean=new ArrayList<>();
     private List<TabFreshBean.Items> dTabFreshBean=new ArrayList<>();
@@ -97,66 +97,21 @@ public class HomeFragment extends Fragment {
 
             @Override
             public void requestSuccess(String result) throws Exception {
-                dTitles.add("今日精选");
+                dTitles.add(new TabLabelBean().new Items("精选商品","123",123,"123"));
+
                 List<TabLabelBean.Items> titles=TabLabelBean.getParseTabLabelBean(result).getResultData().getItems();
-                for (int i = 0; i < titles.size(); i++) {
-                    dTitles.add(titles.get(i).getAliasName());
-                }
+                dTitles.addAll(titles);
 
             }
         });
-//        // 今日精选内容
-//        OkHttpManager.getAsync(CommonUrl.url5, new OkHttpManager.DataCallBack() {
-//            @Override
-//            public void requestFailure(Request request, IOException e) {
+//        Bundle bundle=new Bundle();
+//        bundle.putInt("home_Down_01",0);
+//        Log.e("infoAA","--------");
+//        HomeDownTab01Fragment mFragment=new HomeDownTab01Fragment();
+//        mFragment.setArguments(bundle);
+//        getFragmentManager().beginTransaction()
+//                .replace(R.id.home_down_view_framelayout, mFragment).commit();
 //
-//            }
-//
-//            @Override
-//            public void requestSuccess(String result) throws Exception {
-//                List<TabSelectionBean.HomeTabSelection> data=TabSelectionBean.getParseTabSelectionBean(result).getResultData().getItems();
-//                dTabSelection.addAll(data);
-//            }
-//        });
-//        //食品酒饮
-//        OkHttpManager.getAsync(CommonUrl.url6, new OkHttpManager.DataCallBack() {
-//            @Override
-//            public void requestFailure(Request request, IOException e) {
-//
-//            }
-//
-//            @Override
-//            public void requestSuccess(String result) throws Exception {
-//                List<TabFoodBean.Items> data=TabFoodBean.getParseTabFoodBean(result).getResultData().getItems();
-//                dTabFoodBean.addAll(data);
-//            }
-//        });
-//        //生鲜冷藏
-//        OkHttpManager.getAsync(CommonUrl.url7, new OkHttpManager.DataCallBack() {
-//            @Override
-//            public void requestFailure(Request request, IOException e) {
-//
-//            }
-//
-//            @Override
-//            public void requestSuccess(String result) throws Exception {
-//                List<TabFreshBean.Items> data=TabFreshBean.getParseTabFreshBean(result).getResultData().getItems();
-//                dTabFreshBean.addAll(data);
-//            }
-//        });
-//        //家电汽配
-//        OkHttpManager.getAsync(CommonUrl.url8, new OkHttpManager.DataCallBack() {
-//            @Override
-//            public void requestFailure(Request request, IOException e) {
-//
-//            }
-//
-//            @Override
-//            public void requestSuccess(String result) throws Exception {
-//                List<TabAppliancesBean.Items> data= TabAppliancesBean.getParseTabAppliancesBean(result).getResultData().getItems();
-//                dTabApplianceBean.addAll(data);
-//            }
-//        });
 
     }
 

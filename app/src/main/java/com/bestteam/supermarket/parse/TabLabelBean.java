@@ -42,6 +42,13 @@ public class TabLabelBean {
 
         private String code;
 
+        public Items(String aliasName, String id, int sort, String code) {
+            this.aliasName = aliasName;
+            this.id = id;
+            this.sort = sort;
+            this.code = code;
+        }
+
         public void setAliasName(String aliasName){
             this.aliasName = aliasName;
         }
