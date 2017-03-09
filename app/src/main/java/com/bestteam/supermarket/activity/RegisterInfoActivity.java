@@ -191,6 +191,11 @@ public class RegisterInfoActivity extends AppCompatActivity {
                     return;
                 }
 
+                if (userPd.length() < 6) {
+                    ToastUtil.show(getApplicationContext(), "密码不能小于6位");
+                    return;
+                }
+
                 if (TextUtils.isEmpty(userPd) || TextUtils.isEmpty(confirmPd)) {
                     ToastUtil.show(getApplicationContext(), "密码不能为空！");
                     return;
