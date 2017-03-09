@@ -223,6 +223,7 @@ public class HomeFragment extends Fragment {
             public void requestSuccess(String result) throws Exception {
                 if (result!=null){
                     List<HomeUpBean.Items> bean=HomeUpBean.getParseHomeUpBean(result).getResultData().getItems();
+                    Log.e("infoAA",HomeUpBean.getParseHomeUpBean(result).getResultData().getItems()+"---chen");
                     //第一个条目的数据
                     for (int i = 0; i <bean.get(0).getAdverts().size() ; i++) {
                         headImgs.add(bean.get(0).getAdverts().get(i).getImgPath());

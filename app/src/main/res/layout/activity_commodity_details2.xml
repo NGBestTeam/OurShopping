@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/activity_commodity_details2"
-    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.bestteam.supermarket.activity.CommodityDetailsActivity">
@@ -67,4 +66,39 @@
 
     </com.bestteam.supermarket.utils.PullUpToLoadMore>
 
-</LinearLayout>
+    <LinearLayout
+        android:id="@+id/detail_linear"
+        android:layout_alignParentBottom="true"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="40dp">
+        <Button
+            android:id="@+id/detail_shop_car"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:background="#fff"
+            android:text="购物车"
+            />
+        <Button
+            android:id="@+id/detail_promptly"
+            android:layout_width="0dp"
+            android:layout_weight="3"
+            android:layout_height="match_parent"
+            android:background="@color/login_orign"
+            android:text="立即购买"
+            android:textColor="#fff"
+            android:gravity="center"
+            />
+        <Button
+            android:id="@+id/detail_add_car"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="3"
+            android:background="@color/login_red"
+            android:text="加入购物车"
+            android:textColor="#fff"
+            android:gravity="center"
+            />
+    </LinearLayout>
+</RelativeLayout>
