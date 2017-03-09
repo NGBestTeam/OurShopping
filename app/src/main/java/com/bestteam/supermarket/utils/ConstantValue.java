@@ -51,4 +51,14 @@ public class ConstantValue {
      * 注册界面1向注册界面传值时的key
      */
     public static final String USER_REGIST_PHONE = "user_regist_phone";
+
+    /**
+     * 找回密码时向重置密码界面传入的值
+     */
+    public static final String FIND_PWD_PHONE = "find_pwd_phone";
+
+    /**
+     * 用户的ObjectID值的Key
+     */
+    public static final String USER_OBJECT_ID = "user_object_id";
 }
