@@ -13,7 +13,7 @@
             android:layout_width="0dp"
             android:layout_weight="2"
             android:layout_height="50dp"
-            android:src="@mipmap/touxiang"
+            android:src="@mipmap/photo"
             />
 
         <LinearLayout
