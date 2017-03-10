@@ -9,8 +9,8 @@ import cn.bmob.v3.BmobObject;
 public class Commodity extends BmobObject {
     private String name;
     private String price;
-    private String count;
-    private User mUser;
+    private String buycount;
+    private String limitcount;
 
     public String getName() {
         return name;
@@ -28,19 +28,19 @@ public class Commodity extends BmobObject {
         this.price = price;
     }
 
-    public String getCount() {
-        return count;
+    public String getBuycount() {
+        return buycount;
     }
 
-    public void setCount(String count) {
-        this.count = count;
+    public void setBuycount(String buycount) {
+        this.buycount = buycount;
     }
 
-    public User getUser() {
-        return mUser;
+    public String getLimitcount() {
+        return limitcount;
     }
 
-    public void setUser(User user) {
-        mUser = user;
+    public void setLimitcount(String limitcount) {
+        this.limitcount = limitcount;
     }
 }
