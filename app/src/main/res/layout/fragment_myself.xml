@@ -1,103 +1,104 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
                 xmlns:app="http://schemas.android.com/apk/res-auto"
+                android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:orientation="vertical"
     >
+
     <android.support.v7.widget.Toolbar
         android:id="@+id/myself_tool_bar"
         android:layout_width="match_parent"
         android:layout_height="?android:actionBarSize"
         android:background="#00000000"
-        app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
         app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+        app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
         >
 
     </android.support.v7.widget.Toolbar>
+
     <LinearLayout
         android:id="@+id/myself_up_layout"
         android:layout_width="match_parent"
         android:layout_height="260dp"
-        android:orientation="vertical"
+        android:background="@mipmap/myself_up_bg"
         android:gravity="center"
-        android:background="@mipmap/myself_up_bg">
-        <android.support.v7.widget.CardView
+        android:orientation="vertical">
 
-            app:cardCornerRadius="50dp"
+        <de.hdodenhof.circleimageview.CircleImageView
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/myself_user_img"
             android:layout_width="60dp"
-            android:layout_centerInParent="true"
-            android:layout_height="60dp">
-            <ImageView
-                android:id="@+id/myself_user_img"
-                android:layout_width="60dp"
-                android:layout_height="60dp"
-                />
-        </android.support.v7.widget.CardView>
+            android:layout_height="60dp"
+            app:civ_border_color="#4A9BEC"
+            app:civ_border_width="0.5dp"
+            />
 
         <TextView
             android:id="@+id/myself_username_tv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:singleLine="true"
             android:maxLength="11"
+            android:layout_marginTop="10dp"
+            android:textColor="#FFFFFF"
+            android:singleLine="true"
             android:text="请登录/注册"
-           />
+            />
     </LinearLayout>
+
     <LinearLayout
         android:id="@+id/myself_linear2"
-        android:layout_below="@id/myself_up_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_below="@id/myself_up_layout"
         android:orientation="horizontal">
-        <TextView
-            android:id="@+id/myself_all_form_tv"
-            android:gravity="center"
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_height="wrap_content"
-            android:text="全部订单"
-            android:drawableTop="@mipmap/category_finance"/>
-        <TextView
-            android:id="@+id/myself_no_pay_tv"
-            android:gravity="center"
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_height="wrap_content"
-            android:text="待付款"
-            android:drawableTop="@mipmap/category_language"/>
 
         <TextView
-            android:gravity="center"
+            android:id="@+id/myself_all_form_tv"
             android:layout_width="0dp"
-            android:layout_weight="1"
             android:layout_height="wrap_content"
-            android:text="待收货"
+            android:layout_weight="1"
+            android:drawableTop="@mipmap/category_finance"
+            android:gravity="center"
+            android:text="全部订单"/>
+
+        <TextView
+            android:id="@+id/myself_no_pay_tv"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:drawableTop="@mipmap/category_language"
+            android:gravity="center"
+            android:text="待付款"/>
+
+        <TextView
+            android:id="@+id/myself_no_have_tv"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
             android:drawableTop="@mipmap/category_news"
-            android:id="@+id/myself_no_have_tv"/>
+            android:gravity="center"
+            android:text="待收货"/>
 
         <TextView
             android:id="@+id/myself_after_sale_tv"
-            android:gravity="center"
             android:layout_width="0dp"
-            android:layout_weight="1"
             android:layout_height="wrap_content"
-            android:text="退款/售后"
-            android:drawableTop="@mipmap/category_novel"/>
+            android:layout_weight="1"
+            android:drawableTop="@mipmap/category_novel"
+            android:gravity="center"
+            android:text="退款/售后"/>
     </LinearLayout>
+
     <android.support.v7.widget.RecyclerView
         android:id="@+id/myself_recycler_view"
-        android:layout_below="@id/myself_linear2"
-
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+
+        android:layout_height="wrap_content"
+        android:layout_below="@id/myself_linear2">
 
 
     </android.support.v7.widget.RecyclerView>
-
-
-
-
-
 
 
 </RelativeLayout>

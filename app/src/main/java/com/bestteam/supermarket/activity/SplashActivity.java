@@ -55,6 +55,11 @@ import okhttp3.Response;
 public class SplashActivity extends AppCompatActivity {
 
     /**
+     * 记录当前程序是否是第一次进入
+     */
+    private boolean mFirst_enter_app;
+
+    /**
      * ViewPager的适配器
      */
     private VpAdapter mVpAdapter = new VpAdapter();
@@ -191,18 +196,17 @@ public class SplashActivity extends AppCompatActivity {
         SpUtil.putString(this, ConstantValue.ENTER_APP_TIME, time);
 
         // 判断是否是第一次进入本程序
-        boolean first_enter_app = SpUtil.getBoolean(this, ConstantValue.FIRST_ENTER_APP, true);
-        if (first_enter_app) {
+        mFirst_enter_app = SpUtil.getBoolean(this, ConstantValue.FIRST_ENTER_APP, true);
+        if (mFirst_enter_app) {
             SpUtil.putBoolean(this, ConstantValue.FIRST_ENTER_APP, false);
             setContentView(R.layout.activity_splash_first_enter);
 
-            initFirstEnterUI();
-            initFirstEnterData();
         } else {
             setContentView(R.layout.activity_splash);
-            checkCurrentPermission();
             startTime = System.currentTimeMillis();
         }
+
+        checkCurrentPermission();
 
     }
 
@@ -287,7 +291,12 @@ public class SplashActivity extends AppCompatActivity {
             ActivityCompat.requestPermissions(this,
                     new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, WRITE_EXTERNAL_STORAGE_CODE);
         } else {
-            checkAppUpdate();
+            if (mFirst_enter_app) {
+                initFirstEnterUI();
+                initFirstEnterData();
+            } else {
+                checkAppUpdate();
+            }
         }
     }
 

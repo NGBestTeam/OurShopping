@@ -11,6 +11,7 @@ import android.os.Message;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.CardView;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -32,6 +33,7 @@ import cn.bmob.v3.exception.BmobException;
 import cn.bmob.v3.listener.QueryListener;
 import cn.bmob.v3.listener.SaveListener;
 import cn.bmob.v3.listener.UpdateListener;
+import cn.bmob.v3.listener.UploadFileListener;
 
 public class RegisterInfoActivity extends AppCompatActivity {
 
@@ -222,7 +224,7 @@ public class RegisterInfoActivity extends AppCompatActivity {
                                 ToastUtil.show(getApplicationContext(), "验证码已过期，请重新获取验证码");
                             } else {
                                 // 进行注册
-                                User user = new User();
+                                final User user = new User();
                                 user.setUsername(userPhone);
                                 String uPd = MD5Util.encoder(userPd);
                                 user.setPassword(uPd);
@@ -236,7 +238,7 @@ public class RegisterInfoActivity extends AppCompatActivity {
                                 if (!file.exists()) {
                                     file.mkdirs();
                                 }
-                                File tempFile = new File(file.getAbsolutePath() + photoName);
+                                File tempFile = new File(file.getAbsolutePath() + "/" + photoName);
 
                                 try {
                                     FileOutputStream fos = new FileOutputStream(tempFile);
@@ -248,22 +250,35 @@ public class RegisterInfoActivity extends AppCompatActivity {
                                     e1.printStackTrace();
                                 }
 
-                                BmobFile photoFile = new BmobFile(photoName, null, tempFile.toString());
-                                user.setPhoto(photoFile);
-
-                                user.signUp(new SaveListener<User>() {
+                                final BmobFile photoFile = new BmobFile(tempFile);
+                                photoFile.uploadblock(new UploadFileListener() {
                                     @Override
-                                    public void done(User user, BmobException e) {
-                                        mDialog.dismiss();
+                                    public void done(BmobException e) {
                                         if (e == null) {
-                                            // 注册成功
-                                            ToastUtil.show(getApplicationContext(), "注册成功！赶紧去登陆吧");
-                                            finish();
+                                            user.setPhoto(photoFile);
+                                            ToastUtil.show(getApplicationContext(), "头像上传成功！");
                                         } else {
-                                            // 注册失败
-                                            ToastUtil.show(getApplicationContext(), "注册失败：" + e.getMessage() + "\n"
-                                                    + e.getErrorCode());
+                                            Log.d("AA", "头像上传失败：" + e.getMessage()
+                                                    + "\n" + e.getErrorCode());
+                                            ToastUtil.show(getApplicationContext(), "头像上传失败：" + e.getMessage()
+                                                    + "\n" + e.getErrorCode());
                                         }
+
+                                        user.signUp(new SaveListener<User>() {
+                                            @Override
+                                            public void done(User user, BmobException e) {
+                                                mDialog.dismiss();
+                                                if (e == null) {
+                                                    // 注册成功
+                                                    ToastUtil.show(getApplicationContext(), "注册成功！赶紧去登陆吧");
+                                                    finish();
+                                                } else {
+                                                    // 注册失败
+                                                    ToastUtil.show(getApplicationContext(), "注册失败：" + e.getMessage() + "\n"
+                                                            + e.getErrorCode());
+                                                }
+                                            }
+                                        });
                                     }
                                 });
                             }

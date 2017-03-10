@@ -1,8 +1,10 @@
 package com.bestteam.supermarket.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.BottomSheetDialog;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.LinearLayoutManager;
 import android.text.Selection;
 import android.text.Spannable;
 import android.view.LayoutInflater;
@@ -10,9 +12,13 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.bestteam.supermarket.R;
+import com.bestteam.supermarket.utils.ConstantValue;
+import com.bestteam.supermarket.utils.SpUtil;
+import com.bestteam.supermarket.utils.ToastUtil;
 
 public class CommodityDetailsActivity extends AppCompatActivity {
 
@@ -22,10 +28,19 @@ public class CommodityDetailsActivity extends AppCompatActivity {
     private EditText mDetailAddCarNum;
     private EditText mCarNum;
     private TextView mAllMenoy;
-    private String mTitle;
-    private String mMoney;
     private TextView mTitleTv;
     private TextView mMoneyTv;
+
+    /**
+     * 用户是否登录的判断
+     */
+    private boolean isLogin;
+
+    /**
+     * 商品名称和价格
+     */
+    private String mTitle;
+    private String mMoney;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,7 +57,7 @@ public class CommodityDetailsActivity extends AppCompatActivity {
         mTitleTv = (TextView) findViewById(R.id.activity_commodity_title);
         mMoneyTv = (TextView) findViewById(R.id.activity_commodity_money);
 
-
+        isLogin = SpUtil.getBoolean(this, ConstantValue.IS_LOGIN, false);
     }
 
     private void initPresenter() {Bundle bundle=getIntent().getExtras();
@@ -56,6 +71,7 @@ public class CommodityDetailsActivity extends AppCompatActivity {
         mShop.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                isLogin();
                 showProBottomDiaLog();
             }
         });
@@ -63,6 +79,7 @@ public class CommodityDetailsActivity extends AppCompatActivity {
         mAddCar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                isLogin();
                 showAddBottomDiaLog();
             }
         });
@@ -70,10 +87,19 @@ public class CommodityDetailsActivity extends AppCompatActivity {
         mShopCar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                isLogin();
             }
         });
 
+    }
+
+    private void isLogin() {
+        if (!isLogin) {
+            ToastUtil.show(getApplicationContext(), "请先登录吧！");
+            Intent intent = new Intent(CommodityDetailsActivity.this, LoginActivity.class);
+            startActivity(intent);
+            finish();
+        }
     }
 
 
@@ -113,6 +139,7 @@ public class CommodityDetailsActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 //加入购物
+
             }
         });
         detailAddCarAdd.setOnClickListener(new View.OnClickListener() {
