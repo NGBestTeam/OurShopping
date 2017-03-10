@@ -289,8 +289,7 @@ public class LoginActivity extends AppCompatActivity {
                 if (e == null) {
                     SpUtil.putBoolean(getApplicationContext(), ConstantValue.IS_LOGIN, true);
                     SpUtil.putString(getApplicationContext(), ConstantValue.USER_NAME, userNameStr);
-                    passWordStr = MD5Util.encoder(passWordStr);
-                    SpUtil.putString(getApplicationContext(), ConstantValue.USER_PASSWORD, passWordStr);
+                    SpUtil.putString(getApplication(), ConstantValue.USER_OBJECT_ID, user.getObjectId());
                     ToastUtil.show(getApplicationContext(), "登陆成功！");
                     finish();
                 } else {

@@ -38,9 +38,9 @@ public class ConstantValue {
     public static final String USER_NAME = "";
 
     /**
-     * 记录用户的密码
+     * 记录用户的id
      */
-    public static final String USER_PASSWORD = "";
+    public static final String USER_ID = "";
 
     /**
      * 手机登录页面成功的返回码

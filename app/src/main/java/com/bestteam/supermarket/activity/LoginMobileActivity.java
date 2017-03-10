@@ -49,6 +49,11 @@ public class LoginMobileActivity extends AppCompatActivity {
     private String userPhone;
 
     /**
+     * 用户的ObjectId
+     */
+    private String userId;
+
+    /**
      * 账号未注册的状态码
      */
     private static final int USER_NO_REGIST = 101;
@@ -131,6 +136,7 @@ public class LoginMobileActivity extends AppCompatActivity {
                             // 证明账号不存在
                             ToastUtil.show(getApplicationContext(), "该手机号尚未注册");
                         } else {
+                            userId = list.get(0).getObjectId();
                             mHandler.sendEmptyMessage(USER_NO_REGIST);
                         }
                     }
@@ -165,6 +171,7 @@ public class LoginMobileActivity extends AppCompatActivity {
                                 // 登陆通过
                                 SpUtil.putBoolean(getApplicationContext(), ConstantValue.IS_LOGIN, true);
                                 SpUtil.putString(getApplicationContext(), ConstantValue.USER_NAME, userPhone);
+                                SpUtil.putString(getApplicationContext(), ConstantValue.USER_OBJECT_ID, userId);
                                 setResult(ConstantValue.MOBILE_LOGIN_OK);
                                 finish();
                             }

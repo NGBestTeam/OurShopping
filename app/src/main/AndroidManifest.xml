@@ -57,6 +57,9 @@
         <activity android:name=".activity.ResetPwdActivity"
                   android:screenOrientation="portrait">
         </activity>
+        <activity android:name=".activity.CommodityDetailsActivity"
+                  android:screenOrientation="portrait">
+        </activity>
     </application>
 
 </manifest>

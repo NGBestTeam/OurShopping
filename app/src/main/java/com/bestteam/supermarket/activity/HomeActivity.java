@@ -96,9 +96,6 @@ public class HomeActivity extends AppCompatActivity {
                 // 登录状态变为否
                 SpUtil.putBoolean(this, ConstantValue.IS_LOGIN, false);
 
-                // 将已保存的密码清空
-                SpUtil.putString(this, ConstantValue.USER_PASSWORD, "");
-
                 // 进入登陆界面
                 startEnterLogin();
             } else {
