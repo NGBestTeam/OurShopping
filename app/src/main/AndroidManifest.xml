@@ -1,25 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.bestteam.supermarket">
+          package="com.bestteam.supermarket">
 
-    <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
 
     <!-- Bmob云后端云权限 -->
-    <!-- 获取GSM（2g）、WCDMA（联通3g）等网络状态的信息 -->
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-    <!-- 获取wifi网络状态的信息 -->
-    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
-    <!-- 保持CPU 运转，屏幕和键盘灯有可能是关闭的,用于文件上传和下载 -->
-    <uses-permission android:name="android.permission.WAKE_LOCK" />
-    <!-- 允许读取手机状态 用于创建BmobInstallation -->
-    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
-
-
-
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
-    <uses-permission android:name="android.permission.CAMERA"/>
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <!--获取GSM（2g）、WCDMA（联通3g）等网络状态的信息  -->
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <!--获取wifi网络状态的信息 -->
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
+    <!--保持CPU 运转，屏幕和键盘灯有可能是关闭的,用于文件上传和下载 -->
+    <uses-permission android:name="android.permission.WAKE_LOCK"/>
+    <!--允许读取手机状态 用于创建BmobInstallation-->
+    <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
 
     <application
         android:name=".initapp.InitApp"
@@ -31,36 +25,41 @@
             android:name=".activity.SplashActivity"
             android:screenOrientation="portrait">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+                <action android:name="android.intent.action.MAIN"/>
 
-                <category android:name="android.intent.category.LAUNCHER" />
+                <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
-        <activity
-            android:name=".activity.HomeActivity"
-            android:screenOrientation="portrait" />
+
+        <activity android:name=".activity.HomeActivity"
+                  android:screenOrientation="portrait"/>
+
         <activity
             android:name=".activity.LoginActivity"
-            android:screenOrientation="portrait"></activity>
+            android:screenOrientation="portrait">
+
+        </activity>
         <activity
             android:name=".activity.LoginMobileActivity"
-            android:screenOrientation="portrait"></activity>
+            android:screenOrientation="portrait">
+        </activity>
         <activity
             android:name=".activity.LoginPwdLoseActivity"
-            android:screenOrientation="portrait"></activity>
+            android:screenOrientation="portrait">
+        </activity>
         <activity
             android:name=".activity.LoginRegisterActivity"
-            android:screenOrientation="portrait"></activity>
-        <activity
-            android:name=".activity.RegisterInfoActivity"
-            android:screenOrientation="portrait"></activity>
-        <activity
-            android:name=".activity.ResetPwdActivity"
-            android:screenOrientation="portrait"></activity>
-        <activity
-            android:name=".activity.CommodityDetailsActivity"
-            android:screenOrientation="portrait"></activity>
-        <activity android:name=".activity.ChangeInfoActivity"></activity>
+            android:screenOrientation="portrait">
+        </activity>
+        <activity android:name=".activity.RegisterInfoActivity"
+                  android:screenOrientation="portrait">
+        </activity>
+        <activity android:name=".activity.ResetPwdActivity"
+                  android:screenOrientation="portrait">
+        </activity>
+        <activity android:name=".activity.CommodityDetailsActivity"
+                  android:screenOrientation="portrait">
+        </activity>
     </application>
 
 </manifest>
