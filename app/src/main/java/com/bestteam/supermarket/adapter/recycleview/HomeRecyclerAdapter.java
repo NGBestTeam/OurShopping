@@ -8,7 +8,6 @@ import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -24,7 +23,6 @@ import com.bestteam.supermarket.adapter.base.BaseRecyclerAdapter;
 import com.bestteam.supermarket.adapter.base.FullyLinearLayoutManager;
 import com.bestteam.supermarket.adapter.base.RecyclerViewHolder;
 import com.bestteam.supermarket.adapter.gridview.GvAdapter;
-import com.bestteam.supermarket.fragment.HomeDownTab01Fragment;
 import com.bestteam.supermarket.parse.HomePurchaseBean;
 import com.bestteam.supermarket.parse.HomeUpBean;
 import com.bestteam.supermarket.parse.TabLabelBean;
@@ -47,7 +45,7 @@ public class HomeRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
     private List<HomePurchaseBean.HomePurchase> dataItem02;
     private List<HomeUpBean.Adverts> datas;
     private BaseRecyclerAdapter.OnItemClickListener mClickListener;
-
+    private int last=0;
     private boolean isTag=true;
 
      private  List<TabLabelBean.Items> dTitles;
@@ -93,7 +91,7 @@ public class HomeRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
     }
 
     @Override
-    public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
+    public void onBindViewHolder(final RecyclerView.ViewHolder holder, int position) {
 
         int itemViewType=getItemViewType(position);
         switch (itemViewType){
@@ -136,6 +134,7 @@ public class HomeRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
                         Toast.makeText(context, "22222"+pos, Toast.LENGTH_SHORT).show();
                         Intent intent=new Intent(context, CommodityDetailsActivity.class);
                         Bundle bundle=new Bundle();//discountPrice
+                        bundle.putString("activityImgPath",dataItem02.get(pos).getActivityImgPath());
                         bundle.putString("titles",dataItem02.get(pos).getActivityTitle());
                         bundle.putString("discountPrice",dataItem02.get(pos).getDiscountPrice());
                         intent.putExtras(bundle);
@@ -183,59 +182,53 @@ public class HomeRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
                 }
                 break;
             case 3:
-                final ViewHolder3 viewHolder3= (ViewHolder3) holder;
+//                final ViewHolder3 viewHolder3= (ViewHolder3) holder;
+//
+//                final BaseRecyclerAdapter<TabLabelBean.Items> adapter3=new BaseRecyclerAdapter<TabLabelBean.Items>(context,dTitles) {
+//                    @Override
+//                    public int getItemLayoutId(int viewType) {
+//                        return R.layout.home_down_view_ry_item;
+//                    }
+//
+//                    @Override
+//                    public void bindData(RecyclerViewHolder holder, final int position, TabLabelBean.Items item) {
+//
+//
+//                        holder.setText(R.id.home_down_view_ry_item_btn,dTitles.get(position).getAliasName());
+//
+//
+//
+//                        holder.setClickListener(R.id.home_down_view_ry_item_btn, new View.OnClickListener() {
+//                            @Override
+//                            public void onClick(View v) {
+//                                last=position;
+//                                Toast.makeText(context, "pos"+position, Toast.LENGTH_SHORT).show();
+//                                Bundle bundle=new Bundle();
+//                                bundle.putInt("home_Down_01",position);
+//                                Log.e("infoAA","--------");
+//                                HomeDownTab01Fragment mFragment=new HomeDownTab01Fragment();
+//                                mFragment.setArguments(bundle);
+//                                fragmentManager.beginTransaction()
+//                                        .replace(R.id.home_down_view_framelayout, mFragment).commit();
+//                            }
+//                        });
+//
+//                    }
+//                };
+//
+//                viewHolder3.mRecyclerView.setAdapter(adapter3);
+//                LinearLayoutManager layoutManager=new LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL,false);
+//                viewHolder3.mRecyclerView.setLayoutManager(layoutManager);
 
-                BaseRecyclerAdapter<TabLabelBean.Items> adapter3=new BaseRecyclerAdapter<TabLabelBean.Items>(context,dTitles) {
-                    @Override
-                    public int getItemLayoutId(int viewType) {
-                        return R.layout.home_down_view_ry_item;
-                    }
-
-                    @Override
-                    public void bindData(RecyclerViewHolder holder, final int position, TabLabelBean.Items item) {
-                        holder.setText(R.id.home_down_view_ry_item_btn,dTitles.get(position).getAliasName());
-                        holder.setClickListener(R.id.home_down_view_ry_item_btn, new View.OnClickListener() {
-                            @Override
-                            public void onClick(View v) {
-                                Toast.makeText(context, "pos"+position, Toast.LENGTH_SHORT).show();
-                                Bundle bundle=new Bundle();
-                                bundle.putInt("home_Down_01",position);
-                                Log.e("infoAA","--------");
-                                HomeDownTab01Fragment mFragment=new HomeDownTab01Fragment();
-                                mFragment.setArguments(bundle);
-                                fragmentManager.beginTransaction()
-                                        .replace(R.id.home_down_view_framelayout, mFragment).commit();
-
-                            }
-                        });
-//                        holder.setBackground(R.id.home_down_view_ry_item_view,Color.RED);
-
-                        }
-
-
-                };
-
-
+                ViewHolder3 viewHolder3= (ViewHolder3) holder;
+                HomeDownRytestAdapter adapter3=new HomeDownRytestAdapter(context,dTitles,viewHolder3.mFrameLayout,fragmentManager);
                 viewHolder3.mRecyclerView.setAdapter(adapter3);
                 LinearLayoutManager layoutManager=new LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL,false);
                 viewHolder3.mRecyclerView.setLayoutManager(layoutManager);
+//                ((ViewHolder3) holder).mRecyclerView.getChildAt(0).performClick();
 
-//                viewHolder3.mRecyclerView.getLayoutManager().smoothScrollToPosition(viewHolder3.mRecyclerView, null,4);
 
-                adapter3.setOnItemClickListener(new BaseRecyclerAdapter.OnItemClickListener() {
-                    @Override
-                    public void onItemClick(View itemView, int pos) {
-                        Toast.makeText(context, "pos"+pos, Toast.LENGTH_SHORT).show();
-                        HomeDownTab01Fragment  mFragment = new HomeDownTab01Fragment();
-                        Bundle bundle=new Bundle();
-                        bundle.putInt("home_Down_01",0);
-                        Log.e("infoAA","--------");
-                        mFragment.setArguments(bundle);
-                        fragmentManager.beginTransaction()
-                                .replace(R.id.home_down_view_framelayout, mFragment).commit();
 
-                    }
-                });
 
                 break;
         }
@@ -287,7 +280,7 @@ public class HomeRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
         }
     }
 
-    private   class ViewHolder2 extends RecyclerView.ViewHolder
+    private  class ViewHolder2 extends RecyclerView.ViewHolder
     {
         ImageView iv;
         private ViewHolder2(View itemView) {
@@ -303,8 +296,10 @@ public class HomeRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
         FrameLayout mFrameLayout;
         private ViewHolder3(View itemView) {
             super(itemView);
+
             this.mRecyclerView= (RecyclerView) itemView.findViewById(R.id.home_down_view_titles);
             this.mFrameLayout= (FrameLayout) itemView.findViewById(R.id.home_down_view_framelayout);
+
         }
     }
 

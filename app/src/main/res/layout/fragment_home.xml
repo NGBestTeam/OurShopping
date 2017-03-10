@@ -16,5 +16,14 @@
       android:id="@+id/main_tool_bar"
       layout="@layout/title_bar"
     />
+    <android.support.v7.widget.RecyclerView
+        android:background="@color/colorBlack"
+        android:layout_below="@id/main_tool_bar"
+        android:id="@+id/main_view_titles"
+        android:visibility="gone"
+        android:layout_width="match_parent"
+        android:layout_height="50dp">
+
+    </android.support.v7.widget.RecyclerView>
 
 </RelativeLayout>

@@ -4,7 +4,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.BottomSheetDialog;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.LinearLayoutManager;
 import android.text.Selection;
 import android.text.Spannable;
 import android.view.LayoutInflater;
@@ -12,13 +11,14 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.bestteam.supermarket.R;
 import com.bestteam.supermarket.utils.ConstantValue;
 import com.bestteam.supermarket.utils.SpUtil;
 import com.bestteam.supermarket.utils.ToastUtil;
+import com.bestteam.supermarket.utils.CommonUrl;
+import com.bumptech.glide.Glide;
 
 public class CommodityDetailsActivity extends AppCompatActivity {
 
@@ -42,6 +42,8 @@ public class CommodityDetailsActivity extends AppCompatActivity {
     private String mTitle;
     private String mMoney;
 
+    private ImageView mImag;
+    private String mImgPath;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -58,12 +60,16 @@ public class CommodityDetailsActivity extends AppCompatActivity {
         mMoneyTv = (TextView) findViewById(R.id.activity_commodity_money);
 
         isLogin = SpUtil.getBoolean(this, ConstantValue.IS_LOGIN, false);
+        mImag = (ImageView) findViewById(R.id.activity_commodity_details2_img);
+
     }
 
     private void initPresenter() {Bundle bundle=getIntent().getExtras();
         mTitle = bundle.getString("titles");
         mMoney = bundle.getString("discountPrice");
+        mImgPath= CommonUrl.replaceImgUrl(bundle.getString("activityImgPath"));
 
+        Glide.with(this).load(mImgPath).into(mImag);
         mTitleTv.setText(mTitle);
         mMoneyTv.setText(mMoney);
 
