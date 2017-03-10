@@ -1,11 +1,15 @@
 package com.bestteam.supermarket.fragment;
 
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
+import android.os.Environment;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
@@ -16,10 +20,20 @@ import android.widget.Toast;
 
 import com.bestteam.supermarket.R;
 import com.bestteam.supermarket.adapter.recycleview.MySelfRecyclerAdapter;
+import com.bestteam.supermarket.bean.User;
 import com.bestteam.supermarket.parse.MySlefDownBean;
+import com.bestteam.supermarket.utils.ConstantValue;
+import com.bestteam.supermarket.utils.SpUtil;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
+
+import cn.bmob.v3.BmobQuery;
+import cn.bmob.v3.datatype.BmobFile;
+import cn.bmob.v3.exception.BmobException;
+import cn.bmob.v3.listener.DownloadFileListener;
+import cn.bmob.v3.listener.QueryListener;
 
 /**
  * Created by myself on 17/3/6.
@@ -52,10 +66,49 @@ public class MyselfFragment extends Fragment{
         mView = inflater.inflate(R.layout.fragment_myself,container,false);
 
         initView();
+        initInfo();
         setData();
         initControl();
 
         return mView;
+    }
+
+    private void initInfo() {
+        boolean isLogin=SpUtil.getBoolean(getContext(), ConstantValue.IS_LOGIN,false);
+        if (isLogin==true){
+            //已经登陆
+            BmobQuery<User> query=new BmobQuery<>();
+            query.getObject(SpUtil.getString(getContext(),ConstantValue.USER_OBJECT_ID,""), new QueryListener<User>() {
+                @Override
+                public void done(User user, BmobException e) {
+                    if (user!=null){
+                        mUserName.setText(user.getUsername());
+                       BmobFile file=user.getPhoto();
+                        File saveFile = new File(Environment.getExternalStorageDirectory(), file.getFilename());
+                        if (!saveFile.exists()){
+                            saveFile.mkdirs();
+                        }
+                        Log.e("info",saveFile+"11");
+                        file.download(saveFile, new DownloadFileListener() {
+                            @Override
+                            public void done(String s, BmobException e) {
+                                Log.e("info",s+"22");
+                                Bitmap bitmap=BitmapFactory.decodeFile(s);
+                                mUserImage.setImageBitmap(bitmap);
+                            }
+
+                            @Override
+                            public void onProgress(Integer integer, long l) {
+                                Log.e("info",integer+"");
+
+                            }
+                        });
+
+                    }
+                }
+            });
+
+                    }
     }
 
     //Model 数据
