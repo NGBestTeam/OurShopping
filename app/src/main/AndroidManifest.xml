@@ -60,6 +60,7 @@
         <activity android:name=".activity.CommodityDetailsActivity"
                   android:screenOrientation="portrait">
         </activity>
+        <activity android:name=".activity.ChangeInfoActivity"/>
     </application>
 
 </manifest>
