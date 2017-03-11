@@ -130,6 +130,7 @@ public class CommodityDetailsActivity extends AppCompatActivity {
                 if (e == null) {
                     // 查询成功
                     mCommodityService = list.get(0);
+                    Log.d("AA", mCommodityService.getName());
                 } else {
                     ToastUtil.show(getApplicationContext(), "服务器开小差了哦");
                 }
@@ -140,6 +141,8 @@ public class CommodityDetailsActivity extends AppCompatActivity {
     private void initView() {
         name = getIntent().getStringExtra("titles");
         mUser = BmobUser.getCurrentUser(User.class);
+
+        Log.d("AA", name);
 
         mDialog = new ProgressDialog(this);
         mDialog.setTitle("提示");
@@ -232,7 +235,7 @@ public class CommodityDetailsActivity extends AppCompatActivity {
             mCommodityService.setBuycount(buyCount + "");
         }
 
-        int newLimiteCount = serviceLimitCount - Integer.parseInt(mCommodityService.getBuycount());
+        int newLimiteCount = serviceLimitCount - buyCount;
         mCommodityService.setLimitcount(newLimiteCount + "");
 
         // 先将商品信息进行更新后才能添加至购物车。
@@ -315,14 +318,17 @@ public class CommodityDetailsActivity extends AppCompatActivity {
                 User user = new User();
                 user.setObjectId(mUser.getObjectId());
                 query.addWhereRelatedTo("commodity", new BmobPointer(user));
-                query.setLimit(1);
                 query.findObjects(new FindListener<Commodity>() {
                     @Override
                     public void done(List<Commodity> list, BmobException e) {
                         if (list != null && list.size() > 0) {
-                            // 购物车中有此商品
-                            ToastUtil.show(getApplicationContext(), "您的购物车中已有此商品");
-                            mCommodityService = list.get(0);
+                            // 找到此商品
+                            for (Commodity commodity : list) {
+                                if (commodity.getName().equals(name)) {
+                                    ToastUtil.show(getApplicationContext(), "您的购物车中已有此商品");
+                                    mCommodityService = commodity;
+                                }
+                            }
                         }
                         mHandler.sendEmptyMessage(QUERY_FINISH);
                     }

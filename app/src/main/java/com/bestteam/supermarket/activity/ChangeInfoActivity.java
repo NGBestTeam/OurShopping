@@ -1,12 +1,17 @@
 package com.bestteam.supermarket.activity;
 
+import android.Manifest;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
 import android.provider.MediaStore;
+import android.support.annotation.NonNull;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.Gravity;
@@ -37,6 +42,7 @@ import cn.bmob.v3.exception.BmobException;
 import cn.bmob.v3.listener.DownloadFileListener;
 import cn.bmob.v3.listener.QueryListener;
 import cn.bmob.v3.listener.SaveListener;
+import cn.bmob.v3.listener.UpdateListener;
 import cn.bmob.v3.listener.UploadFileListener;
 
 public class ChangeInfoActivity extends AppCompatActivity implements CustomPopupWindow.OnItemClickListener {
@@ -55,9 +61,39 @@ public class ChangeInfoActivity extends AppCompatActivity implements CustomPopup
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_change_info);
-        initView();
+
+        checkCurrentPermission();
+
     }
 
+    /**
+     * 获取运行时权限
+     */
+    private void checkCurrentPermission() {
+        if (ContextCompat.checkSelfPermission(this, Manifest.permission.CAMERA)
+                != PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(this,
+                    new String[]{Manifest.permission.CAMERA, Manifest.permission.CAMERA}, 0);
+        } else {
+            initView();
+        }
+    }
+
+    /**
+     * 申请权限后的结果
+     */
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        switch (requestCode) {
+            case 0:
+                if (grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                    checkCurrentPermission();
+                } else {
+                    ToastUtil.show(getApplicationContext(), "拒绝权限后部分功能无法使用哦!");
+                }
+                break;
+        }
+    }
 
     private void initView() {
         mEt = (EditText) findViewById(R.id.change_et_id);
@@ -157,12 +193,21 @@ public class ChangeInfoActivity extends AppCompatActivity implements CustomPopup
         }
 
         final BmobFile photoFile = new BmobFile(tempFile);
-        user.setPhoto(photoFile);
         photoFile.uploadblock(new UploadFileListener() {
             @Override
             public void done(BmobException e) {
                 if (e == null) {
-
+                    user.setPhoto(photoFile);
+                    user.update(new UpdateListener() {
+                        @Override
+                        public void done(BmobException e) {
+                            if (e==null){
+                                Log.e("info","成功");
+                            }else {
+                                Log.e("info","失败"+e.getMessage()+e.getErrorCode());
+                            }
+                        }
+                    });
                     ToastUtil.show(getApplicationContext(), "上传成功！");
                 } else {
                     Log.d("AA", "上传失败：" + e.getMessage()
@@ -171,18 +216,6 @@ public class ChangeInfoActivity extends AppCompatActivity implements CustomPopup
                             + "\n" + e.getErrorCode());
                 }
 
-            }
-        });
-
-        user.signUp(new SaveListener<String>() {
-
-            @Override
-            public void done(String s, BmobException e) {
-                if (e==null){
-                    Log.e("info","成功");
-                }else {
-                    Log.e("info","失败"+e.getMessage()+e.getErrorCode());
-                }
             }
         });
 
@@ -252,7 +285,7 @@ public class ChangeInfoActivity extends AppCompatActivity implements CustomPopup
              *   100  图片的质量（0-100）
              *   out  文件输出流
              */
-            mBitmap.compress(Bitmap.CompressFormat.PNG, 100, out);
+            mBitmap.compress(Bitmap.CompressFormat.JPEG, 100, out);
             out.flush();
             out.close();
             Toast.makeText(this,f.getAbsolutePath().toString(),Toast.LENGTH_SHORT).show();
@@ -299,8 +332,6 @@ public class ChangeInfoActivity extends AppCompatActivity implements CustomPopup
             intent.putExtra("output", uri);
             intent.putExtra("scale", true);
             startActivityForResult(intent, 0x2);
-        } else {
-            return;
         }
     }
 

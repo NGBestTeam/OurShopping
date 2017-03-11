@@ -162,6 +162,8 @@ public class RegisterInfoActivity extends AppCompatActivity {
                     mBt_get_verify_code.setBackgroundColor(Color.GRAY);
                     sendTime = System.currentTimeMillis();
                     mHandler.sendEmptyMessage(SMS_SEND_SUCCESS);
+                } else {
+                    Log.d("AA", e.getMessage() + "\n" + e.getErrorCode());
                 }
             }
         });
