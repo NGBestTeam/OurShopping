@@ -1,5 +1,8 @@
 package com.bestteam.supermarket.bean;
 
+import java.util.HashMap;
+import java.util.LinkedHashMap;
+
 import cn.bmob.v3.BmobUser;
 import cn.bmob.v3.datatype.BmobFile;
 import cn.bmob.v3.datatype.BmobRelation;
@@ -14,6 +17,8 @@ public class User extends BmobUser {
     private String sex;
 
     private BmobRelation commodity;
+
+    private HashMap<String, Integer> shopCount;
 
     public BmobFile getPhoto() {
         return photo;
@@ -37,5 +42,13 @@ public class User extends BmobUser {
 
     public void setCommodity(BmobRelation commodity) {
         this.commodity = commodity;
+    }
+
+    public HashMap<String, Integer> getShopCount() {
+        return shopCount;
+    }
+
+    public void setShopCount(HashMap<String, Integer> shopCount) {
+        this.shopCount = shopCount;
     }
 }

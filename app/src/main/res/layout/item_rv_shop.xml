@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="100dp">
+
+    <ImageView
+        android:id="@+id/iv_shop"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_centerVertical="true"
+        android:src="@mipmap/ic_launcher"
+        />
+
+    <TextView
+        android:id="@+id/tv1_shop"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@id/iv_shop"
+        android:layout_toRightOf="@id/iv_shop"
+        android:text="1111"
+        android:textColor="@color/colorBlack"
+        />
+
+    <TextView
+        android:id="@+id/tv2_shop"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@id/iv_shop"
+        android:layout_toRightOf="@id/iv_shop"
+        android:text="1111"
+        android:textColor="@android:color/holo_red_dark"
+        />
+
+    <LinearLayout
+        android:layout_width="100dp"
+        android:layout_height="30dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_margin="10dp"
+        android:background="@drawable/shop_custom"
+        android:gravity="center"
+        android:orientation="horizontal"
+        >
+
+        <Button
+            android:id="@+id/subtract"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@null"
+            android:gravity="center"
+            android:text="-"
+            android:textColor="@color/colorBlack"
+            />
+
+        <TextView
+            android:layout_width="1dp"
+            android:layout_height="match_parent"
+            android:background="#BABABA"
+            />
+
+        <Button
+            android:id="@+id/shop_count"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1.5"
+            android:background="@null"
+            android:text="1"
+            android:textColor="@color/colorBlack"
+            android:textSize="18sp"
+            />
+
+        <TextView
+            android:layout_width="1dp"
+            android:layout_height="match_parent"
+            android:background="#BABABA"
+            />
+
+        <Button
+            android:id="@+id/add"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@null"
+            android:gravity="center"
+            android:text="+"
+            android:textColor="@color/colorBlack"
+            />
+
+
+    </LinearLayout>
+
+</RelativeLayout>

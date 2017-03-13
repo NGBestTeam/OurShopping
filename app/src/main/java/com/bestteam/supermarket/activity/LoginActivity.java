@@ -13,6 +13,7 @@ import android.text.Spannable;
 import android.text.TextWatcher;
 import android.text.method.HideReturnsTransformationMethod;
 import android.text.method.PasswordTransformationMethod;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -253,6 +254,7 @@ public class LoginActivity extends AppCompatActivity {
                         } else {
                             mDialog.dismiss();
                             ToastUtil.show(getApplicationContext(), "手机号用户不存在，请核对后输入");
+                            Log.d("AA", e.getMessage()+"\n"+e.getErrorCode());
                         }
                     }
                 });

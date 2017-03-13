@@ -7,17 +7,14 @@ import android.os.Handler;
 import android.os.Message;
 import android.support.design.widget.BottomSheetDialog;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.LinearLayoutManager;
 import android.text.Selection;
 import android.text.Spannable;
-import android.text.TextUtils;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.bestteam.supermarket.R;
@@ -27,9 +24,9 @@ import com.bestteam.supermarket.utils.ConstantValue;
 import com.bestteam.supermarket.utils.SpUtil;
 import com.bestteam.supermarket.utils.ToastUtil;
 
+import java.util.HashMap;
 import java.util.List;
 
-import cn.bmob.v3.Bmob;
 import cn.bmob.v3.BmobQuery;
 import cn.bmob.v3.BmobUser;
 import cn.bmob.v3.datatype.BmobPointer;
@@ -43,7 +40,6 @@ public class CommodityDetailsActivity extends AppCompatActivity {
     private Button mAddCar;
     private Button mShopCar;
     private Button mShop;
-    private EditText mDetailAddCarNum;
     private EditText mCarNum;
     private TextView mAllMenoy;
     private TextView mTitleTv;
@@ -62,7 +58,7 @@ public class CommodityDetailsActivity extends AppCompatActivity {
     /**
      * 点击加入购物车时的进度条
      */
-    private ProgressDialog mDialog;
+    private ProgressDialog mAddDialog;
 
     /**
      * 查询数据完毕的状态码
@@ -91,6 +87,26 @@ public class CommodityDetailsActivity extends AppCompatActivity {
     private String mMoney;
 
     /**
+     * 用户购买的数量
+     */
+    private int mBuyCount;
+
+    /**
+     * 已经购买数量
+     */
+    private int mAlreadCount;
+
+    /**
+     * 添加时的进度条
+     */
+    private ProgressDialog mDialog;
+
+    /**
+     * 用户的购物车集合
+     */
+    private HashMap<String, Integer> mShopCountMap;
+
+    /**
      * 处理各种事务的Handler
      */
     private Handler mHandler = new Handler() {
@@ -112,8 +128,6 @@ public class CommodityDetailsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_commodity_details2);
         initView();
-        // 加载服务器数据
-        loadCommodity();
         initPresenter();
     }
 
@@ -139,7 +153,14 @@ public class CommodityDetailsActivity extends AppCompatActivity {
     }
 
     private void initView() {
+        mAddDialog = new ProgressDialog(this);
+        mAddDialog.setTitle("提示");
+        mAddDialog.setMessage("添加中...");
+        mAddDialog.setCancelable(false);
+        mAddDialog.setIcon(R.mipmap.login_loading);
+
         name = getIntent().getStringExtra("titles");
+        loadUser();
         mUser = BmobUser.getCurrentUser(User.class);
 
         Log.d("AA", name);
@@ -157,6 +178,29 @@ public class CommodityDetailsActivity extends AppCompatActivity {
         mMoneyTv = (TextView) findViewById(R.id.activity_commodity_money);
 
         isLogin = SpUtil.getBoolean(this, ConstantValue.IS_LOGIN, false);
+    }
+
+    /**
+     * 刷新用户
+     */
+    private void loadUser() {
+        String userId = SpUtil.getString(getApplicationContext(), ConstantValue.USER_OBJECT_ID, "");
+        BmobQuery<User> query = new BmobQuery<>();
+        query.addWhereEqualTo("objectId", userId);
+        query.findObjects(new FindListener<User>() {
+            @Override
+            public void done(List<User> list, BmobException e) {
+                if (e == null) {
+                    mUser = list.get(0);
+                    // 将此用户的map集合属性拿到
+                    mShopCountMap = mUser.getShopCount();
+                    // 加载服务器数据
+                    loadCommodity();
+                } else {
+                    ToastUtil.show(getApplicationContext(), "服务器开小差了哦");
+                }
+            }
+        });
     }
 
     private void initPresenter() {
@@ -209,10 +253,10 @@ public class CommodityDetailsActivity extends AppCompatActivity {
      * 将商品添加至购物车
      */
     private void buyCommodity() {
-        int buyCount = Integer.parseInt(mCarNum.getText().toString());
+        mBuyCount = Integer.parseInt(mCarNum.getText().toString());
         int serviceLimitCount = Integer.parseInt(mCommodityService.getLimitcount());
 
-        if (buyCount <= 0) {
+        if (mBuyCount <= 0) {
             ToastUtil.show(getApplicationContext(), "请输入有效值！");
             return;
         }
@@ -222,20 +266,15 @@ public class CommodityDetailsActivity extends AppCompatActivity {
             return;
         }
 
-        if (buyCount > serviceLimitCount) {
+        if (mBuyCount > serviceLimitCount) {
             ToastUtil.show(getApplicationContext(), "对不起，此商品数量还剩：" + serviceLimitCount + "件！");
             return;
         }
 
-        // 将当前商品添加至用户关联的购物车中
-        String alreadyCount = mCommodityService.getBuycount();
-        if (!TextUtils.isEmpty(alreadyCount)) {
-            mCommodityService.setBuycount((Integer.parseInt(alreadyCount) + buyCount) + "");
-        } else {
-            mCommodityService.setBuycount(buyCount + "");
-        }
+        mAddDialog.show();
 
-        int newLimiteCount = serviceLimitCount - buyCount;
+        // 将当前商品添加至用户关联的购物车中
+        int newLimiteCount = serviceLimitCount - mBuyCount;
         mCommodityService.setLimitcount(newLimiteCount + "");
 
         // 先将商品信息进行更新后才能添加至购物车。
@@ -246,6 +285,7 @@ public class CommodityDetailsActivity extends AppCompatActivity {
                     // 商品信息更新成功
                     mHandler.sendEmptyMessage(COMMODITY_UPDATE_FINISH);
                 } else {
+                    mAddDialog.dismiss();
                     // 更新失败
                     ToastUtil.show(getApplicationContext(), "商品信息更新失败！：" + e.getMessage() + "\n" + e.getErrorCode());
                 }
@@ -260,10 +300,19 @@ public class CommodityDetailsActivity extends AppCompatActivity {
     private void updateRelation() {
         BmobRelation relation = new BmobRelation();
         relation.add(mCommodityService);
+
+        // 判断此用户有无购物车集合
+        if (mShopCountMap == null) {
+            Log.d("AA", "他是空的");
+            mShopCountMap = new HashMap<>();
+        }
+        mShopCountMap.put(mCommodityService.getObjectId(), mBuyCount + mAlreadCount);
+        mUser.setShopCount(mShopCountMap);
         mUser.setCommodity(relation);
         mUser.update(new UpdateListener() {
             @Override
             public void done(BmobException e) {
+                mAddDialog.dismiss();
                 if (e == null) {
                     // 添加成功！
                     ToastUtil.show(getApplicationContext(), "添加至购物车成功！");
@@ -311,6 +360,10 @@ public class CommodityDetailsActivity extends AppCompatActivity {
         detailAddCarBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if (mCommodityService == null) {
+                    ToastUtil.show(getApplicationContext(), "服务器开小差了哦，请稍后再试...");
+                    return;
+                }
                 // 加入购物 mCarNum
                 // 先查询购物车中是否有此商品
                 BmobQuery<Commodity> query = new BmobQuery<>();
@@ -327,6 +380,9 @@ public class CommodityDetailsActivity extends AppCompatActivity {
                                 if (commodity.getName().equals(name)) {
                                     ToastUtil.show(getApplicationContext(), "您的购物车中已有此商品");
                                     mCommodityService = commodity;
+
+                                    // 拿到此商品的已有购物数量
+                                    mAlreadCount = mShopCountMap.get(mCommodityService.getObjectId());
                                 }
                             }
                         }

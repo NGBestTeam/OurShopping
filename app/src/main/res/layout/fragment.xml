@@ -1,13 +1,84 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
-    <TextView
-        android:id="@+id/tv"
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        android:scaleType="fitCenter"
-        android:text="首页"
-        android:gravity="center">
-    </TextView>
-</LinearLayout>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+    <include
+        android:id="@+id/main_tool_bar"
+        layout="@layout/shoping_bar"
+        />
+
+    <LinearLayout
+        android:id="@+id/ll"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_below="@id/main_tool_bar"
+        android:layout_marginTop="10dp"
+        android:background="#EEC591"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        >
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_weight="1"
+            android:text="100%正品保证"
+            android:textColor="@android:color/holo_red_dark"
+            />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="一件也包邮"
+            android:textColor="@android:color/holo_red_dark"
+            />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="15天也能退货"
+            android:textColor="@android:color/holo_red_dark"
+            />
+
+    </LinearLayout>
+
+    <android.support.v4.widget.SwipeRefreshLayout
+        android:id="@+id/rf_shop"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/ll"
+        android:layout_marginTop="2dp">
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/rv_shop"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            />
+
+    </android.support.v4.widget.SwipeRefreshLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_alignParentBottom="true"
+        android:gravity="center_vertical"
+        >
+
+        <Button
+            android:id="@+id/bt_settle"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentRight="true"
+            android:background="@android:color/holo_red_dark"
+            android:text="结算"
+            android:textColor="@color/colorWhite"
+            />
+
+    </RelativeLayout>
+
+
+</RelativeLayout>
