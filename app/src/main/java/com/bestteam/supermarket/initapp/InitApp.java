@@ -6,6 +6,7 @@ import com.bestteam.supermarket.utils.ConstantValue;
 import com.bestteam.supermarket.utils.OkHttpManager;
 
 import cn.bmob.v3.Bmob;
+import cn.jpush.android.api.JPushInterface;
 
 /**
  * Created by WangJinRui on 2017/3/6.
@@ -23,5 +24,10 @@ public class InitApp extends Application {
 
         // 初始化Bmob云
         Bmob.initialize(this, ConstantValue.BMOB_KEY);
+
+        //debug调试模式
+        JPushInterface.setDebugMode(true);
+        //初始化
+        JPushInterface.init(this);
     }
 }
