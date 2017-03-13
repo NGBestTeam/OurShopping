@@ -38,7 +38,8 @@ public class MyPushMessageReceiver extends BroadcastReceiver{
 
             NotificationManager manager= (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
             NotificationCompat.Builder builder=new NotificationCompat.Builder(context);
-            builder.setSmallIcon(R.mipmap.login_logo);
+            builder.setSmallIcon(R.mipmap.photo);
+            builder.setContentTitle("非凡大麦场");
             builder.setContentText(bundle.getString(JPushInterface.EXTRA_MESSAGE));
             manager.notify(1,builder.build());
 
