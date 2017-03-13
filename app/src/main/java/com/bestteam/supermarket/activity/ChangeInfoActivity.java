@@ -41,7 +41,6 @@ import cn.bmob.v3.datatype.BmobFile;
 import cn.bmob.v3.exception.BmobException;
 import cn.bmob.v3.listener.DownloadFileListener;
 import cn.bmob.v3.listener.QueryListener;
-import cn.bmob.v3.listener.SaveListener;
 import cn.bmob.v3.listener.UpdateListener;
 import cn.bmob.v3.listener.UploadFileListener;
 
@@ -210,8 +209,6 @@ public class ChangeInfoActivity extends AppCompatActivity implements CustomPopup
                     });
                     ToastUtil.show(getApplicationContext(), "上传成功！");
                 } else {
-                    Log.d("AA", "上传失败：" + e.getMessage()
-                            + "\n" + e.getErrorCode());
                     ToastUtil.show(getApplicationContext(), "上传失败：" + e.getMessage()
                             + "\n" + e.getErrorCode());
                 }

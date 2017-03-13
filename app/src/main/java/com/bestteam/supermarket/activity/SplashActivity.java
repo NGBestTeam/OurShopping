@@ -234,6 +234,8 @@ public class SplashActivity extends AppCompatActivity {
 
                     if (position == mVpImgs.size() - 1) {
                         mEnterHomeIv.setVisibility(View.VISIBLE);
+                    } else {
+                        mEnterHomeIv.setVisibility(View.GONE);
                     }
 
                     if (i == position) {

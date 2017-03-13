@@ -254,7 +254,6 @@ public class LoginActivity extends AppCompatActivity {
                         } else {
                             mDialog.dismiss();
                             ToastUtil.show(getApplicationContext(), "手机号用户不存在，请核对后输入");
-                            Log.d("AA", e.getMessage()+"\n"+e.getErrorCode());
                         }
                     }
                 });

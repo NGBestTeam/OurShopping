@@ -162,8 +162,6 @@ public class RegisterInfoActivity extends AppCompatActivity {
                     mBt_get_verify_code.setBackgroundColor(Color.GRAY);
                     sendTime = System.currentTimeMillis();
                     mHandler.sendEmptyMessage(SMS_SEND_SUCCESS);
-                } else {
-                    Log.d("AA", e.getMessage() + "\n" + e.getErrorCode());
                 }
             }
         });
@@ -260,8 +258,6 @@ public class RegisterInfoActivity extends AppCompatActivity {
                                             user.setPhoto(photoFile);
                                             ToastUtil.show(getApplicationContext(), "头像上传成功！");
                                         } else {
-                                            Log.d("AA", "头像上传失败：" + e.getMessage()
-                                                    + "\n" + e.getErrorCode());
                                             ToastUtil.show(getApplicationContext(), "头像上传失败：" + e.getMessage()
                                                     + "\n" + e.getErrorCode());
                                         }

@@ -144,7 +144,6 @@ public class CommodityDetailsActivity extends AppCompatActivity {
                 if (e == null) {
                     // 查询成功
                     mCommodityService = list.get(0);
-                    Log.d("AA", mCommodityService.getName());
                 } else {
                     ToastUtil.show(getApplicationContext(), "服务器开小差了哦");
                 }
@@ -162,8 +161,6 @@ public class CommodityDetailsActivity extends AppCompatActivity {
         name = getIntent().getStringExtra("titles");
         loadUser();
         mUser = BmobUser.getCurrentUser(User.class);
-
-        Log.d("AA", name);
 
         mDialog = new ProgressDialog(this);
         mDialog.setTitle("提示");
@@ -285,7 +282,6 @@ public class CommodityDetailsActivity extends AppCompatActivity {
                     // 商品信息更新成功
                     mHandler.sendEmptyMessage(COMMODITY_UPDATE_FINISH);
                 } else {
-                    mAddDialog.dismiss();
                     // 更新失败
                     ToastUtil.show(getApplicationContext(), "商品信息更新失败！：" + e.getMessage() + "\n" + e.getErrorCode());
                 }
@@ -303,7 +299,6 @@ public class CommodityDetailsActivity extends AppCompatActivity {
 
         // 判断此用户有无购物车集合
         if (mShopCountMap == null) {
-            Log.d("AA", "他是空的");
             mShopCountMap = new HashMap<>();
         }
         mShopCountMap.put(mCommodityService.getObjectId(), mBuyCount + mAlreadCount);
